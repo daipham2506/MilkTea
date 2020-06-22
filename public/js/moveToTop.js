@@ -4,7 +4,7 @@ window.onscroll = () =>{
     if(document.body.scrollTop > 300|| document.documentElement.scrollTop > 300){
         button.style.display = "block";
     }else{
-        button.style.display = "none";
+        button.style.display = "none";    
     }    
 }
 // When the user clicks on the button, scroll to the top of the document
