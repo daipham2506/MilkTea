@@ -5,7 +5,7 @@ window.onscroll = () =>{
         button.style.display = "block";
     }else{
         button.style.display = "none";
-    }
+    }    
 }
 // When the user clicks on the button, scroll to the top of the document
 const moveToTop= () =>{
