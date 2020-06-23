@@ -13,14 +13,14 @@
         <li class="link-item"><a href="<?php echo URLROOT; ?>pages/contact">Liên hệ</a></li>
         <?php if(isset($_SESSION['user_id'])) : ?>
           <li class="link-item">
-              <a href="<?php echo URLROOT; ?>/users/logout">Đăng xuất</a>
+              <a href="<?php echo URLROOT; ?>users/logout">Đăng xuất</a>
             </li>
           <?php else : ?>
             <li class="link-item">
-              <a href="<?php echo URLROOT; ?>/users/register">Đăng kí</a>
+              <a href="<?php echo URLROOT; ?>users/register">Đăng kí</a>
             </li>
             <li class="link-item">
-              <a href="<?php echo URLROOT; ?>/users/login">Đăng nhập</a>
+              <a href="<?php echo URLROOT; ?>users/login">Đăng nhập</a>
             </li>
           <?php endif; ?>
       </ul>

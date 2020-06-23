@@ -4,7 +4,7 @@
       <div class="card card-body bg-light mt-5">
         <h2>Tạo tài khoản</h2>
         <p>Vui lòng điền vào form bên dưới để đăng kí tài khoản</p>
-        <form action="<?php echo URLROOT; ?>/users/register" method="post">
+        <form action="<?php echo URLROOT; ?>users/register" method="post">
           <div class="form-group">
             <label for="name">Tên: <sup>*</sup></label>
             <input type="text" name="name" class="form-control form-control-lg <?php echo (!empty($data['name_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['name']; ?>">
@@ -31,7 +31,7 @@
               <input type="submit" value="Register" class="btn btn-success btn-block">
             </div>
             <div class="col">
-              <a href="<?php echo URLROOT; ?>/users/login" class="btn btn-light btn-block">Đã có tài khoản? Đăng nhập ngay</a>
+              <a href="<?php echo URLROOT; ?>users/login" class="btn btn-light btn-block">Đã có tài khoản? Đăng nhập ngay</a>
             </div>
           </div>
         </form>
