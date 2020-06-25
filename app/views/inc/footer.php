@@ -40,7 +40,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 <script src="<?php echo URLROOT;?>/js/moveToTop.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="<?php echo URLROOT; ?>/js/main.js"></script>
-  <script src="<?php echo URLROOT; ?>/js/about.js"></script>
+  <script src="<?php echo URLROOT; ?>js/main.js"></script>
+  <script src="<?php echo URLROOT; ?>js/about.js"></script>
+  <script src="<?php echo URLROOT; ?>js/readImageURL.js"></script>
 </body>
 </html>

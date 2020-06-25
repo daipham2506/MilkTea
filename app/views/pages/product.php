@@ -10,7 +10,7 @@
             <a href="#origin" class="list-group-item list-group-item-action">TRÀ NGUYÊN CHẤT</a>
             <a href="#creation" class="list-group-item list-group-item-action">THỨC UỐNG SÁNG TẠO</a>
             <a href="#ice" class="list-group-item list-group-item-action">THỨC UỐNG ĐÁ XAY</a>
-            <!-- <a href="#topping" class="list-group-item list-group-item-action">TOPPING</a> -->
+            <a href="#topping" class="list-group-item list-group-item-action">TOPPING</a>
         </div>
     </div>
     <div class="col-xl-10 col-md-9 col-12" id="menu">
@@ -20,7 +20,7 @@
             </div>
             <div class="col-lg-4 col-md-6 col-12 product-item ml-md-0 ml-2">
                 <div class="card" data-aos="flip-left" data-aos-duration="1500">
-
+                    <button class="btn btn-success add-cart"><i class="fas fa-cart-plus"></i></button>
                     <img src="https://gongcha.com.vn/wp-content/uploads/2018/10/Hinh-Web-OKINAWA-SUA-TUOI.png" class="card-img-top img-product" alt="pic1">
                     <div class="card-body">
                         <h5 class="card-title">Sữa Tươi Okinawa</h5>
@@ -47,7 +47,7 @@
             </div> -->
             <div class="col-lg-4 col-md-6 col-12 product-item ml-md-0 ml-2">
                 <div class="card" data-aos="flip-up" data-aos-duration="1500">
-
+                <button class="btn btn-success add-cart"><i class="fas fa-cart-plus"></i></button>
                     <img src="https://gongcha.com.vn/wp-content/uploads/2018/06/Mango-Matcha-Latte.png" class="card-img-top img-product" alt="pic2">
                     <div class="card-body">
                         <h5 class="card-title">Mango Matcha Latte</h5>
@@ -60,7 +60,7 @@
             </div>
             <div class="col-lg-4 col-md-6 col-12 product-item ml-md-0 ml-2">
                 <div class="card" data-aos="flip-down" data-aos-duration="1500">
-
+                <button class="btn btn-success add-cart"><i class="fas fa-cart-plus"></i></button>
                     <img src="https://gongcha.com.vn/wp-content/uploads/2018/06/Hinh-Web-OKINAWA-LATTE.png" class="card-img-top img-product" alt="pic2">
                     <div class="card-body">
                         <h5 class="card-title">Okinawa Latte</h5>
@@ -79,7 +79,7 @@
             </div>
             <div class="col-lg-4 col-md-6 col-12 product-item ml-md-0 ml-2">
                 <div class="card" data-aos="zoom-in" data-aos-duration="1500">
-
+                <button class="btn btn-success add-cart"><i class="fas fa-cart-plus"></i></button>
                     <img src="https://gongcha.com.vn/wp-content/uploads/2018/02/Tr%C3%A0-B%C3%AD-%C4%90ao-Milkfoam-2.png" class="card-img-top img-product" alt="pic1">
                     <div class="card-body">
                         <h5 class="card-title">Trà Bí Đao Kem Sữa</h5>
@@ -92,7 +92,7 @@
             </div>
             <div class="col-lg-4 col-md-6 col-12 product-item ml-md-0 ml-2">
                 <div class="card" data-aos="zoom-in" data-aos-duration="1500">
-
+                <button class="btn btn-success add-cart"><i class="fas fa-cart-plus"></i></button>
                     <img src="https://gongcha.com.vn/wp-content/uploads/2018/02/Tr%C3%A0-Oolong-Milkfoam-3.png" class="card-img-top img-product" alt="pic2">
                     <div class="card-body">
                         <h5 class="card-title">Trà Oolong Kem Sữa</h5>
@@ -106,6 +106,7 @@
             </div>
             <div class="col-lg-4 col-md-6 col-12 product-item ml-md-0 ml-2">
                 <div class="card" data-aos="zoom-in" data-aos-duration="1500">
+                <button class="btn btn-success add-cart"><i class="fas fa-cart-plus"></i></button>
                     <img src="https://gongcha.com.vn/wp-content/uploads/2018/02/Tr%C3%A0-Alisan-Milkfoam-2.png" class="card-img-top img-product" alt="pic2">
                     <div class="card-body">
                         <h5 class="card-title">Trà Alisan Kem Sữa</h5>
@@ -131,6 +132,7 @@
             </div> -->
             <div class="col-lg-4 col-md-6 col-12 product-item ml-md-0 ml-2">
                 <div class="card" data-aos="zoom-in-up" data-aos-duration="1500">
+                <button class="btn btn-success add-cart"><i class="fas fa-cart-plus"></i></button>
                     <img src="https://gongcha.com.vn/wp-content/uploads/2018/02/Tr%C3%A0-%C4%90en-Milkfoam-2.png" class="card-img-top img-product" alt="pic2">
                     <div class="card-body">
                         <h5 class="card-title">Trà Đen Kem Sữa</h5>
@@ -143,6 +145,7 @@
             </div>
             <div class="col-lg-4 col-md-6 col-12 product-item ml-md-0 ml-2">
                 <div class="card" data-aos="zoom-in-up" data-aos-duration="1500">
+                <button class="btn btn-success add-cart"><i class="fas fa-cart-plus"></i></button>
                     <img src="https://gongcha.com.vn/wp-content/uploads/2018/02/Tra%CC%80-xanh-GC.png" class="card-img-top img-product" alt="pic2">
                     <div class="card-body">
                         <h5 class="card-title">Trà Xanh Kem Sữa</h5>
@@ -174,6 +177,7 @@
             </div> -->
             <div class="col-lg-4 col-md-6 col-12 product-item ml-md-0 ml-2">
                 <div class="card" data-aos="fade-right" data-aos-duration="1500">
+                <button class="btn btn-success add-cart"><i class="fas fa-cart-plus"></i></button>
                     <img src="https://gongcha.com.vn/wp-content/uploads/2018/10/Hinh-Web-OKINAWA-TR%C3%80-S%E1%BB%AEA.png" class="card-img-top img-product" alt="pic2">
                     <div class="card-body">
                         <h5 class="card-title">Trà Sữa Okinawa</h5>
@@ -201,6 +205,7 @@
             </div> -->
             <div class="col-lg-4 col-md-6 col-12 product-item ml-md-0 ml-2">
                 <div class="card" data-aos="fade-left" data-aos-duration="1500">
+                <button class="btn btn-success add-cart"><i class="fas fa-cart-plus"></i></button>
                     <img src="https://gongcha.com.vn/wp-content/uploads/2018/02/Tr%C3%A0-s%E1%BB%AFa-Oolong-3J-2.png" class="card-img-top img-product" alt="pic2">
                     <div class="card-body">
                         <h5 class="card-title">Trà sữa Oolong 3J</h5>
@@ -227,6 +232,7 @@
             </div> -->
             <div class="col-lg-4 col-md-6 col-12 product-item ml-md-0 ml-2">
                 <div class="card" data-aos="fade-left" data-aos-duration="1500">
+                <button class="btn btn-success add-cart"><i class="fas fa-cart-plus"></i></button>
                     <img src="https://gongcha.com.vn/wp-content/uploads/2018/02/Tr%C3%A0-s%E1%BB%AFa-Chocolate-2.png" class="card-img-top img-product" alt="pic2">
                     <div class="card-body">
                         <h5 class="card-title">Trà Sữa Chocolate</h5>
@@ -253,6 +259,7 @@
             </div> -->
             <div class="col-lg-4 col-md-6 col-12 product-item ml-md-0 ml-2">
                 <div class="card" data-aos="fade-up-right" data-aos-duration="1500">
+                <button class="btn btn-success add-cart"><i class="fas fa-cart-plus"></i></button>
                     <img src="https://gongcha.com.vn/wp-content/uploads/2018/02/Tr%C3%A0-s%E1%BB%AFa-Hokkaido-2.png" class="card-img-top img-product" alt="pic2">
                     <div class="card-body">
                         <h5 class="card-title">Trà Sữa Hokkaido</h5>
@@ -265,6 +272,7 @@
             </div>
             <div class="col-lg-4 col-md-6 col-12 product-item ml-md-0 ml-2">
                 <div class="card" data-aos="fade-up-right" data-aos-duration="1500">
+                <button class="btn btn-success add-cart"><i class="fas fa-cart-plus"></i></button>
                     <img src="https://gongcha.com.vn/wp-content/uploads/2018/02/Tr%C3%A0-s%E1%BB%AFa-s%C6%B0%C6%A1ng-s%C3%A1o.png" class="card-img-top img-product" alt="pic2">
                     <div class="card-body">
                         <h5 class="card-title">Trà Sữa Sương Sáo</h5>
@@ -277,6 +285,7 @@
             </div>
             <div class="col-lg-4 col-md-6 col-12 product-item ml-md-0 ml-2">
                 <div class="card" data-aos="fade-up-left" data-aos-duration="1500">
+                <button class="btn btn-success add-cart"><i class="fas fa-cart-plus"></i></button>
                     <img src="https://gongcha.com.vn/wp-content/uploads/2018/02/Tr%C3%A0-s%E1%BB%AFa-c%C3%A0-ph%C3%AA.png" class="card-img-top img-product" alt="pic2">
                     <div class="card-body">
                         <h5 class="card-title">Trà Sữa Cà Phê</h5>
@@ -289,6 +298,7 @@
             </div>
             <div class="col-lg-4 col-md-6 col-12 product-item ml-md-0 ml-2">
                 <div class="card" data-aos="fade-up-left" data-aos-duration="1500">
+                <button class="btn btn-success add-cart"><i class="fas fa-cart-plus"></i></button>
                     <img src="https://gongcha.com.vn/wp-content/uploads/2018/02/Tr%C3%A0-s%E1%BB%AFa-Oolong-2.png" class="card-img-top img-product" alt="pic2">
                     <div class="card-body">
                         <h5 class="card-title">Trà Sữa Oolong</h5>
@@ -301,6 +311,7 @@
             </div>
             <div class="col-lg-4 col-md-6 col-12 product-item ml-md-0 ml-2">
                 <div class="card" data-aos="fade-up-left" data-aos-duration="1500">
+                <button class="btn btn-success add-cart"><i class="fas fa-cart-plus"></i></button>
                     <img src="https://gongcha.com.vn/wp-content/uploads/2018/02/Tr%C3%A0-s%E1%BB%AFa-tr%C3%A0-%C4%91en-3.png" class="card-img-top img-product" alt="pic2">
                     <div class="card-body">
                         <h5 class="card-title">Trà Sữa Trà Đen</h5>
@@ -313,6 +324,7 @@
             </div>
             <div class="col-lg-4 col-md-6 col-12 product-item ml-md-0 ml-2">
                 <div class="card" data-aos="fade-down-right" data-aos-duration="1500">
+                <button class="btn btn-success add-cart"><i class="fas fa-cart-plus"></i></button>
                     <img src="https://gongcha.com.vn/wp-content/uploads/2018/02/Tr%C3%A0-s%E1%BB%AFa-Oolong-2.png" class="card-img-top img-product" alt="pic2">
                     <div class="card-body">
                         <h5 class="card-title">Trà Sữa Oolong</h5>
@@ -325,6 +337,7 @@
             </div>
             <div class="col-lg-4 col-md-6 col-12 product-item ml-md-0 ml-2">
                 <div class="card" data-aos="fade-down-right" data-aos-duration="1500">
+                <button class="btn btn-success add-cart"><i class="fas fa-cart-plus"></i></button>
                     <img src="https://gongcha.com.vn/wp-content/uploads/2018/02/Tr%C3%A0-s%E1%BB%AFa-tr%C3%A0-xanh-1.png" class="card-img-top img-product" alt="pic2">
                     <div class="card-body">
                         <h5 class="card-title">Trà Sữa Trà Xanh</h5>
@@ -337,6 +350,7 @@
             </div>
             <div class="col-lg-4 col-md-6 col-12 product-item ml-md-0 ml-2">
                 <div class="card" data-aos="fade-down-right" data-aos-duration="1500">
+                <button class="btn btn-success add-cart"><i class="fas fa-cart-plus"></i></button>
                     <img src="https://gongcha.com.vn/wp-content/uploads/2018/01/Tr%C3%A0-s%E1%BB%AFa-Khoai-m%C3%B4n-2.png" class="card-img-top img-product" alt="pic2">
                     <div class="card-body">
                         <h5 class="card-title">Trà Sữa Khoai Môn</h5>
@@ -367,6 +381,7 @@
             </div>
             <div class="col-lg-4 col-md-6 col-12 product-item ml-md-0 ml-2">
                 <div class="card" data-aos="flip-down" data-aos-duration="1500">
+                <button class="btn btn-success add-cart"><i class="fas fa-cart-plus"></i></button>
                     <img src="https://gongcha.com.vn/wp-content/uploads/2018/02/Tr%C3%A0-B%C3%AD-%C4%90ao-2.png" class="card-img-top img-product" alt="pic2">
                     <div class="card-body">
                         <h5 class="card-title">Trà Bí Đao</h5>
@@ -380,6 +395,7 @@
             </div>
             <div class="col-lg-4 col-md-6 col-12 product-item ml-md-0 ml-2">
                 <div class="card" data-aos="flip-up" data-aos-duration="1500">
+                <button class="btn btn-success add-cart"><i class="fas fa-cart-plus"></i></button>
                     <img src="https://gongcha.com.vn/wp-content/uploads/2018/02/Tr%C3%A0-Alisan-2.png" class="card-img-top img-product" alt="pic2">
                     <div class="card-body">
                         <h5 class="card-title">Trà Alisan</h5>

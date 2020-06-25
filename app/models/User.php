@@ -52,4 +52,40 @@
         return false;
       }
     }
+    public function findUserById($userId){
+      $this->db->query('SELECT * FROM users WHERE id = :userId');
+      $this->db->bind(':userId', $userId);
+      $row = $this->db->single();
+      if($this->db->rowCount() > 0){
+        return $row;
+      } else {
+        return false;
+      }
+    }
+    public function findOtherUserByEmail($userId , $email){
+      $sql = "SELECT * FROM users WHERE (email = '$email') AND (id != $userId)";
+      $result = mysqli_query($this->db->conn, $sql);
+      if(mysqli_num_rows($result) > 0){
+        return true;
+      }else{
+        return false;
+      }
+    }
+    public function update($data, $userId){
+      $sql = "UPDATE `users`
+      SET `name` = '" .$data["name"]."',
+      `email` = '" . $data["email"]."',
+      `birthday` = '".$data["birthday"]."',
+      `address` = '".$data["address"]."',
+      `gender` = '".$data["gender"]."',
+      `avatar` = '".$data["avatar"]."'
+      WHERE `id` = $userId";
+      ;
+      if(mysqli_query($this->db->conn,$sql)){
+        return true;
+      }else{
+        echo("Error description: " . $this->db->conn -> error);
+        return false;
+      }
+    }
   }

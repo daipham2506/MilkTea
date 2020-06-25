@@ -23,11 +23,11 @@ body{
   width: 100vw;
   font-family: 'Open Sans', sans-serif;
 }
-#navbar img{
+#navbar #logo{
 	position: absolute;
-	width: 150px;
-    left: 10%;
-    height: 80px;
+	width: 100px;
+  left: 3%;
+  height: 80px;
 }
 #navbar #link{
   float: right;
@@ -77,21 +77,67 @@ body{
 #check{
   display: none;
 }
+
+#user-avatar{
+  position: absolute;
+  left: calc(190px + 4%);
+  top: 18%;
+  height: 100%;
+  float: right;
+  margin-right: 5px;
+  margin-right: 10px;
+}
+#user-avatar #avatar{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+#user-avatar #avatar:hover{
+  transform: scale(1.05);
+}
+
+/* shopping cart */
+#shopping-cart{
+  position: absolute;
+  left: calc(100px + 4%);
+  top: 20%;
+  color: white;
+  border-radius: 5px;
+  border: 2px solid white;
+  padding: 10px;
+  text-decoration: none;
+  align-self: center;
+}
+#shopping-cart:hover{
+  cursor: pointer;
+  transform: scale(1.05);
+}
+#item-number{
+  margin-left: 5px;
+  font-weight: 800;
+  color: #f1f50e;
+}
+
+
 @media (max-width: 1118px){
-  #navbar img{
-    left: 8%;
+  #navbar #logo{
+    left: 3%;
   }
 }
 @media (max-width: 944px){
-  #navbar img{
-    width: 130px;
-		left: 6%;
+  #navbar #logo{
+    width: 90px;
+		left: 3%;
   }
 	#navbar #link .link-item a{
 		font-size: 17px;
 	}
 }
 @media (max-width: 768px){
+  #navbar #logo{
+    width: 80px;
+  }
     #label-bars{
         float: right;
         margin: 0;
@@ -547,6 +593,16 @@ body{
 .card .img-product:hover{
     -webkit-transform: scale(1.2);
 	transform: scale(1.2);
+}
+.card .add-cart{
+  border-radius: 50%;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 12px;
+}
+.card .add-cart:hover{
+  cursor: pointer;
 }
 @media (max-width: 1200px) { 
     .card .img-product{
