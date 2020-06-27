@@ -3,6 +3,7 @@
     <div class="col-md-6 mx-auto">
       <div class="card card-body bg-light mt-5">
         <?php flash('register_success'); ?>
+        <?php flash('changepass_success');?>
         <h2>Đăng nhập</h2>
         <p>Vui lòng điền email và mật khẩu</p>
         <form action="<?php echo URLROOT; ?>users/login" method="post">
