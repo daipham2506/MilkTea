@@ -110,7 +110,10 @@ class User
   public function changePass($userId, $password)
   {
     $sql = "UPDATE `users` SET `password` = '".$password."' WHERE `id` = $userId;";
-    if (mysqli_query($this->db->conn, $sql)) {
+    if (
+      mysqli_query($this->db->conn, $sql)
+
+      ) {
       return true;
     } else {
       echo ("Error description: " . $this->db->conn->error);
