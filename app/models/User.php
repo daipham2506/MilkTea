@@ -11,12 +11,12 @@ class User
   // Regsiter user
   public function register($data)
   {
-    $this->db->query('INSERT INTO users (name, email, password) VALUES(:name, :email, :password)');
+    $this->db->query('INSERT INTO users (name, email, password, avatar) VALUES(:name, :email, :password, :avatar)');
     // Bind values
     $this->db->bind(':name', $data['name']);
     $this->db->bind(':email', $data['email']);
     $this->db->bind(':password', $data['password']);
-
+    $this->db->bind(':avatar', "https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png");
     // Execute
     if ($this->db->execute()) {
       return true;
@@ -119,5 +119,25 @@ class User
       echo ("Error description: " . $this->db->conn->error);
       return false;
     }
+  }
+
+  public function getAllUsers () {
+    $sql = "SELECT id, name, email, avatar, address FROM `users` WHERE isAdmin IS NULL";
+    $result = $this->db->connection->query($sql);
+    $res = [];
+    while($row = $result->fetch_assoc()) {
+      array_push($res, $row);
+    }
+    return $res;
+  }
+
+  public function deleteUserById($id) {
+      $sql = "DELETE FROM `users` WHERE id = $id";
+      if ($this->db->connection->query($sql)) {
+          return true;
+      } else {
+          echo ("Error description: " . $this->db->connection->error);
+          return false;
+      }
   }
 }

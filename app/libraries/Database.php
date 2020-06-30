@@ -30,10 +30,15 @@ class Database
       PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
     );
     $this->conn = mysqli_connect($this->host, $this->user, $this->pass, $this->dbname);
+    $this->connection = new mysqli($this->host, $this->user, $this->pass, $this->dbname);
 
     // Check connection
     if (mysqli_connect_errno()) {
       echo "Failed to connect to MySQL: " . mysqli_connect_error();
+      exit();
+    }
+    if ($this->connection -> connect_errno) {
+      echo "Failed to connect to MySQL: " . $this->connection -> connect_error;
       exit();
     }
 
