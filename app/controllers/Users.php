@@ -354,7 +354,7 @@ class Users extends Controller
 
         // Update User
         if ($this->userModel->changePass($userId, $password)) {
-          flash('dischangepass_success', 'Đổi mật khẩu thành công');
+          flash('changepass_success', 'Đổi mật khẩu thành công');
           redirect('users/login');
         } else {
           die('Something went wrong');
