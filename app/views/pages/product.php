@@ -21,6 +21,7 @@
             <div class="col-lg-4 col-md-6 col-12 product-item ml-md-0 ml-2">
                 <div class="card" data-aos="flip-left" data-aos-duration="1500">
                     <button class="btn btn-success add-cart"><i class="fas fa-cart-plus"></i></button>
+                    <a href="" class="btn btn-success product-detail"><i class="fas fa-cart-plus"></i></a>
                     <img src="https://gongcha.com.vn/wp-content/uploads/2018/10/Hinh-Web-OKINAWA-SUA-TUOI.png" class="card-img-top img-product" alt="pic1">
                     <div class="card-body">
                         <h5 class="card-title">Sữa Tươi Okinawa</h5>
