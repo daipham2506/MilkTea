@@ -68,4 +68,77 @@ class Product
       return false;
     }
   }
+  public function getProductById($productId){
+    $sql = "SELECT * FROM `product` WHERE `id` = $productId";
+    $result = $this->db->connection->query($sql);
+    $product_price = $this->getPriceByProductId($productId);
+    $final_result = [];
+    if ($result) {
+      $row_product = $result->fetch_assoc();
+      $final_result = [
+        "id"=>$row_product["id"],
+        "idcategory"=>$row_product["idcategory"],
+        "name"=>$row_product["name"],
+        "image"=>$row_product["image"],
+        "description"=>$row_product["description"],
+        "price_list"=>$product_price
+      ];
+      return $final_result;
+    } else {
+      echo ("Error description: " . $this->db->connection->error);
+      return false;
+    }
+  }
+  public function getAllReviewByProductId($productId){
+    $sql = "SELECT review.*, users.name, users.avatar FROM `review` INNER JOIN `users` 
+    ON review.iduser = users.id WHERE `idproduct` = $productId ORDER BY createdAt DESC";
+    $review = [];
+    $result = $this->db->connection->query($sql);
+    if($result){
+        $review = $result;
+    }else{
+      echo ("Error description: " . $this->db->connection->error);
+      return false;
+    }
+    return $review;
+  }
+  public function getAverageStarByProductId($productId){
+    $sql = "SELECT * FROM (SELECT `idproduct`,AVG(numberstar) 'avgstar' 
+    FROM `review` GROUP BY `idproduct`) AS `avgStar` WHERE avgStar.idproduct = $productId;";
+    $result = $this->db->connection->query($sql);
+    $avgStar = 0;
+    if($result){
+      if($result->num_rows > 0){
+        $row = $result->fetch_assoc();
+        //cal start round to 0.5
+        $star = round($row["avgstar"],2);
+        $floor_star = floor($star);
+        if($star - $floor_star >= 0.75){
+          $avgStar = $floor_star + 1;
+        }elseif($star - $floor_star >= 0.25){
+          $avgStar = round(($floor_star + 0.5),1);
+        }else{
+          $avgStar = $floor_star;
+        }
+      }
+    }else{
+      echo ("Error description: " . $this->db->connection->error);
+      return false; 
+    }
+    return $avgStar;
+  }
+  public function addReview($data){
+    $productId = $data["productId"];
+    $userId = $data["userId"];
+    $content = $data["content"];
+    $rating_value = $data["rating_value"];
+    $sql = "INSERT INTO `review`(`content`, `createdAt`, `numberstar`, `iduser`, `idproduct`) VALUES ('". $content."',NOW(),$rating_value,$userId,$productId);";
+    echo $sql;
+    if($this->db->connection->query($sql)){
+      return true;
+    }else{
+      echo ("Error description: " . $this->db->connection->error);
+      return false;
+    }
+  }
 }
