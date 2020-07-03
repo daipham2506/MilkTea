@@ -4,7 +4,7 @@
         // var_dump($data["listComment"]);
         // var_dump($data["listPostRecently"]);
     ?>
-<div class="container mt-3">
+<div class="container mt-3 mb-5">
     <div class="row">
         <div class="col-xl-9 col-lg-9 col-12">
             <div class="d-flex align-items-center mb-3">
