@@ -43,11 +43,6 @@
       </div>
 
       <ul id="link" style="z-index: 2;">
-        <li class="link-item"><a href="<?php echo URLROOT; ?>">Trang chủ</a></li>
-        <li class="link-item"><a href="<?php echo URLROOT; ?>pages/about">Giới thiệu</a></li>
-        <li class="link-item"><a href="<?php echo URLROOT; ?>pages/service">Dịch vụ</a></li>
-        <li class="link-item"><a href="<?php echo URLROOT; ?>products">Trà sữa</a></li>
-        <li class="link-item"><a href="<?php echo URLROOT; ?>pages/contact">Liên hệ</a></li>
         <?php if (isset($_SESSION['user_id'])) : ?>
         <li class="link-item">
           <a href="<?php echo URLROOT; ?>users/logout">đăng xuất</a>
