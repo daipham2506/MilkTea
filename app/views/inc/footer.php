@@ -45,5 +45,6 @@
   <script src="<?php echo URLROOT; ?>js/readImageURL.js"></script>
   <script src="<?php echo URLROOT; ?>js/header.js"></script>
   <script src="<?php echo URLROOT; ?>js/postDetail.js"></script>
+  <script src="<?php echo URLROOT; ?>js/editPost.js"></script>
 </body>
 </html>
