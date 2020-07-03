@@ -90,14 +90,59 @@
     cursor: pointer;
 }
 
-/* Class for hieu */
-.product-detail{
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    padding: 12px;
-    border-radius: 50%;
-    z-index: 4;
+/* Css for card in list posts */
+
+.wrap-img-card-list-post{
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
-/* End class for hieu */
+.img-card-list-post{
+    height: 280px;
+    max-width: 100%;
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
+.content-post{
+    height: 38px;
+}
+
+.pagination{
+    margin: 0 !important;
+}
+
+.list-post-recently{
+    border-left: 1px solid rgb(199, 195, 195);
+}
+
+.list-post-recently-title{
+    border-bottom: 1px solid rgb(199, 195, 195);
+    padding-bottom: 4px;
+}
+
+.list-post-recently-img{
+    width: 50px;
+    margin-right: 4px;
+}
+
+.list-post-recently-link{
+    text-decoration: none;
+    align-items: center;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.list-post-recently-link:hover{
+    text-decoration: none;
+    background-color: rgb(235, 225, 225);
+}
+
+@media (max-width: 700px){
+    .hidden-list-recently-post{
+        display: none;
+    }
+}
