@@ -168,8 +168,7 @@ class Users extends Controller
 
     $_SESSION['isAdmin'] = $user->isAdmin; 
 
-    $user->isAdmin ? redirect('admin') : redirect('pages/index');
-
+    $user->isAdmin ? redirect('admin') : redirect('');
   }
 
   public function logout()
@@ -356,7 +355,7 @@ class Users extends Controller
 
         // Update User
         if ($this->userModel->changePass($userId, $password)) {
-          flash('dischangepass_success', 'Đổi mật khẩu thành công');
+          flash('changepass_success', 'Đổi mật khẩu thành công');
           redirect('users/login');
         } else {
           die('Something went wrong');

@@ -25,10 +25,10 @@
       $data = []; // change here
       $this->view('pages/service', $data);
     }
-    public function product(){
-      $data = []; // change here
-      $this->view('pages/product', $data);
-    }
+    // public function product(){
+    //   $data = []; // change here
+    //   $this->view('pages/product', $data);
+    // }
     public function contact(){
       $data = []; // change here
       $this->view('pages/contact', $data);

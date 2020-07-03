@@ -15,7 +15,7 @@
               <li> <a href="<?php echo URLROOT; ?>">Trang chủ</a></li>
               <li><a href="<?php echo URLROOT; ?>pages/about">Giới thiệu</a></li>
               <li><a href="<?php echo URLROOT; ?>pages/service">Dịch vụ</a></li>
-              <li><a href="<?php echo URLROOT; ?>pages/product">Trà sữa</a></li>
+              <li><a href="<?php echo URLROOT; ?>products">Trà sữa</a></li>
               <li><a href="<?php echo URLROOT; ?>pages/contact">Liên hệ</a></li>
             </ul>
           </div>
@@ -43,6 +43,7 @@
   <script src="<?php echo URLROOT; ?>js/main.js"></script>
   <script src="<?php echo URLROOT; ?>js/about.js"></script>
   <script src="<?php echo URLROOT; ?>js/readImageURL.js"></script>
+  <script src="<?php echo URLROOT;?>js/rating.js"></script>
   <script src="<?php echo URLROOT; ?>js/header.js"></script>
   <script src="<?php echo URLROOT; ?>js/postDetail.js"></script>
 </body>
