@@ -86,4 +86,31 @@ class Products extends Controller
       redirect('products/detail/'.$productId);
     }
   }
+
+  public function listproductsearch()
+  {
+    $name_key = "";
+    if(isset($_GET["name_key"])){
+      $name_key = $_GET["name_key"];
+    }
+    // echo $name_key;
+    $listProductSearch = $this->productModel->getListProductByNameKey($name_key);
+
+    $listProduct = [];
+
+    foreach($listProductSearch as $item){
+      $rs_price = $this->productModel->getPriceByProductId($item["id"]);
+      $list_price = [];
+      while($row = $rs_price->fetch_assoc()){
+        array_push($list_price,$row);
+      }
+      $item["price_list"] = $list_price;
+      array_push($listProduct,$item);
+    }
+    $data = [
+      "listProductSearch" => $listProduct,
+      "name_key" => $name_key
+    ];
+    $this->view("products/listproductsearch",$data);
+  }
 }

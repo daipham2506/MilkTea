@@ -146,3 +146,35 @@
         display: none;
     }
 }
+
+.icon-search-product{
+    color: white;
+    cursor: pointer;
+    background-color: #2c3e50;
+    padding: 12px 16px;
+    border-radius: 4px;
+}
+
+@keyframes MoveDown{
+    from{
+        transform: translateY(-100%);
+    }
+    to{
+        transform: translateY(0%);
+    }
+}
+
+.id-form-search-product{
+    animation: MoveDown 0.4s forwards;
+    background-color: #2c3e50;
+    padding: 0 4px 8px 4px;
+    /* position: fixed; */
+    /* z-index: 10; */
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* 768px */
+/* #id-form-search-product{
+    width: 40%;
+} */
