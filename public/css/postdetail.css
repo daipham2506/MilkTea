@@ -1,0 +1,103 @@
+.title-avatar{
+    margin-right: 12px;
+}
+.title-avatar-img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.title-name-user{
+    font-weight: bold;
+    color: blue;
+    font-size: 18px;
+}
+
+.title-date-create{
+    font-size: 14px;
+    color: gray;
+}
+
+.content-main-img{
+    height: 400px;
+}
+
+.wrap-react{
+    border-top: 1px solid rgb(216, 211, 211);
+    border-bottom: 1px solid rgb(216, 211, 211);
+    padding: 4px 0;
+}
+
+.font-weight-bold{
+    font-weight: bold;
+}
+
+.icon-like{
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 4px;
+}
+
+.text-in-icon{
+    cursor: pointer;
+}
+
+.content-comment{
+    background-color: rgb(183, 183, 219);
+    padding: 4px 8px;
+    border-radius: 8px;
+}
+
+.avatar-comment{
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+}
+
+.name-user-comment{
+    font-weight: bold;
+    color: blue;
+}
+
+.like-or-response{
+    margin-top: 4px;
+}
+
+.icon-react-comment{
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+.datetime-comment{
+    margin-left: 14px;
+    color: gray;
+}
+
+.list-response{
+    padding-left: 44px;
+}
+
+.number-of-like i{
+    color: blue;
+    font-size: 20px;
+}
+
+.number-of-comment{
+    color: blue;
+}
+
+.btn-add-comment{
+    cursor: pointer;
+}
+
+/* Class for hieu */
+.product-detail{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 12px;
+    border-radius: 50%;
+    z-index: 4;
+}
+
+/* End class for hieu */
