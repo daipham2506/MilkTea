@@ -141,4 +141,21 @@ class Product
       return false;
     }
   }
+
+  public function getListProductByNameKey($name_key)
+  {
+    $query = "SELECT * FROM product where instr(product.name,'$name_key')";
+    $rs = $this->db->connection->query($query);
+    $listProduct = [];
+    if($rs){
+        while($row = $rs->fetch_assoc()){
+            array_push($listProduct,$row);
+        }   
+        return $listProduct;
+    }
+    else{
+        echo $this->db->connection->error;
+        return $listProduct;
+    }
+  }
 }
