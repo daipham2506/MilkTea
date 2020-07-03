@@ -1,6 +1,6 @@
   </div>
       <!-- footer here -->
-      <div class="mt-5 pt-5 pb-5 footer">
+      <div class="pt-5 pb-5 footer">
       <div class="container">
         <div class="row">
           <div class="col-lg-5 col-xs-12 about-company">
@@ -46,5 +46,6 @@
   <script src="<?php echo URLROOT;?>js/rating.js"></script>
   <script src="<?php echo URLROOT; ?>js/header.js"></script>
   <script src="<?php echo URLROOT; ?>js/postDetail.js"></script>
+  <script src="<?php echo URLROOT; ?>js/editPost.js"></script>
 </body>
 </html>

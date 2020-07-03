@@ -14,17 +14,19 @@
                 <textarea class="form-control" required name="post_content" value="<?php echo $data['post_content']; ?>" id="exampleFormControlTextarea1" rows="4"></textarea>
                 <p><?php echo $data['post_content_err']; ?></p>
             </div>
-            <div class="form-group">
-                <label for="post_img">Chọn ảnh</label>
-                <input type="file" required class="form-control-file" name="post_img" id="post_img" onchange="readImagePostURL(this);">
-                <p class="text-danger"><?php if(array_key_exists('post_img_err', $data)) echo $data['post_img_err']; ?></p>
-                <div class="d-flex justify-content-center mt-4">
-                    <img id="post-preview" src="<?php echo $data['post_img'];?>" alt="Post image" class="border border-secondary rounded img-fluid">
+            <label for="post_img" style="margin: 0;">Chọn ảnh</label>
+            <div class="form-group d-flex row">
+                <div class="d-flex align-items-center col-12 col-xl-6 col-lg-6 col-md-6 mb-4">
+                    <input type="file" required class="form-control-file" name="post_img" id="post_img" onchange="readImagePostURL(this);">
+                    <p class="text-danger"><?php if(array_key_exists('post_img_err', $data)) echo $data['post_img_err']; ?></p>
                 </div>
+                <div class="d-flex justify-content-center col-12 col-xl-6 col-lg-6 col-md-6">
+                    <img id="post-preview" src="<?php echo $data['post_img'];?>" alt="Post image" class="border border-secondary rounded img-fluid">
+                </div>  
             </div>
             <div class="d-flex justify-content-center">
-                <a href="<?php echo URLROOT; ?>posts/listposts" class="btn btn-primary w-25 mr-2">Quay lại danh sách</a>
-                <button type="submit" class="btn btn-primary w-25 cur-point">Tạo</button>
+                <a href="<?php echo URLROOT; ?>posts/listposts" class="btn btn-primary col-6 col-xl-3 col-lg-3 col-md-3 mr-2">Quay lại danh sách</a>
+                <button type="submit" class="btn btn-primary col-6 col-xl-3 col-lg-3 col-md-3 cur-point">Tạo</button>
             </div>
         </form>
     </div>

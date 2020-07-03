@@ -23,7 +23,7 @@
                     $content
                     </div>
                 <div class="d-flex align-items-center like-or-response">
-                    <i class="far fa-thumbs-up icon-react-comment"></i>
+                    <!--<i class="far fa-thumbs-up icon-react-comment"></i> -->
         _END;
 
         if($current_user_id == $iduser){

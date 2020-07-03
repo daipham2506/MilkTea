@@ -26,7 +26,7 @@
                     $content
                 </div>
                 <div class="d-flex align-items-center like-or-response">
-                    <i class="far fa-thumbs-up icon-react-comment"></i>
+                    <!-- <i class="far fa-thumbs-up icon-react-comment"></i> -->
                     <i class="fas fa-reply icon-react-comment icon-response-comment" id-comment="$idComment"></i>
         _END;
 

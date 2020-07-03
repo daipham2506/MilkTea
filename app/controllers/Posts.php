@@ -7,14 +7,23 @@ class Posts extends Controller
   }
 
   public function listposts(){
+      $num_of_post_per_page = 6;
+      
       $pageNumber = 1;
+      if(isset($_GET['pageno'])){
+        $pageNumber = $_GET['pageno'];
+      }
+      
       $numOfPost = $this->postModel->getNumOfPost();
+      $totalPage = ceil($numOfPost / $num_of_post_per_page);
+
       $user_id = $_SESSION['user_id'];
-      $listPost = $this->postModel->getListPost($pageNumber,$numOfPost);
+      $listPost = $this->postModel->getListPost($pageNumber,$num_of_post_per_page);
       // var_dump($listPost);
       // echo $numOfPost;
+      
       $data = [
-        "numOfPost" => $numOfPost,
+        "totalPage" => $totalPage,
         "listPost" => $listPost
       ];
       $this->view("posts/listposts",$data);
@@ -23,9 +32,11 @@ class Posts extends Controller
   public function postdetail($id){
       $postDetail = $this->postModel->getPostDetail($id);
       $listComment = $this->postModel->getListComment($id);
+      $listPostRecently = $this->postModel->getRecentlyPost();
       $data = [
         "postDetail" => $postDetail,
-        "listComment" => $listComment
+        "listComment" => $listComment,
+        "listPostRecently" => $listPostRecently
       ];
       $this->view("posts/postdetail",$data);
   }
@@ -191,4 +202,103 @@ class Posts extends Controller
       }
     }
   }
+
+  public function rendereditpost($idPost)
+  {
+    $postInfo = $this->postModel->getPostInfo($idPost);
+    $data = [
+      "postInfo" => $postInfo,
+      "post_title_err" => '',
+      "post_content_err" => '',
+      "post_img_err" => ''
+    ];
+    $this->view("posts/editpost",$data);
+  }
+
+  public function updatepost()
+  {
+    // $postTitle = $_POST["post_title"];
+    // $postContent = $_POST["post_content"];
+    // $currentImageEdit = $_POST["current-image-edit"];
+    // echo($postContent);
+    // echo($postTitle);
+    // echo($currentImageEdit);
+    $postInfo = [
+      'title' => trim($_POST['post_title']),
+      'content' => trim($_POST['post_content']),
+      'image' => trim($_POST["current-image-edit"]),
+      'id' => trim($_POST["id-post"])
+    ];
+    // Init data
+    $data = [
+      'postInfo' => $postInfo,
+      'post_title_err' => '',
+      'post_content_err' => '',
+      'post_img_err' => ''
+    ];
+
+    if (!$_POST['post_title']){
+      $data['post_title_err'] = "Please enter title for post!";
+    }
+    if (!$_POST['post_content']){
+      $data['post_content_err'] = "Please enter content for post!";
+    }
+
+    // if($_FILES['post_img']['name'] == ""){
+    //   $data['post_img_err'] = "Please choose image for post!";
+    // }
+
+    if (isset($_FILES['post_img']) && $_FILES['post_img']['name'] != "") {
+      $ext = pathinfo($_FILES['post_img']['name'], PATHINFO_EXTENSION);
+      $filename = pathinfo($_FILES['post_img']['name'], PATHINFO_FILENAME);
+      // $uploaddir = "img/avatar/" . $_FILES['avatar']['name'];
+      $uploaddir = "img/posts/" . $filename . uniqid(rand(), true). ".".$ext ;
+      // echo $ext;
+      //check image extension
+      if ($ext != 'gif' && $ext != 'png' && $ext != 'jpg' && $ext != 'jpeg') {
+        $data["post_img_err"] = "Sai định dạng ảnh (.jpg, .jpeg, .png, .gif)";
+        //check image size
+      } else if ($_FILES['post_img']['size'] > 5242880) {
+        $data["post_img_err"] = "Vượt kích thước cho phép (5MB)";
+      } else {
+        if (move_uploaded_file($_FILES['post_img']['tmp_name'], $uploaddir)) {
+          $data['postInfo']['image'] = URLROOT . $uploaddir;
+          
+        }
+      }
+      
+    }
+
+    // Make sure errors are empty
+    if (empty($data['post_title_err']) && empty($data['post_content_err']) && empty($data['post_img_err'])) {
+      // Validated
+
+      // Add new post
+      if ($this->postModel->editPost($data['postInfo'])) {
+        flash('update_success', 'Cập nhật bài đăng thành công');
+        redirect('posts/listposts');
+      } else {
+        
+        echo "Add post have error with sql";
+      }
+    } else {
+      // Load view with errors
+      $this->view('posts/editpost', $data);
+      // echo $data['post_title_err'];
+      // echo "ERROR";
+    }
+  }
+
+  public function deletepost($idPost)
+  {
+    $rs= $this->postModel->deletePost($idPost);
+    if($rs){
+      redirect("posts/listposts");
+    }
+    else{
+      echo "DELETE POST FAILED";
+    }
+  }
+
+
 }

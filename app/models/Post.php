@@ -29,6 +29,29 @@ class Post{
         }
     }
 
+    public function editPost($data)
+    {
+        date_default_timezone_set('Asia/Ho_Chi_Minh');
+        $date = date("Y-m-d H:i:s");
+        $content = $data['content'];
+        $title = $data['title'];
+        $img = $data['image'];
+        $idPost = $data['id'];
+
+        $user_id = $_SESSION['user_id'];
+        
+        $query_update_post = "UPDATE `post` SET content='$content',createdAt='$date',image='$img', iduser='$user_id',title='$title' where id=$idPost";
+
+        $rs = $this->db->connection->query($query_update_post);
+        if($rs){
+            return true;
+        }
+        else{
+            echo $this->db->connection->error;
+            return false;
+        }
+    }
+
     public function getNumOfPost(){
         $query = "SELECT COUNT(*) AS num_post from post";
         $rs = $this->db->connection->query($query);
@@ -42,12 +65,27 @@ class Post{
         }
     }
 
-    public function getListPost($pageNumber,$numOfPost){
-        $num_of_post_per_page = 10;
+    public function getListPost($pageNumber,$num_of_post_per_page){
         $offset = ($pageNumber - 1) * $num_of_post_per_page;
-        $totalPage = ceil($numOfPost / $num_of_post_per_page);
 
         $query = "SELECT * FROM POST LIMIT $offset,$num_of_post_per_page";
+        $rs = $this->db->connection->query($query);
+        $listPost = [];
+        if($rs){
+            while($row = $rs->fetch_assoc()){
+                array_push($listPost,$row);
+            }   
+            return $listPost;
+        }
+        else{
+            echo $this->db->connection->error;
+            return $listPost;
+        }
+    }
+
+    public function getRecentlyPost()
+    {
+        $query = "SELECT * FROM POST order by createdAt desc LIMIT 6";
         $rs = $this->db->connection->query($query);
         $listPost = [];
         if($rs){
@@ -183,6 +221,32 @@ class Post{
         $rs = $this->db->connection->query($query);
         if($rs){
             return  $rs->fetch_assoc()["numresponse"];
+        }
+        else{
+            echo $this->db->connection->error;
+            return false;
+        }
+    }
+
+    public function deletePost($idPost)
+    {
+        $query = "CALL deletePost($idPost)";
+        $rs = $this->db->connection->query($query);
+        if($rs){
+            return true;
+        }
+        else{
+            echo $this->db->connection->error;
+            return false;
+        }
+    }
+
+    public function getPostInfo($idPost)
+    {
+        $query = "SELECT * FROM post where id=$idPost";
+        $rs = $this->db->connection->query($query);
+        if($rs){
+            return $rs->fetch_assoc();
         }
         else{
             echo $this->db->connection->error;
