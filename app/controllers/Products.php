@@ -90,8 +90,12 @@ class Products extends Controller
   public function listproductsearch()
   {
     $name_key = "";
+    $page_no = 1;
     if(isset($_GET["name_key"])){
       $name_key = $_GET["name_key"];
+    }
+    if(isset($_GET["pageno"])){
+      $page_no = $_GET["pageno"];
     }
     // echo $name_key;
     $listProductSearch = $this->productModel->getListProductByNameKey($name_key);
@@ -107,9 +111,17 @@ class Products extends Controller
       $item["price_list"] = $list_price;
       array_push($listProduct,$item);
     }
+
+    $numProductPerPage = 6;
+    $numOfProduct = count($listProduct);
+    $totalPage = ceil($numOfProduct /  $numProductPerPage);
+    $offset = ($page_no - 1) * $numProductPerPage;
+
+    $newListProduct = array_slice($listProduct,$offset,$numProductPerPage);
     $data = [
-      "listProductSearch" => $listProduct,
-      "name_key" => $name_key
+      "listProductSearch" => $newListProduct,
+      "name_key" => $name_key,
+      "totalPage" => $totalPage
     ];
     $this->view("products/listproductsearch",$data);
   }

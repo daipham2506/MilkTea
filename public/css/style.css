@@ -828,3 +828,7 @@ body{
 .cur-point{
   cursor: pointer;
 }
+
+.list-price-product{
+  height: 40px;
+}
