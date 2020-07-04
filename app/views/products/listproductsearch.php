@@ -6,9 +6,10 @@
     <div class="row">
         <?php
         // var_dump($data["product"]);
+        // echo $data["totalPage"];
         $product = $data["listProductSearch"];
         if(count($product) < 1){
-            echo '<h1 class="text-danger w-100 text-center">No product here</h1>';
+            echo '<h1 class="text-danger w-100 text-center mb-5 mt-5">No product here</h1>';
         }
         else{
             for($i = 0; $i < count($product); $i++){
@@ -31,7 +32,7 @@
                         <a  class='d-flex justify-content-center' href='$link_product'><img src='$product_image' class='card-img-top img-product' alt='$product_name'></a>
                         <div class='card-body'>
                             <h5 class='card-title'>$product_name</h5>
-                            <ul class='cart-text'>
+                            <ul class='cart-text list-price-product'>
                             "
                             .$price_display.
                             "
@@ -43,6 +44,23 @@
             }
         }
         ?>
+    </div>
+    <div class="d-flex justify-content-end align-items-center">
+        <p style="margin-right: 4px;">Trang: </p>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination" id="pagination">
+                <?php 
+                    $name_key = $data["name_key"];
+                    $urlGetListPost = URLROOT . "products/listproductsearch?" . "name_key=$name_key&" . "pageno=";
+                    for ($i = 1; $i <= $data['totalPage']; $i++){
+                        $url = $urlGetListPost . $i;
+                        echo <<< _END
+                            <a href="$url" class="page-item cursor-pointer"><p class="page-link btn_page">$i</p></a>
+                        _END;
+                    }
+                ?>
+            </ul>
+        </nav>
     </div>
 </div>
 <?php require APPROOT . '/views/inc/footer.php'; ?>

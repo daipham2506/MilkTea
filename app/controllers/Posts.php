@@ -17,7 +17,9 @@ class Posts extends Controller
       $numOfPost = $this->postModel->getNumOfPost();
       $totalPage = ceil($numOfPost / $num_of_post_per_page);
 
-      $user_id = $_SESSION['user_id'];
+      // if(isset($_SESSION['user_id'])){
+      //   $user_id = $_SESSION['user_id'];
+      // }
       $listPost = $this->postModel->getListPost($pageNumber,$num_of_post_per_page);
       // var_dump($listPost);
       // echo $numOfPost;
@@ -188,7 +190,7 @@ class Posts extends Controller
 
         // Add new post
         if ($this->postModel->addPost($data)) {
-          flash('update_success', 'Add post thành công');
+          flash('add_post_success', 'Thêm bài đăng thành công');
           redirect('posts/listposts');
         } else {
           
@@ -275,7 +277,7 @@ class Posts extends Controller
 
       // Add new post
       if ($this->postModel->editPost($data['postInfo'])) {
-        flash('update_success', 'Cập nhật bài đăng thành công');
+        flash('update_post_success', 'Cập nhật bài đăng thành công');
         redirect('posts/listposts');
       } else {
         
@@ -293,6 +295,7 @@ class Posts extends Controller
   {
     $rs= $this->postModel->deletePost($idPost);
     if($rs){
+      flash("delete_post_success","Xóa bài đăng thành công");
       redirect("posts/listposts");
     }
     else{
