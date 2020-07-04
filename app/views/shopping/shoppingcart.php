@@ -53,7 +53,7 @@
                                             </td>
                                             <td class="text-right">
                                                 <input type="submit" class="btn btn-outline-primary" value="Xác nhận" name='changeQuantity'>
-                                                <input type="submit" class="btn btn-outline-danger" value="x Hủy" name='cancel' onClick="alert('Xác nhận xóa khỏi giỏ hàng?')">
+                                                <input type="submit" class="btn btn-outline-danger" value="x Hủy" name='cancel' onClick=" return ConfirmDialog()">
                                             </td>
                                         </tr>
                                         </form>
@@ -79,3 +79,16 @@
     <h4>Bạn phải đăng nhập để sử dụng tính năng này</h4>
 <?php } ?>
 <?php require APPROOT . '/views/inc/footer.php'; ?>
+
+<script>
+     function ConfirmDialog()  {
+ 
+        var result = confirm("Xác nhận bỏ sản phẩm khỏi giỏ hàng ?");
+
+        if(result)  {
+            return true;
+        } else {
+            return false;
+        }
+}
+</script>

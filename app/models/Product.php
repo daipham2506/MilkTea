@@ -30,7 +30,7 @@ class Product
     }
   }
   public function getPriceByProductId($productId){
-    $sql = "SELECT sizeofproduct.idproduct, sizeofproduct.price,sizeofproduct.quantity, size.size 
+    $sql = "SELECT sizeofproduct.idproduct, sizeofproduct.price,sizeofproduct.quantity, size.size, size.id
     FROM `sizeofproduct` INNER JOIN `size` ON sizeofproduct.idsize = size.id WHERE sizeofproduct.idproduct = $productId";
     $result = $this->db->connection->query($sql);
     if ($result) {
@@ -173,6 +173,16 @@ class Product
     else{
         echo $this->db->connection->error;
         return $listProduct;
+    }
+  }
+
+  public function addtocart($productId, $sizeId, $quantity, $userId){
+    $sql = "INSERT INTO productincart VALUE(".$userId.",".$productId.",".$quantity.",".$sizeId.")";
+    if (mysqli_query($this->db->conn, $sql)){
+      flash('addtocart','Thêm vào giỏ hàng thành công');
+    }
+    else{
+      flash('addtocart','Thêm vào giỏ hàng không thành công');
     }
   }
 }

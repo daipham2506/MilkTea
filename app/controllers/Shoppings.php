@@ -14,6 +14,7 @@
             $this->view('shopping/shoppingcart',$data);
             
         }
+
         public function updatecart($userId){
             $productId = $_GET['productid'];
             $newQuantity = $_POST['quantity'];
@@ -23,14 +24,14 @@
             if (isset($_POST['cancel'])){
                 $this->shoppingcartModel->cancelProduct($userId, $productId);
             }
-            $this->shoppingcart($userId);
+            redirect("shoppings/shoppingcart/".$userId);
         }
 
         public function ordercart($userId){
             if (isset($_POST['ordercart'])){
                 $this->shoppingcartModel->orderCart($userId);
             }
-            $this->shoppingcart($userId);
+            redirect("shoppings/shoppingcart/".$userId);
         }
     }
 
