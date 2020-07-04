@@ -1,13 +1,12 @@
 <?php if (isset($_SESSION['user_id']) && isset($_SESSION['isAdmin'])) :
     require APPROOT . '/views/inc/header_admin.php';
-    $userSelected = null;
 ?>
     <div class="row mt-3">
         <div class="col-md-2 col-12" style="margin-left:40px">
             <div class="list-group" id="list-tab">
                 <a class="list-group-item list-group-item-action active" id="list-info-list" href="<?php echo URLROOT; ?>admin/index" aria-controls="info"><i class="far fa-user"></i>&nbsp;&nbsp; Quản lý người dùng</a>
                 <a class="list-group-item list-group-item-action" id="list-order-list" href="#" role="tab" aria-controls="order"><i class="fas fa-file-alt"></i>&nbsp;&nbsp; Quản lí đơn hàng</a>
-                <a class="list-group-item list-group-item-action" id="list-changePass-list" href="<?php echo URLROOT; ?>users/changepass/<?php echo $_SESSION['user_id'] ?>" role="tab" aria-controls="pass"><i class="fas fa-key"></i> &nbsp;&nbsp;Thay đổi mật khẩu</a>
+                <a class="list-group-item list-group-item-action" id="list-changePass-list" href="<?php echo URLROOT; ?>admin/changepass/<?php echo $_SESSION['user_id'] ?>" role="tab" aria-controls="pass"><i class="fas fa-key"></i> &nbsp;&nbsp;Thay đổi mật khẩu</a>
             </div>
         </div>
         <div class="col-md-9 col-12">
@@ -56,7 +55,7 @@
                                 <th scope="row">' . $user['id'] . '</th>
                                 <td>' . $user['name'] . '</td>
                                 <td>' . $user['email'] . '</td>
-                                <td><img style="width:40px;height:40px;border-radius:50%" src=' . $user['avatar'] . 'alt="user-avatar"></td>
+                                <td><img style="width:40px;height:40px;border-radius:50%" src=' . $user['avatar'] . ' alt="user-avatar"></td>
                                 <td>' . $user['address'] . '</td>
                                 <td> <a href="#ModalConfirm'.$user['id'].'" data-toggle="modal"><button type="button" class="btn btn-outline-danger">Xóa</button></a></td>
                             </tr>';

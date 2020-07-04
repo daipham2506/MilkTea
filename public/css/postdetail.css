@@ -1,0 +1,184 @@
+.title-avatar{
+    margin-right: 12px;
+}
+.title-avatar-img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.title-name-user{
+    font-weight: bold;
+    color: blue;
+    font-size: 18px;
+}
+
+.title-date-create{
+    font-size: 14px;
+    color: gray;
+}
+
+.content-main-img{
+    height: 400px;
+}
+
+.wrap-react{
+    border-top: 1px solid rgb(216, 211, 211);
+    border-bottom: 1px solid rgb(216, 211, 211);
+    padding: 4px 0;
+}
+
+.font-weight-bold{
+    font-weight: bold;
+}
+
+.icon-like{
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 4px;
+}
+
+.text-in-icon{
+    cursor: pointer;
+}
+
+.content-comment{
+    background-color: rgb(183, 183, 219);
+    padding: 4px 8px;
+    border-radius: 8px;
+}
+
+.avatar-comment{
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+}
+
+.name-user-comment{
+    font-weight: bold;
+    color: blue;
+}
+
+.like-or-response{
+    margin-top: 4px;
+}
+
+.icon-react-comment{
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+.datetime-comment{
+    margin-left: 14px;
+    color: gray;
+}
+
+.list-response{
+    padding-left: 44px;
+}
+
+.number-of-like i{
+    color: blue;
+    font-size: 20px;
+}
+
+.number-of-comment{
+    color: blue;
+}
+
+.btn-add-comment{
+    cursor: pointer;
+}
+
+/* Css for card in list posts */
+
+.wrap-img-card-list-post{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.img-card-list-post{
+    height: 200px;
+    max-width: 100%;
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
+.content-post{
+    height: 40px;
+}
+
+.content-title{
+    height: 30px;
+}
+
+.pagination{
+    margin: 0 !important;
+}
+
+.list-post-recently{
+    border-left: 1px solid rgb(199, 195, 195);
+}
+
+.list-post-recently-title{
+    border-bottom: 1px solid rgb(199, 195, 195);
+    padding-bottom: 4px;
+}
+
+.list-post-recently-img{
+    width: 50px;
+    margin-right: 4px;
+}
+
+.list-post-recently-link{
+    text-decoration: none;
+    align-items: center;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.list-post-recently-link:hover{
+    text-decoration: none;
+    background-color: rgb(235, 225, 225);
+}
+
+@media (max-width: 700px){
+    .hidden-list-recently-post{
+        display: none;
+    }
+}
+
+.icon-search-product{
+    color: white;
+    cursor: pointer;
+    background-color: #2c3e50;
+    padding: 12px 16px;
+    border-radius: 4px;
+}
+
+@keyframes MoveDown{
+    from{
+        transform: translateY(-100%);
+    }
+    to{
+        transform: translateY(0%);
+    }
+}
+
+.id-form-search-product{
+    animation: MoveDown 0.4s forwards;
+    background-color: #2c3e50;
+    padding: 0 4px 8px 4px;
+    /* position: fixed; */
+    /* z-index: 10; */
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* 768px */
+/* #id-form-search-product{
+    width: 40%;
+} */

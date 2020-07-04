@@ -12,6 +12,10 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
     integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+  
+  <!-- Add jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+  
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/confirm-del.css">
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style.css">
   <title><?php echo SITENAME; ?></title>
@@ -39,11 +43,6 @@
       </div>
 
       <ul id="link" style="z-index: 2;">
-        <li class="link-item"><a href="<?php echo URLROOT; ?>">Trang chủ</a></li>
-        <li class="link-item"><a href="<?php echo URLROOT; ?>pages/about">Giới thiệu</a></li>
-        <li class="link-item"><a href="<?php echo URLROOT; ?>pages/service">Dịch vụ</a></li>
-        <li class="link-item"><a href="<?php echo URLROOT; ?>pages/product">Trà sữa</a></li>
-        <li class="link-item"><a href="<?php echo URLROOT; ?>pages/contact">Liên hệ</a></li>
         <?php if (isset($_SESSION['user_id'])) : ?>
         <li class="link-item">
           <a href="<?php echo URLROOT; ?>users/logout">đăng xuất</a>

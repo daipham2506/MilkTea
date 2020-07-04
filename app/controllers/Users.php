@@ -67,7 +67,7 @@ class Users extends Controller
 
         // Register User
         if ($this->userModel->register($data)) {
-          flash('register_success', 'You are registered and can log in');
+          flash('register_success', 'Đăng ký thành công! Vui lòng đăng nhập.');
           redirect('users/login');
         } else {
           die('Something went wrong');
@@ -165,9 +165,10 @@ class Users extends Controller
     $_SESSION['user_id'] = $user->id;
     $_SESSION['user_email'] = $user->email;
     $_SESSION['user_name'] = $user->name;
+
     $_SESSION['isAdmin'] = $user->isAdmin; 
 
-    $user->isAdmin ? redirect('admin') : redirect('pages/index');
+    $user->isAdmin ? redirect('admin') : redirect('');
   }
 
   public function logout()
@@ -354,7 +355,7 @@ class Users extends Controller
 
         // Update User
         if ($this->userModel->changePass($userId, $password)) {
-          flash('dischangepass_success', 'Đổi mật khẩu thành công');
+          flash('changepass_success', 'Đổi mật khẩu thành công');
           redirect('users/login');
         } else {
           die('Something went wrong');

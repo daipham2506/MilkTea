@@ -20,6 +20,7 @@ class Database
 
   //add mysqli
   public $conn;
+  public $connection;
 
   public function __construct()
   {
