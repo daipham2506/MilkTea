@@ -15,9 +15,13 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/profile.css">
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style.css">
+
+  <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/shoppingcart.css">
+
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/product.css">
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/postdetail.css">
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/confirm-del.css">
+
 
   <title><?php echo SITENAME; ?></title>
 </head>

@@ -11,7 +11,7 @@
     $userModel = new User;
     $avatarURL = $userModel->findUserById($_SESSION['user_id'])->avatar;
   ?>
-    <a id="shopping-cart" href="#">
+    <a id="shopping-cart" href="<?php echo URLROOT; ?>shoppings/shoppingcart/<?php echo $_SESSION['user_id'] ?>">
       <i class="fas fa-shopping-cart"></i>
       <span id="item-number">2</span>
     </a>
