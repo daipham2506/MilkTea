@@ -2,7 +2,8 @@
 <?php if (isset($_SESSION['user_id'])){ 
 ?>
     
-<div class="container">
+<div class="container" style='padding:70px 0'>
+    <a href="<?php echo URLROOT; ?>shoppings/orderpage/<?php echo $_SESSION['user_id']; ?>" class='btn btn-outline-primary'>Xem đơn hàng</a>
     <br>  <h4 id="cart-header" class="text-center">Giỏ hàng</h4>
     <hr>
 
@@ -36,7 +37,7 @@
                                         <tr>
                                             <td>
                                                 <figure class="media">
-                                                    <div class="img-wrap" id='container-img-cart'><img src="<?php echo $data[$i]['image']; ?>" class="img-thumbnail img-sm" id="img-cart"></div>
+                                                    <div class="img-wrap" id='container-img-cart'><img src="<?php echo $data[$i]['image']; ?>" class="img-thumbnail img-sm img-cart" id="img-cart"></div>
                                                     <figcaption class="media-body">
                                                         <h6 class="title text-truncate"><?php echo $data[$i]['name']; ?></h6>
                                                     </figcaption>
@@ -44,7 +45,7 @@
                                             </td>
                                             <td><?php echo $data[$i]['size']; ?></td>
                                             <td>
-                                                <input class="form-control" name="quantity" type="number" value="<?php echo $data[$i]['quantity']; ?>"> 
+                                                <input class="form-control" name="quantity" type="number" min="1" max="10" value="<?php echo $data[$i]['quantity']; ?>"> 
                                             </td>
                                             <td> 
                                                 <div class="price-wrap"> 

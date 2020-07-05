@@ -33,6 +33,17 @@
             }
             redirect("shoppings/shoppingcart/".$userId);
         }
+
+        public function orderpage($userId){
+            $data = array();
+            $list_order= $this->shoppingcartModel->getOrder($userId);
+            for ($i = 0; $i < count($list_order); $i++){
+                $data[$i]['id'] = $list_order[$i]['id'];
+                $data[$i]['status'] = $list_order[$i]['status'];
+                $data[$i]['product'] = $this->shoppingcartModel->getProductsByOrderid($data[$i]['id']);
+            }
+            $this->view('shopping/order',$data);
+        }
     }
 
 ?>
