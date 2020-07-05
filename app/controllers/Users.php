@@ -1,4 +1,9 @@
 <?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require_once "../../vendor/autoload.php";
 class Users extends Controller
 {
   public function __construct()
@@ -166,7 +171,7 @@ class Users extends Controller
     $_SESSION['user_email'] = $user->email;
     $_SESSION['user_name'] = $user->name;
 
-    $_SESSION['isAdmin'] = $user->isAdmin; 
+    $_SESSION['isAdmin'] = $user->isAdmin;
 
     $user->isAdmin ? redirect('admin') : redirect('');
   }
@@ -255,7 +260,7 @@ class Users extends Controller
         $ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
         $filename = pathinfo($_FILES['avatar']['name'], PATHINFO_FILENAME);
         // $uploaddir = "img/avatar/" . $_FILES['avatar']['name'];
-        $uploaddir = "img/avatar/" . $filename . uniqid(rand(), true). ".".$ext ;
+        $uploaddir = "img/avatar/" . $filename . uniqid(rand(), true) . "." . $ext;
         // echo $ext;
         //check image extension
         if ($ext != 'gif' && $ext != 'png' && $ext != 'jpg' && $ext != 'jpeg') {
@@ -339,14 +344,14 @@ class Users extends Controller
         } elseif (!password_verify($old_pass, $currentUser['password'])) {
           $data['old_pass_err'] =  "Sai mật khẩu";
         }
-        if(empty($new_pass)){
+        if (empty($new_pass)) {
           $data['new_pass_err'] = "Vui lòng nhập mật khẩu mới";
-        }elseif (strlen($new_pass) < 6) {
+        } elseif (strlen($new_pass) < 6) {
           $data['new_pass_err'] = "Mật khẩu phải có ít nhất 6 kí tự";
         }
-        if(empty($confirm_pass)){
+        if (empty($confirm_pass)) {
           $data['confirm_pass_err'] = "Vui lòng nhập lại mật khẩu";
-        }elseif($confirm_pass != $new_pass) {
+        } elseif ($confirm_pass != $new_pass) {
           $data['confirm_pass_err'] = "Nhập lại mật khẩu sai";
         }
       }
@@ -367,5 +372,32 @@ class Users extends Controller
     }
   }
 
-}
+  public function forgotpass()
+  {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+      $email = $_POST['email'];
+      $user = $this->userModel->findUserByEmail($email);
+      if ($user) {
+        $newPass = $this->userModel->randomPassword();
+        $update = $this->userModel->changepass($user->id, password_hash($newPass, PASSWORD_DEFAULT));
 
+        if ($update) {
+          $result = $this->userModel->sendEmail($user, $newPass);
+          if ($result[0]) {
+            flash('forgot-pass', $result[1]);
+          } else {
+            flash('forgot-pass', $result[1], 'alert-danger');
+          }
+        } else {
+          flash('forgot-pass', 'Không yêu cầu cấp mật khẩu mới được!', 'alert-danger');
+        }
+      } else {
+        flash('forgot-pass', 'Email không tồn tại!', 'alert-danger');
+      }
+      redirect('users/forgotpass');
+    } else {
+      $this->view('users/forgotpass');
+    }
+  }
+}

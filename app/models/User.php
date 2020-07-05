@@ -1,4 +1,9 @@
 <?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require_once "../../vendor/autoload.php";
 class User
 {
   private $db;
@@ -52,7 +57,7 @@ class User
 
     // Check row
     if ($this->db->rowCount() > 0) {
-      return true;
+      return $row;
     } else {
       return false;
     }
@@ -109,11 +114,11 @@ class User
   }
   public function changePass($userId, $password)
   {
-    $sql = "UPDATE `users` SET `password` = '".$password."' WHERE `id` = $userId;";
+    $sql = "UPDATE `users` SET `password` = '" . $password . "' WHERE `id` = $userId;";
     if (
       mysqli_query($this->db->conn, $sql)
 
-      ) {
+    ) {
       return true;
     } else {
       echo ("Error description: " . $this->db->conn->error);
@@ -121,23 +126,80 @@ class User
     }
   }
 
-  public function getAllUsers () {
+  public function getAllUsers()
+  {
     $sql = "SELECT id, name, email, avatar, address FROM `users` WHERE isAdmin IS NULL";
     $result = $this->db->connection->query($sql);
     $res = [];
-    while($row = $result->fetch_assoc()) {
+    while ($row = $result->fetch_assoc()) {
       array_push($res, $row);
     }
     return $res;
   }
 
-  public function deleteUserById($id) {
-      $sql = "DELETE FROM `users` WHERE id = $id";
-      if ($this->db->connection->query($sql)) {
-          return true;
-      } else {
-          echo ("Error description: " . $this->db->connection->error);
-          return false;
-      }
+  public function deleteUserById($id)
+  {
+    $sql = "DELETE FROM `users` WHERE id = $id";
+    if ($this->db->connection->query($sql)) {
+      return true;
+    } else {
+      echo ("Error description: " . $this->db->connection->error);
+      return false;
+    }
+  }
+
+  public function sendEmail($user, $newPass)
+  {
+    $mail = new PHPMailer(true); //Argument true in constructor enables exceptions
+
+    $mail->SMTPDebug = 2;
+    $mail->isSMTP();                                      // Set mailer to use SMTP
+    $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+    $mail->SMTPAuth = true;                               // Enable SMTP authentication
+    $mail->Username = 'milktea.dmhn@gmail.com';                 // SMTP username
+    $mail->Password = 'Milktea123!';                        // SMTP password
+    $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+    $mail->Port = 587;                                    // TCP port to connect to
+
+    //From email address and name
+    $mail->setFrom("milktea.dmhn@gmail.com", "MilkTeaX");
+
+    //To address and name
+    $mail->addAddress($user->email);
+
+    //Address to which recipient will reply
+    $mail->addReplyTo('milktea.dmhn@gmail.com');
+
+    // content
+    $mail->isHTML(true);
+
+    $mail->Subject = "Reset your password for " . $user->email . " account.";
+    $mail->Body = "Hello " . $user->name . "!
+    <br>The new password for your account is: <b>$newPass</b>
+    <br>If you didn’t ask to reset your password, you can ignore this email.
+    <br>
+    Thanks,
+    <br>
+    MilkTeaX Team.
+    ";
+
+    try {
+      $mail->send();
+      return [true, 'Vui lòng kiểm tra Email!'];
+    } catch (Exception $e) {
+      return [false, $mail->ErrorInfo];
+    }
+  }
+
+  public function randomPassword()
+  {
+    $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#%^&*';
+    $pass = array(); //remember to declare $pass as an array
+    $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+    for ($i = 0; $i < 8; $i++) {
+      $n = rand(0, $alphaLength);
+      $pass[] = $alphabet[$n];
+    }
+    return implode($pass); //turn the array into a string
   }
 }
