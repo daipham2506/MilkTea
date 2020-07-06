@@ -24,6 +24,11 @@
 
 
   <title><?php echo SITENAME; ?></title>
+  <style> 
+    .btn-close{
+      height: 0px;
+    }
+  </style>
 </head>
 
 <body>

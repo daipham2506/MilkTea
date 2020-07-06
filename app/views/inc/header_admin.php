@@ -18,6 +18,10 @@
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/product.css">
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/confirm-del.css">
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style.css">
+  <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/product.css">
+  <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/shoppingcart.css">
+  <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/tab.css">
+  
   <title><?php echo SITENAME; ?></title>
   <style> 
     .btn-close{
