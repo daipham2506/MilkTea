@@ -6,7 +6,26 @@
     <h4 class="text-center">Danh sách các đơn hàng</h4>
     <?php
         for ($i = 0; $i < count($data); $i++){  ?>
-            <h5 id="cart-header" class="text-center">Mã đơn hàng: <?php echo $data[$i]['id'] ?></h5>
+            <h5 id="cart-header" class="text-center">Mã đơn hàng: <?php echo $data[$i]['id'] ?> &emsp; &emsp; Trạng thái: 
+                <?php 
+                    switch($data[$i]['status']){
+                        case 1:
+                            echo "Chờ xác nhận";
+                            break;
+                        case 2:
+                            echo "Đã xác nhận";
+                            break;
+                        case 3:
+                            echo "Đang vận chuyển";
+                            break;
+                        case 4:
+                            echo "Đã giao hàng";    
+                            break;
+                        default:
+                            break;    
+                    }
+                ?>
+            </h5>
             <div class='card'>
                 <table class="table table-hover shopping-cart-wrap">
                     <thead class="text-muted">

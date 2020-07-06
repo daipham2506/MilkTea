@@ -30,6 +30,7 @@ class Shoppings extends Controller{
     public function ordercart($userId){
         if (isset($_POST['ordercart'])){
             $this->shoppingcartModel->orderCart($userId);
+
         }
         redirect("shoppings/shoppingcart/".$userId);
     }

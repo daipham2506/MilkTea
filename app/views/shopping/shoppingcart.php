@@ -8,7 +8,7 @@
     <hr>
 
 
-    
+    <form action="<?php echo URLROOT; ?>shoppings/ordercart/<?php echo $_SESSION['user_id']?>" method="POST">
         <div class="card">
         <?php
             flash('changeQuantity');
@@ -19,7 +19,7 @@
             }
             else{
             ?>
-        
+
             <table class="table table-hover shopping-cart-wrap">
                 <thead class="text-muted">
                     <tr>
@@ -33,7 +33,6 @@
                 <tbody>
                     <?php
                             for ($i = 0; $i < count($data); $i++){ ?>
-                                    <form action="<?php echo URLROOT; ?>shoppings/updatecart/<?php echo $_SESSION['user_id']."?productid=".$data[$i]['idproduct']?>" method="POST">
                                         <tr>
                                             <td>
                                                 <figure class="media">
@@ -45,7 +44,7 @@
                                             </td>
                                             <td><?php echo $data[$i]['size']; ?></td>
                                             <td>
-                                                <input class="form-control" name="quantity" type="number" min="1" max="10" value="<?php echo $data[$i]['quantity']; ?>"> 
+                                                <input class="form-control" name="quantity-<?php echo $data[$i]['idproduct']?>" type="number" min="1" max="10" value="<?php echo $data[$i]['quantity']; ?>"> 
                                             </td>
                                             <td> 
                                                 <div class="price-wrap"> 
@@ -53,11 +52,10 @@
                                                 </div> <!-- price-wrap .// -->
                                             </td>
                                             <td class="text-right">
-                                                <input type="submit" class="btn btn-outline-primary" value="Xác nhận" name='changeQuantity'>
-                                                <input type="submit" class="btn btn-outline-danger" value="x Hủy" name='cancel' onClick=" return ConfirmDialog()">
+                                                <a href="<?php echo URLROOT; ?>shoppings/cancelcart/<?php echo $_SESSION['user_id']."?productid=".$data[$i]['idproduct']?>"  class="btn btn-outline-danger" name='cancel' onClick=" return ConfirmDialog()">x Hủy</a>
                                             </td>
                                         </tr>
-                                        </form>
+                                        
                                 <?php } ?> 
                      
                 </tbody>
@@ -66,9 +64,9 @@
             
             
         </div> <!-- card.// -->
-        <form action="<?php echo URLROOT; ?>shoppings/ordercart/<?php echo $_SESSION['user_id']?>" method="POST">
-            <input type="submit" class="btn btn-outline-primary" id="order-bill-btn" name="ordercart" value="Đặt hàng">
-        <form>
+        
+        <input type="submit" class="btn btn-outline-primary" id="order-bill-btn" name="ordercart" value="Đặt hàng">
+    <form>
    
     <?php }
     ?>                       

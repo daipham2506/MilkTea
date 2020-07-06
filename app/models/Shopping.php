@@ -43,6 +43,7 @@ class Shopping{
         } 
         return $data;
 
+
     } 
     public function changeQuantity($userId, $productId, $newQuantity) {
         $sql_update = "UPDATE productincart, cart
