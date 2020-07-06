@@ -6,7 +6,7 @@
             $this->db = new Database;
         }
 
-        public function getShoppingCart($userId){
+        public function getProductInCart($userId){
             $data = array();
             $getList_sql = "SELECT product.name, product.image, productincart.quantity, size.size, sizeofproduct.price, productincart.idproduct, productincart.idcart
                             FROM productincart 
@@ -47,12 +47,8 @@
         public function changeQuantity($userId, $productId, $newQuantity) {
             $sql_update = "UPDATE productincart, cart
                            SET productincart.quantity=".$newQuantity." WHERE productincart.idproduct=".$productId." AND productincart.idcart=cart.id AND cart.iduser=".$userId;
-            if(mysqli_query($this->db->conn, $sql_update)){
-                flash('changeQuantity','Đổi số lượng thành công');
-            }     
-            else{
-                flash('changeQuantity','Đổi không thành công');
-            }       
+            mysqli_query($this->db->conn, $sql_update);
+                    
         }
 
         public function cancelProduct($userId, $productId){
