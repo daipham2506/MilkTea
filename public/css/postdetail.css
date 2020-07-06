@@ -99,7 +99,7 @@
 }
 
 .img-card-list-post{
-    height: 280px;
+    height: 200px;
     max-width: 100%;
 }
 
@@ -108,7 +108,11 @@
 }
 
 .content-post{
-    height: 38px;
+    height: 40px;
+}
+
+.content-title{
+    height: 30px;
 }
 
 .pagination{

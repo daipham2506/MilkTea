@@ -1,6 +1,6 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php if (isset($_SESSION['user_id'])) : ?>
-<div class="d-flex justify-content-center">
+<div class="d-flex justify-content-center mb-3 mt-3">
     <div class="col-xl-9 col-lg-9 col-12">
         <h2 class="mb-3">Tạo bài đăng mới</h2>
         <form action="<?php echo URLROOT; ?>posts/addnewpost" method="post" enctype="multipart/form-data">

@@ -6,6 +6,7 @@ $review = $data["review"];
 $count_review = $review->num_rows;
 ?>
 <div class="container">
+    <?php flash('addtocart'); ?>
     <div class="row justify-content-center main-content">
         <div id="main-image" class="col-lg-5 col-md-9 col-sm-10 col-12">
             <a href="<?php echo $product["image"] ?>">
@@ -27,9 +28,14 @@ $count_review = $review->num_rows;
                 <h5 class="bold-text">Giá sản phẩm <i class="fas fa-tags color-blue"></i></h5>
                 <ul class="color-red bold-text">
                     <?php
+                    $i = 0;
+                    $size = array();
                     while ($price_row = $product["price_list"]->fetch_assoc()) {
                         $price = $price_row["price"];
                         $size_name = $price_row["size"];
+                        $size[$i]['name'] = $size_name;
+                        $size[$i]['id'] = $price_row["id"];
+                        $i++;
                         echo "<li>Size $size_name : $price đ</li>";
                     }
                     ?>
@@ -49,12 +55,22 @@ $count_review = $review->num_rows;
             <div id="order-aria" class="bd-bottom mt-3">
                 <h5 class="bold-text">Đặt hàng ngay</h5>
                 <?php if (isset($_SESSION['user_id'])) : ?>
-                    <form class="mt-3 mb-3 d-flex justify-content-around" method="post">
+                    <form class="mt-3 mb-3 d-flex justify-content-around" method="post" action="<?php echo URLROOT; ?>/products/addtocart/<?php echo $product['id'] ?>">
                         <div>
                             <label for="quantity">Số lượng:</label>
                             <input class="form-control" type="number" id="quantity" name="quantity" min="1" max="10" value="1">
                         </div>
-                        <button type="submit" id="order-button" class="btn btn-danger"><i class='fas fa-cart-plus'></i>&nbsp;&nbsp;CHỌN MUA</button>
+                        <div>
+                            <label for="size">Size:</label>
+                            <select name='size' class="form-control">
+                                <?php
+                                    for ($x = 0; $x < count($size); $x++){
+                                        echo "<option value='".$size[$x]['id']."'>".$size[$x]['name']."</option>";
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                        <button type="submit" id="order-button" class="btn btn-danger" name='addToCart'><i class='fas fa-cart-plus'></i>&nbsp;&nbsp;CHỌN MUA</button>
                     </form>
                 <?php else : ?>
                     <h6 class="mb-3 mt-3 text-danger">Bạn phải đăng nhập để thực hiện việc này</h6>

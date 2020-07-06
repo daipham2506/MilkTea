@@ -1,6 +1,11 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php if (isset($_SESSION['user_id'])) : ?>
 <div class="container mt-3">
+    <?php
+        flash("add_post_success");
+        flash("update_post_success");
+        flash("delete_post_success");
+    ?>
     <a href="<?php echo URLROOT; ?>posts/addpost" class="btn btn-info">Thêm bài đăng mới</a>
 
     <?php
@@ -67,9 +72,9 @@
                                 <img src="$image" class="img-card-list-post" alt="...">
                             </div>
                             <div class="card-body">
-                            <h5 class="card-title text-danger font-weight-bold news-header">$title</h5>
+                            <h5 class="card-title text-danger font-weight-bold news-header content-title">$title</h5>
                             <p class="card-text content-post">$content</p>
-                            </div>
+                            </div>  
                             <div class="card-body d-flex justify-content-between align-items-center">
                                 <a href="$url" class="btn btn-info">Xem chi tiết</a>
                 _END;
@@ -109,7 +114,7 @@
     </div>
 </div>
 <?php else: ?>
-    <h1 class="text-center">Bạn phải đăng nhập để xem được thông tin này</h1>
+    <h1 class="text-center mb-5 mt-5">Bạn phải đăng nhập để xem được thông tin này</h1>
 <?php endif; ?>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>

@@ -1,0 +1,21 @@
+#cart-header{
+    margin-top:50px;
+}
+#order-bill-btn{
+    width:20%;
+    float:right;
+    margin-top:20px;
+}
+#container-img-cart{
+    margin-right:10px;
+}
+#img-cart{
+    width:80px;
+    height:auto;
+}
+
+@media (max-width: 580px){
+    #container-img-cart{
+        display: none;
+    }
+}

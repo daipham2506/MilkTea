@@ -5,7 +5,7 @@
     // var_dump($data);
     $postInfo = $data["postInfo"];
 ?>
-<div class="d-flex justify-content-center">
+<div class="d-flex justify-content-center mb-3 mt-3">
     <div class="col-xl-9 col-lg-9 col-12">
         <h2 class="mb-3">Chỉnh sửa bài đăng</h2>
         <form action="<?php echo URLROOT; ?>posts/updatepost" method="post" enctype="multipart/form-data">
