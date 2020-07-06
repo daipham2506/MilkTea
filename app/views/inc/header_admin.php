@@ -15,7 +15,7 @@
   
   <!-- Add jQuery -->
   <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-  
+  <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/product.css">
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/confirm-del.css">
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style.css">
   <title><?php echo SITENAME; ?></title>
@@ -50,7 +50,7 @@
         <li class="link-item"><a href="<?php echo URLROOT; ?>pages/contact">Liên hệ</a></li>
         <?php if (isset($_SESSION['user_id'])) : ?>
         <li class="link-item">
-          <a href="<?php echo URLROOT; ?>users/logout">đăng xuất</a>
+          <a href="<?php echo URLROOT; ?>users/logout"><i class="fas fa-sign-out-alt"></i></a>
         </li>
         <?php else : ?>
         <li class="link-item">

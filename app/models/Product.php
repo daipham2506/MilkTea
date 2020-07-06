@@ -158,4 +158,43 @@ class Product
         return $listProduct;
     }
   }
+  public function getSizePriceQualityByProductId($productId){
+    $sql = "SELECT sizeofproduct.price,sizeofproduct.quantity, size.size FROM sizeofproduct INNER JOIN size ON sizeofproduct.idsize = size.id  WHERE idproduct = $productId";
+    $result = $this->db->connection->query($sql);
+    if($result){
+      return $result;
+    }else{
+      echo ("Error description: " . $this->db->connection->error);
+      return false;
+    }
+  }
+  public function getAllProduct(){
+    $sql = "SELECT product.name AS 'product_name',product.id, product.image, product.description , category.name AS 'category_name' 
+    FROM `product` INNER JOIN `category` ON product.idcategory = category.id ORDER BY product.id";
+    $result = $this->db->connection->query($sql);
+    $product_arr = [];
+    if($result){
+      while($product_row = $result->fetch_assoc()){
+        $id = $product_row["id"];
+        $name = $product_row["product_name"];
+        $image = $product_row["image"];
+        $description = $product_row["description"];
+        $category = $product_row["category_name"];
+        $size_price_quality_list = $this->getSizePriceQualityByProductId($id);
+        $product= [
+          "id_product" => $id,
+          "name_product"=> $name,
+          "image" => $image,
+          "description"=>$description,
+          "name_category"=>$category,
+          "size_price_quality"=>$size_price_quality_list
+        ];
+        array_push($product_arr, $product);
+      }
+      return $product_arr;
+    }else{
+      echo ("Error description: " . $this->db->connection->error);
+      return false;
+    }
+  }
 }
