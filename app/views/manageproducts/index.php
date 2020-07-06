@@ -11,13 +11,17 @@
             </div>
         </div>
         <div class="col-md-9 col-12">
-            <div class="card card-body bg-light mb-5 mr-lg-4 ml-lg-4">
+            <div class="container card bg-light mb-5 mr-lg-4 ml-lg-4">
                 <?php flash('add_product');?>
-                <div class="d-flex justify-content-between">
-                    <h2>Danh sách sản phẩm</h2>
-                    <a class="btn btn-dark" href="<?php echo URLROOT;?>manageproducts/addproduct">Thêm sản phẩm&nbsp;&nbsp;<i class="fas fa-plus"></i></a>
+                <div class="row d-flex justify-content-between mt-3">
+                    <div class="col-md-6 col-12">
+                        <h2>Danh sách sản phẩm</h2>
+                    </div>
+                    <div class="col-md-6 col-12 d-flex justify-content-md-end">
+                        <a class="btn btn-dark" href="<?php echo URLROOT;?>manageproducts/addproduct">Thêm sản phẩm&nbsp;&nbsp;<i class="fas fa-plus"></i></a>
+                    </div>
                 </div>
-                <table class="table table-striped mt-2">
+                <table class="table table-striped mt-2" style="overflow-x: scroll;">
                     <thead class=" thead-dark">
                         <tr>
                             <th scope="col">ID</th>

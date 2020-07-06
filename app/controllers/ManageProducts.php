@@ -104,6 +104,7 @@ class ManageProducts extends Controller
     }
   }
   public function edit($productId){
+    
     $data = [
       "productId" => $productId,
       "name"=>"",
@@ -113,18 +114,27 @@ class ManageProducts extends Controller
       "name_err"=>"",
       "image_err"=>"",
       "list_category"=>"", //need to fetch
-      "price_list"=>[], //array of id size, price, quality
+      "price_list"=> [], //array of id size, price, quality
       "price_list_err"=>""
     ];
     if($this->productModel->getAllCategory()){
       $data["list_category"] = $this->productModel->getAllCategory();
     }
     if($_SERVER['REQUEST_METHOD'] != 'POST'){
+      $productToEdit = $this->productModel->getProductToEditById($productId);
+      $data["productId"] =  $productId;
+      $data["name"] = $productToEdit["name_product"];
+      $data["description"] = $productToEdit["description"];
+      $data["category"] = $productToEdit["id_category"];
+      $data["image"] = $productToEdit["image"];
+      $data["price_list"] = $productToEdit["size_price_quality"]; //array of id size, price, quality
       $this->view("manageproducts/edit",$data);
     }
     else{ //Post method
+      //get default image 
+      $productToEdit = $this->productModel->getProductToEditById($productId);
+      $data["image"] = $productToEdit["image"];
       // Sanitize POST data
-      
       $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
       // var_dump($_POST);
       //get size/price/quality
@@ -180,21 +190,19 @@ class ManageProducts extends Controller
       if (empty($data['name_err']) && empty($data['image_err']) && empty($data['price_list_err'])) {
         // Validated
         // update Product
-        if ($this->productModel->addProduct($data)) {
-          flash('add_product', 'Thêm sản phẩm thành công thành công');
+        if ($this->productModel->updateProduct($data)) {
+          flash('add_product', 'Cập nhật sản phẩm '.$data["name"] .' thành công');
           redirect('manageproducts');
         } else {
-          print_r($data);
+          // print_r($data);
           die('Something went wrong');
         }
 
       } else {
         // Load view with errors
-        $this->view('manageproducts/addproduct', $data);
-        echo $data["price_list_err"];
+        $this->view('manageproducts/edit', $data);
+        // echo $data["price_list_err"];
       }
     }
-
-    $this->view("manageproducts/edit", $data);
   }
 }

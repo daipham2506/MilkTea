@@ -69,7 +69,8 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-center">
-                        <input type="submit" value="Thêm sản phẩm" class="btn btn-success">
+                        <input type="submit" value="Thêm sản phẩm" class="btn btn-success button-hover">
+                        <a href="<?php echo URLROOT;?>manageproducts" class="btn btn-danger ml-3">Quay lại</a>
                     </div>
                 </form>
             </div>
