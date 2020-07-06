@@ -10,10 +10,13 @@
     require_once APPROOT . '/models/User.php';
     $userModel = new User;
     $avatarURL = $userModel->findUserById($_SESSION['user_id'])->avatar;
+    require_once APPROOT .'/models/Shopping.php';
+    $cartModel = new Shopping;
+    $number_cart = count($cartModel->getProductInCart($_SESSION['user_id']));
   ?>
     <a id="shopping-cart" href="<?php echo URLROOT; ?>shoppings/shoppingcart/<?php echo $_SESSION['user_id'] ?>">
       <i class="fas fa-shopping-cart"></i>
-      <span id="item-number">2</span>
+      <span id="item-number"><?php echo $number_cart; ?></span>
     </a>
     <a id="user-avatar" href="<?php echo URLROOT; ?>users/detail/<?php echo $_SESSION['user_id'] ?>">
       <img id="avatar" src="<?php echo ($avatarURL) ? $avatarURL : "https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"; ?>" alt="user-avatar">

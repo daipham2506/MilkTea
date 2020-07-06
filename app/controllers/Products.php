@@ -135,4 +135,16 @@ class Products extends Controller
     }
     redirect('products/detail/'.$productId);
   }  
+
+  public function addOneToCart($productId){
+    $userId = $_SESSION['user_id'];
+    $size = $_GET['size'];
+    $this->productModel->addtocart($productId,$size,1,$userId);
+    if (isset($_SERVER["HTTP_REFERER"])) {
+      header("Location: " . $_SERVER["HTTP_REFERER"]);
+    }
+    else{
+      redirect("products");
+    }
+  }
 }

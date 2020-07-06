@@ -38,8 +38,12 @@
                 $product_image = $product[$i]["image"];
                 $product_price = $product[$i]["price_list"];
                 $price_display = "";
+                $id_size = array();
+                $i = 0;
                 $link_product = URLROOT . "products/detail/$product_id";
                 while($price_row = $product_price->fetch_assoc()){
+                    $id_size[$i] = $price_row["id"];
+                    $i++;
                     $price = $price_row["price"];
                     $size_name = $price_row["size"];
                     $price_display .= "<li class='price'>Size $size_name : $price</li>";
@@ -48,7 +52,7 @@
                 <div class='col-lg-4 col-md-6 col-12 product-item ml-md-0 ml-2'>
                     <div class='card' data-aos='fade-down' data-aos-duration='1500'>
                         <a href='$link_product' class='btn btn-dark detail-button'><i class='fas fa-angle-double-right'></i></a>
-                        <a href='$link_product' class='btn btn-success add-cart'><i class='fas fa-cart-plus'></i></a>
+                        <a href='".URLROOT."products/addOneToCart/".$product_id."?size=".$id_size[0]."' class='btn btn-success add-cart'><i class='fas fa-cart-plus'></i></a>
                         <a  class='d-flex justify-content-center' href='$link_product'><img src='$product_image' class='card-img-top img-product' alt='$product_name'></a>
                         <div class='card-body'>
                             <h5 class='card-title'>$product_name</h5>
