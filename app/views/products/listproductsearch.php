@@ -28,7 +28,7 @@
                 <div class='col-lg-4 col-md-6 col-12 product-item ml-md-0 ml-2 mb-3'>
                     <div class='card' data-aos='fade-down' data-aos-duration='1500'>
                         <a href='$link_product' class='btn btn-dark detail-button'><i class='fas fa-angle-double-right'></i></a>
-                        <button class='btn btn-success add-cart'><i class='fas fa-cart-plus'></i></button>
+                        <a href='$link_product' class='btn btn-success add-cart'><i class='fas fa-cart-plus'></i></a>
                         <a  class='d-flex justify-content-center' href='$link_product'><img src='$product_image' class='card-img-top img-product' alt='$product_name'></a>
                         <div class='card-body'>
                             <h5 class='card-title'>$product_name</h5>

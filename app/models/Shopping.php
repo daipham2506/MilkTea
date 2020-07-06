@@ -106,5 +106,45 @@
             }
            
         }
+
+        public function getOrder($userId){
+            $sql = "SELECT * from orders WHERE iduser=".$userId;
+            $result = mysqli_query($this->db->conn, $sql);
+            $list_order = array();
+            $i = 0;
+            if (mysqli_num_rows($result) >0 ){
+                while ($row = mysqli_fetch_assoc($result)){
+                    $list_order[$i]['id'] = $row['id'];
+                    $list_order[$i]['address'] = $row['address'];
+                    $list_order[$i]['status'] = $row['status'];
+                    $i++;
+                }
+            }
+            return $list_order;
+        }
+
+        public function getProductsByOrderid($orderId){
+            $sql = "SELECT product.name, product.image, productinorders.quantity, size.size, sizeofproduct.price, productinorders.idproduct 
+            FROM productinorders 
+            INNER JOIN product ON productinorders.idproduct = product.id 
+            INNER JOIN sizeofproduct ON productinorders.idsize = sizeofproduct.idsize AND sizeofproduct.idproduct = productinorders.idproduct 
+            INNER JOIN size ON sizeofproduct.idsize = size.id 
+            WHERE productinorders.idorder = ".$orderId;
+            $result = mysqli_query($this->db->conn, $sql);
+            $list_product = array();
+            $i = 0;
+            if (mysqli_num_rows($result) > 0){
+                while($row = mysqli_fetch_assoc($result)){
+                    $list_product[$i]['name'] = $row['name'];
+                    $list_product[$i]['image'] = $row['image'];
+                    $list_product[$i]['quantity'] = $row['quantity'];
+                    $list_product[$i]['size'] = $row['size'];
+                    $list_product[$i]['price'] = $row['price'];
+                    $list_product[$i]['idproduct'] = $row['idproduct'];    
+                    $i++;
+                }
+            }
+            return $list_product;
+        }
     }
 ?>

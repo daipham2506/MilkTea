@@ -125,4 +125,14 @@ class Products extends Controller
     ];
     $this->view("products/listproductsearch",$data);
   }
+
+  public function addtocart($productId){
+    $userId = $_SESSION['user_id'];
+    if  (isset($_POST['addToCart'])){
+      $quantity = $_POST['quantity'];
+      $sizeId = $_POST['size'];
+      $this->productModel->addtocart($productId,$sizeId,$quantity,$userId);
+    }
+    redirect('products/detail/'.$productId);
+  }  
 }
