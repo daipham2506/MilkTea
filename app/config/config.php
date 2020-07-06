@@ -5,6 +5,8 @@
   define('DB_PASS', '');
   define('DB_NAME', 'milktea');
 
+  define('ROOT', dirname(dirname(dirname(__FILE__))));
+
   // App Root
   define('APPROOT', dirname(dirname(__FILE__)));
   // URL Root
