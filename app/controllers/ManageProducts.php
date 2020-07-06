@@ -191,7 +191,7 @@ class ManageProducts extends Controller
         // Validated
         // update Product
         if ($this->productModel->updateProduct($data)) {
-          flash('add_product', 'Cập nhật sản phẩm '.$data["name"] .' thành công');
+          flash('update_product', 'Cập nhật sản phẩm '.$data["name"] .' thành công');
           redirect('manageproducts');
         } else {
           // print_r($data);
@@ -203,6 +203,17 @@ class ManageProducts extends Controller
         $this->view('manageproducts/edit', $data);
         // echo $data["price_list_err"];
       }
+    }
+  }
+  public function delete($productId){
+    $product = $this->productModel->getProductById($productId);
+    $product_name = $product["name"];
+    if($this->productModel->deleteProductById($productId)){
+      flash("delete_product", 'Xóa sản phẩm ' . $product_name .' thành công');
+      redirect('manageproducts');
+    }else{
+      flash("delete_product", 'Xóa sản phẩm ' . $product_name .'không thành công', 'alert-danger');
+      redirect('manageproducts');
     }
   }
 }

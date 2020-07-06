@@ -363,6 +363,15 @@ class Product
       return false;
     }
   }
+  public function deleteProductById($productId){
+    $sql = "CALL deleteProductById($productId)";
+    if($this->db->connection->query($sql)){
+      return true;
+    }else{
+      echo ("Error description: " . $this->db->connection->error);
+      return false;
+    }
+  }
 
   public function addtocart($productId, $sizeId, $quantity, $userId){
     $sql = "INSERT INTO productincart VALUE(".$userId.",".$productId.",".$quantity.",".$sizeId.")";

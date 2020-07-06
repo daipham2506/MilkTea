@@ -12,7 +12,9 @@
         </div>
         <div class="col-md-9 col-12">
             <div class="container card bg-light mb-5 mr-lg-4 ml-lg-4">
-                <?php flash('add_product');?>
+                <?php flash('add_product')?>
+                <?php flash('update_product');?>
+                <?php flash('delete_product');?>
                 <div class="row d-flex justify-content-between mt-3">
                     <div class="col-md-6 col-12">
                         <h2>Danh sách sản phẩm</h2>
@@ -44,6 +46,7 @@
                                     $product_image = $product["image"];
                                     $size_price_quality_display = "";
                                     $link_edit = URLROOT. "manageproducts/edit/".$product_id;
+                                    $link_delete = URLROOT."manageproducts/delete/".$product_id;
                                     while($row_price = $product["size_price_quality"]->fetch_assoc()){
                                         $size = $row_price["size"];
                                         $price = $row_price["price"];
@@ -58,26 +61,46 @@
                                     $category_name = $product["name_category"];
                                     echo
                                     "
+                                    <div id='ModalConfirm".$product_id."' class='modal fade'>
+                                        <div class='modal-dialog modal-confirm'>
+                                            <div class='modal-content'>
+                                                <div class='modal-header flex-column'>
+                                                    <div class='icon-box'>
+                                                        <i>&times;</i>
+                                                    </div>
+                                                    <h4 class='modal-title w-100'>Xóa sản phẩm</h4>
+                                                    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+                                                </div>
+                                                <div class='modal-body'>
+                                                    <p>Bạn có chắc chắn muốn xóa sản phẩm ".$product_name." ?</p>
+                                                </div>
+                                                <div class='modal-footer justify-content-center'>
+                                                    <button type='button' class='btn btn-secondary button-hover' data-dismiss='modal'>Hủy</button>
+                                                    <a href='$link_delete'><button type='button' class='btn btn-danger button-hover'>Xóa</button></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <tr>
-                                    <th scope='row'>$product_id</th>
-                                    <td>$product_name</td>
-                                    <td>
-                                        <ul class='list-description-admin'>"
-                                           . $size_price_quality_display.
-                                        "</ul>
-                                    </td>
-                                    <td><a href='$product_image'><img style='width:55px;height:55px;' src='$product_image' alt='$product_name image'></a></td>
-                                    <td>
-                                        <ul class='list-description-admin'>"
-                                        .$description_display.
-                                        "</ul>
-                                    </td>
-                                    <td>$category_name</td>
-                                    <td class='d-flex justify-content-center'>
-                                        <a href='$link_edit' class='btn btn-outline-success'><i class='fas fa-edit'></i></a>
-                                        <a href='#' data-toggle='modal' class='btn btn-outline-danger ml-1'><i class='fas fa-trash'></i></a>
-                                    </td>
-                                </tr>
+                                        <th scope='row'>$product_id</th>
+                                        <td>$product_name</td>
+                                        <td>
+                                            <ul class='list-description-admin'>"
+                                            . $size_price_quality_display.
+                                            "</ul>
+                                        </td>
+                                        <td><a href='$product_image'><img style='width:55px;height:55px;' src='$product_image' alt='$product_name image'></a></td>
+                                        <td>
+                                            <ul class='list-description-admin'>"
+                                            .$description_display.
+                                            "</ul>
+                                        </td>
+                                        <td>$category_name</td>
+                                        <td class='d-flex justify-content-center'>
+                                            <a href='$link_edit' class='btn btn-outline-success'><i class='fas fa-edit'></i></a>
+                                            <a href='#ModalConfirm".$product_id."' class='btn btn-outline-danger ml-1' data-toggle='modal'><i class='fas fa-trash'></i></a>
+                                        </td>
+                                    </tr>
                                     ";
                                 }
                             ?>
@@ -92,3 +115,4 @@
 <?php else : ?>
     <h1 style="text-align: center">Bạn phải là Adminitrator để xem được thông tin này</h1>
 <?php endif; ?>
+
