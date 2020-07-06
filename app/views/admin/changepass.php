@@ -4,8 +4,12 @@
     <div class="row mt-3">
         <div class="col-md-2 col-12" style="margin-left:40px">
             <div class="list-group" id="list-tab">
-                <a class="list-group-item list-group-item-action" id="list-info-list" href="<?php echo URLROOT; ?>admin/index" aria-controls="info"><i class="far fa-user"></i>&nbsp;&nbsp; Quản lý người dùng</a>
-                <a class="list-group-item list-group-item-action" id="list-order-list" href="<?php echo URLROOT; ?>admin/manageOrders" role="tab" aria-controls="order"><i class="fas fa-file-alt"></i>&nbsp;&nbsp; Quản lí đơn hàng</a>
+                <a class="list-group-item list-group-item-action " id="list-info-list" href="<?php echo URLROOT; ?>admin/index" aria-controls="info"><i class="far fa-user"></i>&nbsp;&nbsp; Quản lý người dùng</a>
+
+                <a class="list-group-item list-group-item-action " id="list-order-list" href="<?php echo URLROOT; ?>admin/manageOrders" role="tab" aria-controls="order"><i class="fas fa-file-alt"></i>&nbsp;&nbsp; Quản lí đơn hàng</a>
+
+                <a class="list-group-item list-group-item-action" id="list-products-list" href="<?php echo URLROOT; ?>manageproducts" role="tab" aria-controls="products"><i class="fas fa-coffee"></i> &nbsp;&nbsp;Quản lí sản phẩm</a>
+
                 <a class="list-group-item list-group-item-action active" id="list-changePass-list" href="<?php echo URLROOT; ?>admin/changepass/<?php echo $_SESSION['user_id'] ?>" role="tab" aria-controls="pass"><i class="fas fa-key"></i> &nbsp;&nbsp;Thay đổi mật khẩu</a>
             </div>
         </div>

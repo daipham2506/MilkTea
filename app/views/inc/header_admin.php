@@ -49,7 +49,7 @@
       <ul id="link" style="z-index: 2;">
         <?php if (isset($_SESSION['user_id'])) : ?>
         <li class="link-item">
-          <a href="<?php echo URLROOT; ?>users/logout"><i class="fas fa-sign-out-alt"></i></a>
+          <a href="<?php echo URLROOT; ?>users/logout">Đăng xuất</a>
         </li>
         <?php else : ?>
         <li class="link-item">

@@ -4,7 +4,7 @@
         <div class="col-md-3 col-12">
             <div class="list-group" id="list-tab">
                 <a class="list-group-item list-group-item-action active" id="list-info-list" href="<?php echo URLROOT; ?>users/detail/<?php echo $_SESSION['user_id'] ?>" aria-controls="info"><i class="far fa-user"></i>&nbsp;&nbsp; Thông tin cá nhân</a>
-                <a class="list-group-item list-group-item-action" id="list-order-list" href="#" role="tab" aria-controls="order"><i class="fas fa-file-alt"></i>&nbsp;&nbsp; Quản lí đơn hàng</a>
+                <a class="list-group-item list-group-item-action" id="list-order-list" href="<?php echo URLROOT; ?>shoppings/orderpage/<?php echo $_SESSION['user_id'] ?>" role="tab" aria-controls="order"><i class="fas fa-file-alt"></i>&nbsp;&nbsp; Quản lí đơn hàng</a>
                 <a class="list-group-item list-group-item-action" id="list-changePass-list" href="<?php echo URLROOT; ?>users/changepass/<?php echo $_SESSION['user_id'] ?>" role="tab" aria-controls="pass"><i class="fas fa-key"></i> &nbsp;&nbsp;Thay đổi mật khẩu</a>
             </div>
         </div>
