@@ -6,7 +6,6 @@
             <div class="card card-body bg-light mt-5">
                 <h2>Thêm sản phẩm</h2>
                 <p>Vui lòng điền vào form bên dưới để thêm sản phẩm</p>
-                <?php flash('add_product');?>
                 <form action="<?php echo URLROOT; ?>manageproducts/addproduct" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="name" class="bold-text">Tên: <sup>*</sup></label>

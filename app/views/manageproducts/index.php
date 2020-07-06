@@ -12,6 +12,7 @@
         </div>
         <div class="col-md-9 col-12">
             <div class="card card-body bg-light mb-5 mr-lg-4 ml-lg-4">
+                <?php flash('add_product');?>
                 <div class="d-flex justify-content-between">
                     <h2>Danh sách sản phẩm</h2>
                     <a class="btn btn-dark" href="<?php echo URLROOT;?>manageproducts/addproduct">Thêm sản phẩm&nbsp;&nbsp;<i class="fas fa-plus"></i></a>

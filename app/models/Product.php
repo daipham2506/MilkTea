@@ -197,4 +197,48 @@ class Product
       return false;
     }
   }
+  public function getLastProductId(){
+    $sql = "SELECT MAX(id) AS `last_id` FROM `product`";
+    $result = $this->db->connection->query($sql);
+    if($result){
+      $row = $result->fetch_assoc();
+      return $row["last_id"];
+    }else{
+      echo ("Error description: " . $this->db->connection->error);
+      return false;
+    }
+  }
+  public function addSizeOfProduct($productId,$idsize, $price, $quantity){
+    $sql = "INSERT INTO sizeofproduct(`idproduct`, `idsize`, `price`, `quantity`) VALUES($productId,$idsize, $price, $quantity );";
+    if($this->db->connection->query($sql)){
+      return true;
+    }else{
+      echo ("Error description: " . $this->db->connection->error);
+      return false;
+    }
+  }
+  public function addProduct($data){
+    $idcategory = $data["category"];
+    $name = $data["name"];
+    $image = $data["image"];
+    $description = $data["description"];
+    $sql = "INSERT INTO product(`idcategory`, `name`,`image`, `description` ) VALUES ('$idcategory', '$name', '$image','$description')";
+    if($this->db->connection->query($sql)){
+      $product_id = $this->getLastProductId();
+      $size_price_quantity_list = $data["price_list"];
+      for($i = 0; $i < count($size_price_quantity_list); $i++ ){
+        $size_price_quantity = $size_price_quantity_list[$i];
+        $idsize =  $size_price_quantity["idsize"];
+        $price = $size_price_quantity["price"];
+        $quantity =$size_price_quantity["quality"]; //^_^ quality is quantity
+        if(!$this->addSizeOfProduct($product_id, $idsize, $price,$quantity)){
+          return false;
+        }
+      }
+      return true;
+    }else{
+      echo ("Error description: " . $this->db->connection->error);
+      return false;
+    }
+  }
 }

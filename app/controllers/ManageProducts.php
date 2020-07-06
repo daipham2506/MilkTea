@@ -77,7 +77,6 @@ class ManageProducts extends Controller
           }
         }
       }
-      
       if (empty($data['name'])) {
         $data['name_err'] = 'Hãy nhập tên sản phẩm';
       }
