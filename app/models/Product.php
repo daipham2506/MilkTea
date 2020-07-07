@@ -186,6 +186,25 @@ class Product
     }
   }
 
+  public function haveProductInCart($productId, $sizeId, $userId){
+    $sql = "SELECT * FROM productincart WHERE idcart=".$userId." AND idproduct=".$productId." AND idsize=".$sizeId;
+    $result = mysqli_query($this->db->conn, $sql);
+    if (mysqli_num_rows($result)>0){
+      return true;
+    }
+    return false;
+  }
+
+  public function increaseQuantityInCart($productId, $sizeId, $quantity, $userId){
+    $sql = "UPDATE productincart SET quantity=quantity+".$quantity." WHERE idproduct=".$productId." AND idsize=".$sizeId." AND idcart=".$userId;
+    if (mysqli_query($this->db->conn, $sql)){
+      flash('addtocart','Thêm vào giỏ hàng thành công');
+    }
+    else{
+      flash('addtocart','Thêm vào giỏ hàng không thành công');
+    }
+  }
+
   public function getPriceBySizeAndId($sizeId, $productId){
     $sql = "SELECT price FROM sizeofproduct WHERE idsize=".$sizeId." AND idproduct=".$productId;
     $result = mysqli_query($this->db->conn, $sql);

@@ -35,7 +35,11 @@
                 </thead>
                 <tbody>
                     <?php
-                            for ($i = 0; $i < count($data); $i++){ ?>
+                            $total_price = 0;
+                            for ($i = 0; $i < count($data); $i++){ 
+                                $total_price += $data[$i]['price'] * $data[$i]['quantity'];
+                    ?>
+                                
                                         <tr>
                                             <td>
                                                 <figure class="media">
@@ -64,11 +68,11 @@
                                             ?>
                                             </td>
                                             <td>
-                                                <input class="form-control" name="quantity-<?php echo $data[$i]['idproduct']?>" type="number" min="1" max="10" value="<?php echo $data[$i]['quantity']; ?>"> 
+                                                <input class="form-control quantity" name="quantity-<?php echo $data[$i]['idproduct']?>" type="number" min="1" max="10" value="<?php echo $data[$i]['quantity']; ?>" onchange='changeTotalPrice()'> 
                                             </td>
                                             <td> 
                                                 <div class="price-wrap"> 
-                                                    <var class="price" id="price-<?php echo $data[$i]['idproduct'] ?>"><?php echo $data[$i]['price']; ?>đ</var> 
+                                                    <var class="price price-detail" id="price-<?php echo $data[$i]['idproduct'] ?>"><?php echo $data[$i]['price']; ?>đ</var> 
                                                 </div> <!-- price-wrap .// -->
                                             </td>
                                             <td class="text-right">
@@ -80,7 +84,8 @@
                      
                 </tbody>
             </table>
-            <div class="form-group row" style='padding:0 10px'>
+            <var class='price text-right' style='padding-right:10px' id='total-price'>Tổng giá tiền: <?php echo $total_price; ?>đ</var>
+            <div class="form-group row" style='padding:10px'>
                 <label for="inputAddress" class="col-sm-3 col-form-label">Địa chỉ nhận hàng</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control" name='address' value="<?php echo $user_address ?>">
@@ -104,29 +109,4 @@
 <?php } ?>
 <?php require APPROOT . '/views/inc/footer.php'; ?>
 
-<script>
-    function ConfirmDialog()  {
- 
-        var result = confirm("Xác nhận bỏ sản phẩm khỏi giỏ hàng ?");
 
-        if(result)  {
-            return true;
-        } else {
-            return false;
-        }
-    }
-    function changePrice(productId){
-        var sizeId = document.getElementById("size-"+productId).value;
-        
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("price-"+productId).innerHTML = this.responseText;
-            }
-        };
-        xmlhttp.open("GET", "http://localhost/milktea/shoppings/getpriceProduct/"+sizeId+"/" + productId, true);
-        xmlhttp.send();
-    }
-   
-    
-</script>

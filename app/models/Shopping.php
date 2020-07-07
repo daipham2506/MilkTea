@@ -57,7 +57,7 @@
                 flash('cancelProduct','Hủy thành công');
             }
             else{
-                flash('cancelProduct','Hủy không thành công');
+                flash('cancelProduct','Hủy không thành công','alert-danger');
             }
         }
 
@@ -73,7 +73,7 @@
                 }
             }
             if ($phone == ""){
-                flash('ordercart','Vui lòng cập nhật số điện thoại trước khi đặt hàng');
+                flash('ordercart','Vui lòng cập nhật số điện thoại trước khi đặt hàng','alert-danger');
                 return;
             }
             //check quantity remain
@@ -87,7 +87,7 @@
                     $name = mysqli_query($this->db->conn, $sql);
                     $name = mysqli_fetch_assoc($name)['name'];
                      
-                    flash('ordercart','Sản phẩm '.$name.' còn lại không đủ, vui lòng đặt lại số lượng');
+                    flash('ordercart','Sản phẩm '.$name.' còn lại không đủ, vui lòng đặt lại số lượng','alert-danger');
                     return;
                 }
             }

@@ -131,15 +131,25 @@ class Products extends Controller
     if  (isset($_POST['addToCart'])){
       $quantity = $_POST['quantity'];
       $sizeId = $_POST['size'];
-      $this->productModel->addtocart($productId,$sizeId,$quantity,$userId);
+      if ($this->productModel->haveProductInCart($productId, $sizeId, $userId)){
+        $this->productModel->increaseQuantityInCart($productId, $sizeId, $quantity, $userId);
+      }
+      else {
+        $this->productModel->addtocart($productId,$sizeId,$quantity,$userId);
+      }
     }
     redirect('products/detail/'.$productId);
   }  
 
   public function addOneToCart($productId){
     $userId = $_SESSION['user_id'];
-    $size = $_GET['size'];
-    $this->productModel->addtocart($productId,$size,1,$userId);
+    $sizeId = $_GET['size'];
+    if ($this->productModel->haveProductInCart($productId, $sizeId, $userId)){
+      $this->productModel->increaseQuantityInCart($productId, $sizeId,1,$userId);
+    }
+    else {
+      $this->productModel->addtocart($productId,$sizeId,1,$userId);
+    }
     if (isset($_SERVER["HTTP_REFERER"])) {
       header("Location: " . $_SERVER["HTTP_REFERER"]);
     }
