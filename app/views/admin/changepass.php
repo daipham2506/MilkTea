@@ -2,7 +2,7 @@
     require APPROOT . '/views/inc/header_admin.php';
 ?>
     <div class="row mt-3">
-        <div class="col-md-2 col-12" style="margin-left:40px">
+        <div class="col-lg-2 col-12">
             <div class="list-group" id="list-tab">
                 <a class="list-group-item list-group-item-action " id="list-info-list" href="<?php echo URLROOT; ?>admin/index" aria-controls="info"><i class="far fa-user"></i>&nbsp;&nbsp; Quản lý người dùng</a>
 
@@ -13,7 +13,7 @@
                 <a class="list-group-item list-group-item-action active" id="list-changePass-list" href="<?php echo URLROOT; ?>admin/changepass/<?php echo $_SESSION['user_id'] ?>" role="tab" aria-controls="pass"><i class="fas fa-key"></i> &nbsp;&nbsp;Thay đổi mật khẩu</a>
             </div>
         </div>
-        <div class="col-md-9 col-12">
+        <div class="col-lg-10 col-12">
             <div class="card card-body bg-light mb-5 mr-lg-4 ml-lg-4">
                 <h2>Thay đổi mật khẩu</h2>
                 <!-- <p>Vui lòng điền vào form bên dưới để cập nhật thông tin</p> -->
