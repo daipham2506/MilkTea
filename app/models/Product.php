@@ -68,6 +68,23 @@ class Product
       return false;
     }
   }
+  public function getAllProductWithCategory(){
+    $sql = "SELECT * FROM `category`";
+    $result = $this->db->connection->query($sql);
+    if($result){
+      $productWithCategory = [];
+      while($row = $result->fetch_assoc()){
+        $product = $this->getProductByCategory($row["id"]);
+        if($product && count($product) > 0){
+          array_push($productWithCategory,$product);
+        }
+      }
+      return $productWithCategory;
+    }else{
+      echo ("Error description: " . $this->db->connection->error);
+      return false;
+    }
+  }
   public function getProductById($productId){
     $sql = "SELECT * FROM `product` WHERE `id` = $productId";
     $result = $this->db->connection->query($sql);
@@ -162,7 +179,7 @@ class Product
                 $count++;
               }
             }
-            
+
             if($count == count($name_key_arr)){
               array_push($listProduct,$row);
             }
@@ -364,7 +381,7 @@ class Product
     }
   }
   public function deleteProductById($productId){
-    $sql = "CALL deleteProductById($productId)";
+    $sql = "CALL deleteProduct($productId)";
     if($this->db->connection->query($sql)){
       return true;
     }else{
