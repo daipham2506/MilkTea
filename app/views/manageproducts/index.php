@@ -19,11 +19,27 @@
                 <?php flash('update_product');?>
                 <?php flash('delete_product');?>
 
-                <div class="row d-flex justify-content-between mt-3">
-                    <div class="col-md-6 col-12">
-                        <h2>Danh sách sản phẩm</h2>
+                <div class="row mt-3">
+                    <div class="col-md-4 col-12">
+                        <h3>Danh sách sản phẩm</h3>
                     </div>
-                    <div class="col-md-6 col-12 d-flex justify-content-md-end">
+                    <div class="col-md-4 col-12 mt-md-0 mt-3">
+                        <div class="input-group-prepend">
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Chọn loại sản phẩm</button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="<?php echo URLROOT;?>manageproducts">TẤT CẢ</a>
+                                <?php 
+                                    $categories = $data["categories"];
+                                    while($row_categories = $categories->fetch_assoc()){
+                                        $category_link = URLROOT . "manageproducts/category/". $row_categories["id"];
+                                        $category_name = $row_categories["name"];
+                                        echo "<a class='dropdown-item' href='$category_link'>$category_name</a>";
+                                    }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-12 d-flex justify-content-md-end mt-md-0 mt-3" style="height: 40px;">
                         <a class="btn btn-dark" href="<?php echo URLROOT; ?>manageproducts/addproduct">Thêm sản phẩm&nbsp;&nbsp;<i class="fas fa-plus"></i></a>
                     </div>
                 </div>
