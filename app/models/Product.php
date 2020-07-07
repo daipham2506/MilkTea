@@ -142,6 +142,18 @@ class Product
     }
   }
 
+  public function getPriceByProductIdMinh($id_product){
+    $query = "SELECT price,size,id FROM sizeofproduct,size WHERE sizeofproduct.idproduct = $id_product and sizeofproduct.idsize = size.id";
+    $rs = $this->db->connection->query($query);
+    if($rs){
+      return $rs;
+    }
+    else{
+      echo $this->db->connection->error;
+      return null;
+    }
+  }
+
   public function getListProductByNameKey($name_key)
   {
     $name_key = strtolower(stripVN($name_key));
