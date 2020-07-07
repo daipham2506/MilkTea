@@ -113,7 +113,7 @@ class Products extends Controller
     $listProduct = [];
 
     foreach($listProductSearch as $item){
-      $rs_price = $this->productModel->getPriceByProductId($item["id"]);
+      $rs_price = $this->productModel->getPriceByProductIdMinh($item["id"]);
       $list_price = [];
       while($row = $rs_price->fetch_assoc()){
         array_push($list_price,$row);
