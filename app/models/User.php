@@ -85,14 +85,27 @@ class User
   }
   public function update($data, $userId)
   {
-    $sql = "UPDATE `users`
-      SET `name` = '" . $data["name"] . "',
-      `email` = '" . $data["email"] . "',
-      `birthday` = '" . $data["birthday"] . "',
-      `address` = '" . $data["address"] . "',
-      `gender` = '" . $data["gender"] . "',
-      `avatar` = '" . $data["avatar"] . "'
-      WHERE `id` = $userId";
+    $name = $data["name"];
+    $email = $data["email"];
+    $birthday = $data["birthday"];
+    $address = $data["address"];
+    $gender = $data["gender"];
+    $avatar = $data["avatar"];
+    $phone = $data["phone"];
+    $sql = "UPDATE `users` SET `name` = '$name', `email` = '$email', `address` = '$address',
+    `birthday` = '$birthday', `gender` = '$gender', `avatar` = '$avatar', `phone` = '$phone' WHERE `id` = $userId";
+    if($phone == ""){
+      $sql = "UPDATE `users` SET `name` = '$name', `email` = '$email', `address` = '$address',
+      `birthday` = '$birthday', `gender` = '$gender', `avatar` = '$avatar' WHERE `id` = $userId";
+    }
+    if($address == ""){
+      $sql = "UPDATE `users` SET `name` = '$name', `email` = '$email', `birthday` = '$birthday', 
+      `gender` = '$gender', `avatar` = '$avatar' WHERE `id` = $userId";
+    }
+    if($address == "" && $phone == ""){
+      $sql = "UPDATE `users` SET `name` = '$name', `email` = '$email',
+      `gender` = '$gender', `avatar` = '$avatar' WHERE `id` = $userId";
+    }
     if (mysqli_query($this->db->conn, $sql)) {
       return true;
     } else {

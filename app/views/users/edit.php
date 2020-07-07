@@ -15,18 +15,24 @@
                 <form action="<?php echo URLROOT; ?>users/update/<?php echo $data['id'] ?>" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="current-avatar" id="current-avatar" value="<?php echo $data["avatar"];?>">
                     <div class="form-group">
-                        <label for="name">Tên: <sup>*</sup></label>
+                        <label for="name">Tên: </label>
                         <input type="text" name="name" id="name" class="form-control form-control-lg <?php echo (!empty($data['name_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['name']; ?>" required>
                         <span class="invalid-feedback"><?php echo $data['name_err']; ?></span>
                     </div>
                     <div class="form-group">
-                        <label for="email">Email: <sup>*</sup></label>
-                        <input type="email" name="email" id="email" class="form-control form-control-lg <?php echo (!empty($data['email_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['email']; ?>" required>
+                        <label for="email">Email: </label>
+                        <input type="email" name="email" id="email" class="form-control form-control-lg <?php echo (!empty($data['email_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['email']; ?>" required aria-describedby="emailHelp">
+                        <small id="emailHelp" class="form-text text-muted">Chúng tôi không bao giờ chia sẻ email của bạn</small>
                         <span class="invalid-feedback"><?php echo $data['email_err']; ?></span>
                     </div>
                     <div class="form-group">
                         <label for="address">Địa chỉ:</label>
                         <input type="text" name="address" id="address" class="form-control form-control-lg" value="<?php echo $data['address']; ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Số điện thoại:</label>
+                        <input type="tel" id="phone" name="phone"  class="form-control form-control-lg" placeholder="Định dạng: 0[1-9][0-9]{8}" pattern="0[1-9][0-9]{8}" aria-describedby="phoneHelp">
+                        <small id="phoneHelp" class="form-text text-muted">Chúng tôi không bao giờ chia sẻ số điện thoại của bạn</small>
                     </div>
                     <div class="form-group">
                         <label for="birthday">Ngày sinh:</label>
