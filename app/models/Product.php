@@ -185,6 +185,13 @@ class Product
       flash('addtocart','Thêm vào giỏ hàng không thành công');
     }
   }
+
+  public function getPriceBySizeAndId($sizeId, $productId){
+    $sql = "SELECT price FROM sizeofproduct WHERE idsize=".$sizeId." AND idproduct=".$productId;
+    $result = mysqli_query($this->db->conn, $sql);
+    return mysqli_fetch_assoc($result)['price'];
+  }
+
 }
 
 function stripVN($str) {

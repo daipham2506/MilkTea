@@ -23,7 +23,7 @@
                           
             $result = mysqli_query($this->db->conn, $getList_sql);
             
-            if ($result || mysqli_num_rows($result) > 0) {
+            if (mysqli_num_rows($result) > 0) {
                 // output data of each row
                 $i = 0;
                 while($row = mysqli_fetch_assoc($result)) {
@@ -38,15 +38,13 @@
                 }
                 
             } 
-            else {
-                echo "0 result";
-            } 
+            
             return $data;
 
         } 
-        public function changeQuantity($userId, $productId, $newQuantity) {
+        public function changeQuantityAndSize($userId, $productId, $newQuantity, $newSize) {
             $sql_update = "UPDATE productincart, cart
-                           SET productincart.quantity=".$newQuantity." WHERE productincart.idproduct=".$productId." AND productincart.idcart=cart.id AND cart.iduser=".$userId;
+                           SET productincart.quantity=".$newQuantity.",productincart.idsize=".$newSize." WHERE productincart.idproduct=".$productId." AND productincart.idcart=cart.id AND cart.iduser=".$userId;
             mysqli_query($this->db->conn, $sql_update);
                     
         }
@@ -65,17 +63,17 @@
 
         public function orderCart($userId){
             // Check user have Address or not?
-            $sql = "SELECT address FROM users WHERE id=".$userId;
+            $sql = "SELECT phone FROM users WHERE id=".$userId;
             $result = mysqli_query($this->db->conn, $sql);
 
-            $address='';
+            $phone='';
             if (mysqli_num_rows($result) > 0){
                 while($row = mysqli_fetch_assoc($result)){
-                    $address = $row['address'];
+                    $phone = $row['phone'];
                 }
             }
-            if ($address == ""){
-                flash('ordercart','Vui lòng cập nhật địa chỉ trước khi đặt hàng');
+            if ($phone == ""){
+                flash('ordercart','Vui lòng cập nhật số điện thoại trước khi đặt hàng');
                 return;
             }
             //check quantity remain
@@ -94,8 +92,10 @@
                 }
             }
             // order
-
-            $sql = "CALL CREATE_ORDER(".$userId.")";
+            if (isset($_POST['address'])){
+                $address = $_POST['address'];
+            }
+            $sql = "CALL CREATE_ORDER(".$userId.",'".$address."')";
             $result = mysqli_query($this->db->conn, $sql);
             if ($result){
                 flash('ordercart','Đặt hàng thành công');
