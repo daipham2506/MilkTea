@@ -159,6 +159,9 @@ class Product
     $name_key = strtolower(stripVN($name_key));
     $name_key_arr = explode(" ",$name_key);
     // var_dump($name_key_arr);
+    if($name_key == ""){
+      return [];
+    }
     
     // $query = "SELECT * FROM product where instr(product.name,'$name_key')";
     $query = "SELECT * FROM product";
