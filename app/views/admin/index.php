@@ -2,11 +2,11 @@
     require APPROOT . '/views/inc/header_admin.php';
 ?>
     <div class="row mt-3">
-        <div class="col-md-2 col-12" style="margin-left:40px">
+        <div class="col-lg-2 col-12">
             <div class="list-group" id="list-tab">
                 <a class="list-group-item list-group-item-action active" id="list-info-list" href="<?php echo URLROOT; ?>admin/index" aria-controls="info"><i class="far fa-user"></i>&nbsp;&nbsp; Quản lý người dùng</a>
 
-                <a class="list-group-item list-group-item-action" id="list-order-list"  href="<?php echo URLROOT; ?>admin/manageOrders" role="tab" aria-controls="order"><i class="fas fa-file-alt"></i>&nbsp;&nbsp; Quản lí đơn hàng</a>
+                <a class="list-group-item list-group-item-action" id="list-order-list" href="<?php echo URLROOT; ?>admin/manageOrders" role="tab" aria-controls="order"><i class="fas fa-file-alt"></i>&nbsp;&nbsp; Quản lí đơn hàng</a>
 
                 <a class="list-group-item list-group-item-action" id="list-products-list" href="<?php echo URLROOT; ?>manageproducts" role="tab" aria-controls="products"><i class="fas fa-coffee"></i> &nbsp;&nbsp;Quản lí sản phẩm</a>
 
@@ -14,28 +14,28 @@
 
             </div>
         </div>
-        <div class="col-md-9 col-12">
+        <div class="col-lg-10 col-12">
             <div class="card card-body bg-light mb-5 mr-lg-4 ml-lg-4">
                 <h2>Danh sách người dùng</h2>
                 <?php flash('del_user'); ?>
-                
-                <table class="table table-striped">
-                    <thead class=" thead-dark">
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Họ Tên</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Avatar</th>
-                            <th scope="col">Địa chỉ</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        foreach ($data['users'] as $user) {
-                            $url = URLROOT . 'admin/deleteUser/' . $user['id'] ;
-                            echo
-                            '
+                <div style="overflow-x: auto;">
+                    <table class="table table-striped">
+                        <thead class=" thead-dark">
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Họ Tên</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Avatar</th>
+                                <th scope="col">Địa chỉ</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            foreach ($data['users'] as $user) {
+                                $url = URLROOT . 'admin/deleteUser/' . $user['id'] ;
+                                echo
+                                    '
                             <div id="ModalConfirm'.$user['id'].'" class="modal fade">
                                 <div class="modal-dialog modal-confirm">
                                     <div class="modal-content">
@@ -64,10 +64,12 @@
                                 <td>' . $user['address'] . '</td>
                                 <td> <a href="#ModalConfirm'.$user['id'].'" data-toggle="modal"><button type="button" class="btn btn-outline-danger">Xóa</button></a></td>
                             </tr>';
-                        }
-                        ?>
-                    </tbody>
-                </table>
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
         </div>
     </div>

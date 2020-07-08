@@ -204,7 +204,8 @@ class Users extends Controller
       "avatar" => $currentUser->avatar,
       "isAdmin" => $currentUser->isAdmin,
       "address" => $currentUser->address,
-      "gender" => $currentUser->gender
+      "gender" => $currentUser->gender,
+      "phone" => $currentUser->phone
     ];
     $this->view('users/detail', $data);
   }
@@ -244,9 +245,11 @@ class Users extends Controller
         'birthday' => trim($_POST['birthday']),
         'gender' => trim($_POST['gender']),
         'avatar' => trim($_POST['current-avatar']),
+        'phone' => trim($_POST['phone']),
         'name_err' => '',
         'email_err' => '',
-        'avatar_err' => ''
+        'avatar_err' => '',
+        'phone_err'=> ''
       ];
       // var_dump($_FILES['avatar']);
       // $uploaddir = './image';
@@ -279,12 +282,12 @@ class Users extends Controller
       } else {
         // Check email
         if ($this->userModel->findOtherUserByEmail($userId, $data['email'])) {
-          $data['email_err'] = 'Email is already taken';
+          $data['email_err'] = 'Email này đã được sử dụng';
         }
       }
       // Validate Name
       if (empty($data['name'])) {
-        $data['name_err'] = 'Please enter name';
+        $data['name_err'] = 'Vui lòng nhập tên';
       }
 
       // Make sure errors are empty
