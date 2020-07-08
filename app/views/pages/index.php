@@ -66,7 +66,38 @@
   </div>
   <h2 class="text-center mt-4">Cập nhật các tin tức mới về MilkTeaX</h2>
   <div class="row mt-4 mb-5">
-    <div class="col-lg-3 col-md-6 col-12 mt-2" data-aos="flip-up" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
+    <?php
+      foreach ($data["listNewPost"] as $post) {
+        $id = $post["id"];
+        $content = $post["content"];
+        $image = $post["image"];
+        $title = $post["title"];
+        if(strlen($content) > 100){
+          $content = substr($content,0,100) . " ...";
+        }
+        if(strlen($title) > 60){
+            $title = substr($title,0,60) . "...";
+        }
+        $url = URLROOT . "posts/postdetail/" . $id;
+        echo <<< _END
+        <div class="col-lg-3 col-md-6 col-12 mt-2" data-aos="flip-up" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
+          <div class="card" style="width: 100%;">
+              <div class="wrap-img-card-list-post">
+                  <img src="$image" class="img-card-list-post" alt="...">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title text-danger font-weight-bold news-header content-title">$title</h5>
+                <p class="card-text content-post">$content</p>
+              </div>  
+              <div class="card-body d-flex justify-content-between align-items-center">
+                  <a href="$url" class="btn btn-info">Xem chi tiết</a>
+              </div>
+          </div>
+        </div>
+        _END;
+      }
+    ?>
+    <!-- <div class="col-lg-3 col-md-6 col-12 mt-2" data-aos="flip-up" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
       <div class="card" style="width: 100%;">
         <img src="https://gongcha.com.vn/wp-content/uploads/2019/07/2.png" class="card-img-top" alt="...">
         <div class="card-body">
@@ -113,7 +144,7 @@
           <a href="http://gongcha.com.vn/gong-cha-x-now-ra-mat-thiet-quan-am-latte-doc-quyen-tai-now-vn/" class="card-link font-weight-bold font-italic" target="_blank">Xem chi tiết</a>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
 
