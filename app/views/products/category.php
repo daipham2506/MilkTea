@@ -1,5 +1,6 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <div class="row mb-4">
+<?php flash('addtocart'); ?>
     <div class="col-xl-2 col-md-3 col-12">
         <div class="list-group" id="menu-nar">
             <a href="#" class="list-group-item list-group-item-action disabled" style="font-weight: 600;color: black;background-color: white">LOẠI TRÀ SỮA</a>

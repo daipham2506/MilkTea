@@ -3,6 +3,7 @@
     // var_dump( $data["listProductSearch"]);
 ?>
 <div class="container mt-3">
+<?php flash('addtocart'); ?>
     <div class="row">
         <?php
         // var_dump($data["product"]);

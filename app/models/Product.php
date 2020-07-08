@@ -445,7 +445,7 @@ class Product
       flash('addtocart','Thêm vào giỏ hàng thành công');
     }
     else{
-      flash('addtocart','Thêm vào giỏ hàng không thành công');
+      flash('addtocart','Thêm vào giỏ hàng không thành công','alert-danger');
     }
   }
 
