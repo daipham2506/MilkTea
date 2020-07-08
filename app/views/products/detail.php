@@ -13,7 +13,8 @@ $count_review = $review->num_rows;
                 <img src="<?php echo $product["image"] ?>" class="product-detail-img" alt="test image"></a>
         </div>
         <div id="description" class="col-lg-7 col-md-9 col-sm-10 col-12">
-            <?php flash('addReview_success');?>
+            <?php flash('addReview_success'); ?>
+            <?php flash("delete_review"); ?>
             <div id="description-title" class="bd-bottom mt-3">
                 <h3 class="bold-text"><?php echo $product["name"] ?></h3>
                 <div class="mt-3 mb-3 rating-review">
@@ -64,9 +65,9 @@ $count_review = $review->num_rows;
                             <label for="size">Size:</label>
                             <select name='size' class="form-control">
                                 <?php
-                                    for ($x = 0; $x < count($size); $x++){
-                                        echo "<option value='".$size[$x]['id']."'>".$size[$x]['name']."</option>";
-                                    }
+                                for ($x = 0; $x < count($size); $x++) {
+                                    echo "<option value='" . $size[$x]['id'] . "'>" . $size[$x]['name'] . "</option>";
+                                }
                                 ?>
                             </select>
                         </div>
@@ -85,55 +86,74 @@ $count_review = $review->num_rows;
                 <button onclick=" displayRating();" class="btn btn-dark rounded-circle ml-3 button-hover"><i class="fas fa-plus"></i></button>
             </div>
             <?php if (isset($_SESSION['user_id'])) : ?>
-            <div id="add-rating-container">
-                <form action="<?php echo URLROOT;?>products/addReview" class="rating-box" method="post">
-                    <input type="hidden" id="productId" name="productId" value=<?php echo $product["id"] ?>>
-                    <input type="hidden" id="userId" name="userId" value=<?php echo $_SESSION["user_id"] ?>>
-                    <div class="d-flex justify-content-start">
-                        <div class="ratings mt-3">
-                            <i class="fas fa-star icon-rating"></i>
-                            <i class="fas fa-star icon-rating"></i>
-                            <i class="fas fa-star icon-rating"></i>
-                            <i class="fas fa-star icon-rating"></i>
-                            <i class="far fa-star icon-rating"></i>
+                <div id="add-rating-container">
+                    <form action="<?php echo URLROOT; ?>products/addReview" class="rating-box" method="post">
+                        <input type="hidden" id="productId" name="productId" value=<?php echo $product["id"] ?>>
+                        <input type="hidden" id="userId" name="userId" value=<?php echo $_SESSION["user_id"] ?>>
+                        <div class="d-flex justify-content-start">
+                            <div class="ratings mt-3">
+                                <i class="fas fa-star icon-rating"></i>
+                                <i class="fas fa-star icon-rating"></i>
+                                <i class="fas fa-star icon-rating"></i>
+                                <i class="fas fa-star icon-rating"></i>
+                                <i class="far fa-star icon-rating"></i>
+                            </div>
+                            <span id="rating-description" class="mt-3 ml-3 bold-text">Tuyệt vời</span>
+                            <input type="hidden" id="rating-value" name="rating-value" value="4">
                         </div>
-                        <span id="rating-description" class="mt-3 ml-3 bold-text">Tuyệt vời</span>
-                        <input type="hidden" id="rating-value" name="rating-value" value="4">
-                    </div>
-                    <div class="form-group">
-                        <label for="rating-content" class="bold-text mt-3">Đánh giá</label>
-                        <textarea class="form-control" id="rating-content" name="rating-content" rows="2" placeholder="Vui lòng nhập đánh giá của bạn ở đây"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary button-hover mb-3" value="submit">Gửi đánh giá</button>
-                </form>
-            </div>
+                        <div class="form-group">
+                            <label for="rating-content" class="bold-text mt-3">Đánh giá</label>
+                            <textarea class="form-control" id="rating-content" name="rating-content" rows="2" placeholder="Vui lòng nhập đánh giá của bạn ở đây"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary button-hover mb-3" value="submit">Gửi đánh giá</button>
+                    </form>
+                </div>
             <?php else : ?>
                 <h6 class="mb-3 text-danger">Bạn phải đăng nhập để thực hiện việc này</h6>
             <?php endif; ?>
         </div>
     </div>
-    <div class="row mb-5 p-1" id="review-container">
+    <div class="row mb-4 p-1" id="review-container">
         <h3 class="bold-text mt-3">Đánh giá của khách hàng</h3>
         <?php while ($review_row = $review->fetch_assoc()) {
+            $user_id = $review_row["iduser"];
+            $review_id = $review_row["id"];
             $user_name = $review_row["name"];
             $datetime  =  $review_row["createdAt"];
             $content = $review_row["content"];
             $star_html = printStar($review_row["numberstar"]);
+            $delete_link = URLROOT . "products/deleteReview/" . $review_id . "/" . $user_id . "/" . $product["id"];
+            $delete_button_display = ($_SESSION["user_id"] == $user_id) ?
+                "
+            <div class='col-md-1 col-2 d-flex align-items-center'>
+                <a href='$delete_link' class='btn btn-danger'><i class='fas fa-trash'></i></a>
+            </div>
+            "
+                : "";
             echo
                 "
                 <div class='card mt-3 col-12'>
-                    <div class='card-body'>
-                        <h5 class='card-title bold-text'>$user_name</h5>
-                        <p class='color-grey'>$datetime</p>
-                        <div class='mt-2 mb-2'>"
+                    <div class='row'>
+                        <div class='col-md-11 col-10'>
+                            <div class='card-body'>
+                                <h5 class='card-title bold-text'>$user_name</h5>
+                                <p class='color-grey'>$datetime</p>
+                                <div class='mt-2 mb-2'>"
                     . $star_html .
                     "</div>
-                        <p class='card-text'>$content</p>
+                                <p class='card-text'>$content</p>
+                            </div>
+                        </div>
+                        " . $delete_button_display . "
                     </div>
+
                 </div>
                 ";
         }
         ?>
+    </div>
+    <div class="row mb-4 d-flex justify-content-center">
+        <a href="<?php echo URLROOT;?>products" class="btn btn-info">Quay lại menu</a>
     </div>
 </div>
 <?php require APPROOT . '/views/inc/footer.php'; ?>

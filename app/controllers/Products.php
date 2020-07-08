@@ -5,10 +5,11 @@ class Products extends Controller
   {
     $this->productModel = $this->model('Product');
   }
-  public function index() {
+  public function index()
+  {
     $category = [];
-    if($this->productModel->getAllCategory()){
-        $category = $this->productModel->getAllCategory();
+    if ($this->productModel->getAllCategory()) {
+      $category = $this->productModel->getAllCategory();
     }
     //old
     // if($this->productModel->getProductByCategory(3)){
@@ -24,62 +25,65 @@ class Products extends Controller
     //     "product" => $product
     // ];
     //old
-    if($this->productModel->getAllProductWithCategory()){
-        $product_list = $this->productModel->getAllProductWithCategory();
+    if ($this->productModel->getAllProductWithCategory()) {
+      $product_list = $this->productModel->getAllProductWithCategory();
     }
     $data = [
-        "category" => $category,
-        "productWithCategory" => $product_list
+      "category" => $category,
+      "productWithCategory" => $product_list
     ];
     $this->view("products/index", $data);
   }
-  public function category($categoryId){
+  public function category($categoryId)
+  {
     $category = [];
-    if($this->productModel->getAllCategory()){
+    if ($this->productModel->getAllCategory()) {
       $category = $this->productModel->getAllCategory();
     }
     $product = [];
-    if($this->productModel->getProductByCategory($categoryId)){
+    if ($this->productModel->getProductByCategory($categoryId)) {
       $product = $this->productModel->getProductByCategory($categoryId);
     }
-    if($this->productModel->getCategoryById($categoryId)){
+    if ($this->productModel->getCategoryById($categoryId)) {
       $categoryWithId = $this->productModel->getCategoryById($categoryId);
       $row = $categoryWithId->fetch_assoc(); // array
     }
-    $data=[
-      "categoryWithId"=> $row,
+    $data = [
+      "categoryWithId" => $row,
       "category" => $category,
       "product" => $product
     ];
     $this->view('products/category', $data);
   }
-  public function detail($productId){
+  public function detail($productId)
+  {
     $data = [];
-    $product =[];
+    $product = [];
     $review = [];
     $avgStar = 0;
-    if($this->productModel->getProductById($productId)){
+    if ($this->productModel->getProductById($productId)) {
       $product  = $this->productModel->getProductById($productId);
     }
-    if($this->productModel->getAllReviewByProductId($productId)){
+    if ($this->productModel->getAllReviewByProductId($productId)) {
       $review  = $this->productModel->getAllReviewByProductId($productId);
     }
-    if($this->productModel->getAverageStarByProductId($productId)){
+    if ($this->productModel->getAverageStarByProductId($productId)) {
       $avgStar  = $this->productModel->getAverageStarByProductId($productId);
     }
     $data = [
       "product" => $product,
       "review" => $review,
-      "avgStar"=>$avgStar
+      "avgStar" => $avgStar
     ];
     $this->view('products/detail', $data);
   }
-  public function addReview(){
+  public function addReview()
+  {
     $data = [];
-    if(isset($_POST["rating-value"])){
+    if (isset($_POST["rating-value"])) {
       $rating_value = $_POST["rating-value"];
       $content = "";
-      if(isset($_POST["rating-content"])){
+      if (isset($_POST["rating-content"])) {
         $content = $_POST["rating-content"];
       }
       $productId = $_POST["productId"];
@@ -87,13 +91,26 @@ class Products extends Controller
     }
     $data = [
       "rating_value" => $rating_value,
-      "content" =>$content,
-      "productId"=>$productId,
-      "userId"=>$userId
+      "content" => $content,
+      "productId" => $productId,
+      "userId" => $userId
     ];
-    if($this->productModel->addReview($data)){
+    if ($this->productModel->addReview($data)) {
       flash('addReview_success', 'Thêm đánh giá thành công');
-      redirect('products/detail/'.$productId);
+      redirect('products/detail/' . $productId);
+    } else {
+      flash('addReview_success', 'Thêm đánh giá không thành công', 'alert-danger');
+      redirect('products/detail/' . $productId);
+    }
+  }
+  public function deleteReview($reviewId, $userId, $productId)
+  {
+    if ($this->productModel->deleteReview($reviewId, $userId)) {
+      flash("delete_review", "Xóa đánh giá thành công");
+      redirect('products/detail/' . $productId);
+    } else {
+      flash("delete_review", "Xóa đánh giá không thành công", 'alert-danger');
+      redirect('products/detail/' . $productId);
     }
   }
 
@@ -101,10 +118,10 @@ class Products extends Controller
   {
     $name_key = "";
     $page_no = 1;
-    if(isset($_GET["name_key"])){
+    if (isset($_GET["name_key"])) {
       $name_key = $_GET["name_key"];
     }
-    if(isset($_GET["pageno"])){
+    if (isset($_GET["pageno"])) {
       $page_no = $_GET["pageno"];
     }
     // echo $name_key;
@@ -112,14 +129,14 @@ class Products extends Controller
 
     $listProduct = [];
 
-    foreach($listProductSearch as $item){
+    foreach ($listProductSearch as $item) {
       $rs_price = $this->productModel->getPriceByProductIdMinh($item["id"]);
       $list_price = [];
-      while($row = $rs_price->fetch_assoc()){
-        array_push($list_price,$row);
+      while ($row = $rs_price->fetch_assoc()) {
+        array_push($list_price, $row);
       }
       $item["price_list"] = $list_price;
-      array_push($listProduct,$item);
+      array_push($listProduct, $item);
     }
 
     $numProductPerPage = 6;
@@ -127,43 +144,42 @@ class Products extends Controller
     $totalPage = ceil($numOfProduct /  $numProductPerPage);
     $offset = ($page_no - 1) * $numProductPerPage;
 
-    $newListProduct = array_slice($listProduct,$offset,$numProductPerPage);
+    $newListProduct = array_slice($listProduct, $offset, $numProductPerPage);
     $data = [
       "listProductSearch" => $newListProduct,
       "name_key" => $name_key,
       "totalPage" => $totalPage
     ];
-    $this->view("products/listproductsearch",$data);
+    $this->view("products/listproductsearch", $data);
   }
 
-  public function addtocart($productId){
+  public function addtocart($productId)
+  {
     $userId = $_SESSION['user_id'];
-    if  (isset($_POST['addToCart'])){
+    if (isset($_POST['addToCart'])) {
       $quantity = $_POST['quantity'];
       $sizeId = $_POST['size'];
-      if ($this->productModel->haveProductInCart($productId, $sizeId, $userId)){
+      if ($this->productModel->haveProductInCart($productId, $sizeId, $userId)) {
         $this->productModel->increaseQuantityInCart($productId, $sizeId, $quantity, $userId);
-      }
-      else {
-        $this->productModel->addtocart($productId,$sizeId,$quantity,$userId);
+      } else {
+        $this->productModel->addtocart($productId, $sizeId, $quantity, $userId);
       }
     }
-    redirect('products/detail/'.$productId);
-  }  
+    redirect('products/detail/' . $productId);
+  }
 
-  public function addOneToCart($productId){
+  public function addOneToCart($productId)
+  {
     $userId = $_SESSION['user_id'];
     $sizeId = $_GET['size'];
-    if ($this->productModel->haveProductInCart($productId, $sizeId, $userId)){
-      $this->productModel->increaseQuantityInCart($productId, $sizeId,1,$userId);
-    }
-    else {
-      $this->productModel->addtocart($productId,$sizeId,1,$userId);
+    if ($this->productModel->haveProductInCart($productId, $sizeId, $userId)) {
+      $this->productModel->increaseQuantityInCart($productId, $sizeId, 1, $userId);
+    } else {
+      $this->productModel->addtocart($productId, $sizeId, 1, $userId);
     }
     if (isset($_SERVER["HTTP_REFERER"])) {
       header("Location: " . $_SERVER["HTTP_REFERER"]);
-    }
-    else{
+    } else {
       redirect("products");
     }
   }
