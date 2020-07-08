@@ -154,7 +154,7 @@ class Shopping
 
     public function getAllOrders()
     {
-        $sql = "SELECT orders.id, orders.address, orders.status, users.id as userId
+        $sql = "SELECT orders.id, orders.address, orders.status, orders.phone, orders.created_at, users.id as userId
         FROM orders
         INNER JOIN users ON orders.iduser = users.id;
         ";
@@ -164,8 +164,10 @@ class Shopping
             while ($row = mysqli_fetch_assoc($result)) {
                 $order['id'] = $row['id'];
                 $order['address'] = $row['address'];
+                $order['phone'] = $row['phone'];
                 $order['status'] = $row['status'];
                 $order['userId'] = $row['userId'];
+                $order['created_at'] = $row['created_at'];
                 array_push($orders, $order);
             }
         }

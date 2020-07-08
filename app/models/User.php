@@ -141,7 +141,7 @@ class User
 
   public function getAllUsers()
   {
-    $sql = "SELECT id, name, email, avatar, address FROM `users` WHERE isAdmin IS NULL";
+    $sql = "SELECT id, name, email, avatar, address, phone FROM `users` WHERE isAdmin IS NULL";
     $result = $this->db->connection->query($sql);
     $res = [];
     while ($row = $result->fetch_assoc()) {
@@ -152,7 +152,8 @@ class User
 
   public function deleteUserById($id)
   {
-    $sql = "DELETE FROM `users` WHERE id = $id";
+    // $sql = "DELETE FROM `users` WHERE id = $id";
+    $sql = "call deleteUser($id)";
     if ($this->db->connection->query($sql)) {
       return true;
     } else {
