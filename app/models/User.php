@@ -85,27 +85,14 @@ class User
   }
   public function update($data, $userId)
   {
-    $name = $data["name"];
-    $email = $data["email"];
-    $birthday = $data["birthday"];
-    $address = $data["address"];
-    $gender = $data["gender"];
-    $avatar = $data["avatar"];
-    $phone = $data["phone"];
-    $sql = "UPDATE `users` SET `name` = '$name', `email` = '$email', `address` = '$address',
-    `birthday` = '$birthday', `gender` = '$gender', `avatar` = '$avatar', `phone` = '$phone' WHERE `id` = $userId";
-    if($phone == ""){
-      $sql = "UPDATE `users` SET `name` = '$name', `email` = '$email', `address` = '$address',
-      `birthday` = '$birthday', `gender` = '$gender', `avatar` = '$avatar' WHERE `id` = $userId";
-    }
-    if($address == ""){
-      $sql = "UPDATE `users` SET `name` = '$name', `email` = '$email', `birthday` = '$birthday', 
-      `gender` = '$gender', `avatar` = '$avatar', `phone` = '$phone' WHERE `id` = $userId";
-    }
-    if($address == "" && $phone == ""){
-      $sql = "UPDATE `users` SET `name` = '$name', `email` = '$email',
-      `gender` = '$gender', `avatar` = '$avatar' WHERE `id` = $userId";
-    }
+    $sql = "UPDATE `users`
+      SET `name` = '" . $data["name"] . "',
+      `email` = '" . $data["email"] . "',
+      `birthday` = '" . $data["birthday"] . "',
+      `address` = '" . $data["address"] . "',
+      `gender` = '" . $data["gender"] . "',
+      `avatar` = '" . $data["avatar"] . "'
+      WHERE `id` = $userId";
     if (mysqli_query($this->db->conn, $sql)) {
       return true;
     } else {
@@ -139,10 +126,9 @@ class User
     }
   }
 
-  public function getAllUsers($pageNumber,$num_of_user_per_page)
+  public function getAllUsers()
   {
-    $offset = ($pageNumber - 1) * $num_of_user_per_page;
-    $sql = "SELECT id, name, email, avatar, address, phone FROM `users` WHERE isAdmin IS NULL ORDER BY id DESC LIMIT $offset,$num_of_user_per_page";
+    $sql = "SELECT id, name, email, avatar, address FROM `users` WHERE isAdmin IS NULL";
     $result = $this->db->connection->query($sql);
     $res = [];
     while ($row = $result->fetch_assoc()) {
@@ -153,8 +139,7 @@ class User
 
   public function deleteUserById($id)
   {
-    // $sql = "DELETE FROM `users` WHERE id = $id";
-    $sql = "call deleteUser($id)";
+    $sql = "DELETE FROM `users` WHERE id = $id";
     if ($this->db->connection->query($sql)) {
       return true;
     } else {
@@ -217,23 +202,13 @@ class User
     }
     return implode($pass); //turn the array into a string
   }
-  public function findAddressUser($id){
-    $sql = "SELECT address from Users WHERE id=".$id;
+
+  public function findAddressAndPhoneById($id){
+    $sql = "SELECT address, phone from Users WHERE id=".$id;
     $result = mysqli_query($this->db->conn, $sql);
     if (mysqli_num_rows($result) == 0){
       return "";
     }
-    else return mysqli_fetch_assoc($result)['address'];
-  }
-  public function getNumOfUser(){
-    $sql = "SELECT COUNT(*) AS `num_user` FROM `users`";
-    $result = $this->db->connection->query($sql);
-    if($result){
-      $row = $result->fetch_assoc();
-      return $row["num_user"];
-    }else{
-      echo ("Error description: " . $this->db->connection->error);
-      return false;
-    }
+    else return mysqli_fetch_assoc($result);
   }
 }
