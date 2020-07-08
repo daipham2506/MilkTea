@@ -94,8 +94,10 @@ class Admin extends Controller
 		foreach ($orders as $order) {
 			$d['id'] = $order['id'];
 			$d['address'] = $order['address'];
+			$d['phone'] = $order['phone'];
 			$d['status'] = $order['status'];
 			$d['userId'] = $order['userId'];
+			$d['created_at'] = $order['created_at'];
 			$d['user'] = $this->userModel->findUserById($order['userId']);
 			$d['product'] = $this->orderModel->getProductsByOrderid($order['id']);
 			array_push($data, $d);

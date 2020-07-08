@@ -19,7 +19,6 @@
                 <h4 class="text-center">Danh sách các đơn hàng</h4>
                 <?php flash('update-status'); ?>
                 <section id="tabs" class="project-tab">
-                    <!-- <div class=""> -->
                     <div class="row">
                         <div class="col-md-12">
                             <nav>
@@ -34,30 +33,18 @@
                                 <div class="tab-pane fade show active" id="1" role="tabpanel">
                                     <?php
                                     for ($i = 0; $i < count($data); $i++) :
-                                        if ($data[$i]['status'] == 1) {
-                                            $status = 'Chờ xác nhận';
-                                            $color = 'gray';
-                                        } else if ($data[$i]['status'] == 2) {
+                                        if ($data[$i]['status'] != 1) {
                                             continue;
-                                            $status = 'Đã xác nhận';
-                                            $color = 'black';
-                                        } else if ($data[$i]['status'] == 3) {
-                                            continue;
-                                            $status = 'Đang giao hàng';
-                                            $color = 'blue';
-                                        } else if ($data[$i]['status'] == 4) {
-                                            continue;
-                                            $status = 'Đã giao hàng';
-                                            $color = 'green';
                                         }
                                     ?>
                                         <div class='card' style="margin-top:25px; padding:15px 10px;overflow-x:auto;">
                                             <table class="table table-hover shopping-cart-wrap">
                                                 <h6 class="text-center">Mã đơn hàng: #<?php echo $data[$i]['id'] ?></h6>
                                                 <h6 class="text-center">Tên khách hàng: <?php echo $data[$i]['user']->name ?></h6>
-                                                <h6 class="text-center">Địa chỉ giao hàng: <?php echo $data[$i]['user']->address ?></h6>
-                                                <h6 class="text-center">Số điện thoại: <?php echo $data[$i]['user']->phone ?></h6>
-                                                <h6 class="text-center" style="margin-bottom:20px">Email: <?php echo $data[$i]['user']->email ?></h6>
+                                                <h6 class="text-center">Địa chỉ giao hàng: <?php echo $data[$i]['address'] ?></h6>
+                                                <h6 class="text-center">Số điện thoại: <?php echo $data[$i]['phone'] ?></h6>
+                                                <h6 class="text-center">Email: <?php echo $data[$i]['user']->email ?></h6>
+                                                <h6 class="text-center" style="margin-bottom:20px">Ngày đặt hàng: <?php echo $data[$i]['created_at'] ?></h6>
                                                 <thead class="text-muted">
                                                     <tr>
                                                         <th scope="col">Sản phẩm</th>
@@ -119,30 +106,18 @@
                                 <div class="tab-pane fade" id="2" role="tabpanel">
                                     <?php
                                     for ($i = 0; $i < count($data); $i++) :
-                                        if ($data[$i]['status'] == 1) {
+                                        if ($data[$i]['status'] != 2) {
                                             continue;
-                                            $status = 'Chờ xác nhận';
-                                            $color = 'gray';
-                                        } else if ($data[$i]['status'] == 2) {
-                                            $status = 'Đã xác nhận';
-                                            $color = 'black';
-                                        } else if ($data[$i]['status'] == 3) {
-                                            continue;
-                                            $status = 'Đang giao hàng';
-                                            $color = 'blue';
-                                        } else if ($data[$i]['status'] == 4) {
-                                            continue;
-                                            $status = 'Đã giao hàng';
-                                            $color = 'green';
                                         }
                                     ?>
                                         <div class='card' style="margin-top:25px; padding:15px 10px;">
                                             <table class="table table-hover shopping-cart-wrap">
                                                 <h6 class="text-center">Mã đơn hàng: #<?php echo $data[$i]['id'] ?></h6>
                                                 <h6 class="text-center">Tên khách hàng: <?php echo $data[$i]['user']->name ?></h6>
-                                                <h6 class="text-center">Địa chỉ giao hàng: <?php echo $data[$i]['user']->address ?></h6>
-                                                <h6 class="text-center">Số điện thoại: <?php echo $data[$i]['user']->phone ?></h6>
-                                                <h6 class="text-center" style="margin-bottom:20px">Email: <?php echo $data[$i]['user']->email ?></h6>
+                                                <h6 class="text-center">Địa chỉ giao hàng: <?php echo $data[$i]['address'] ?></h6>
+                                                <h6 class="text-center">Số điện thoại: <?php echo $data[$i]['phone'] ?></h6>
+                                                <h6 class="text-center">Email: <?php echo $data[$i]['user']->email ?></h6>
+                                                <h6 class="text-center" style="margin-bottom:20px">Ngày đặt hàng: <?php echo $data[$i]['created_at'] ?></h6>
                                                 <thead class="text-muted">
                                                     <tr>
                                                         <th scope="col">Sản phẩm</th>
@@ -203,30 +178,18 @@
                                 <div class="tab-pane fade" id="3" role="tabpanel">
                                     <?php
                                     for ($i = 0; $i < count($data); $i++) :
-                                        if ($data[$i]['status'] == 1) {
+                                        if ($data[$i]['status'] != 3) {
                                             continue;
-                                            $status = 'Chờ xác nhận';
-                                            $color = 'gray';
-                                        } else if ($data[$i]['status'] == 2) {
-                                            continue;
-                                            $status = 'Đã xác nhận';
-                                            $color = 'black';
-                                        } else if ($data[$i]['status'] == 3) {
-                                            $status = 'Đang giao hàng';
-                                            $color = 'blue';
-                                        } else if ($data[$i]['status'] == 4) {
-                                            continue;
-                                            $status = 'Đã giao hàng';
-                                            $color = 'green';
                                         }
                                     ?>
                                         <div class='card' style="margin-top:25px; padding:15px 10px;">
                                             <table class="table table-hover shopping-cart-wrap">
                                                 <h6 class="text-center">Mã đơn hàng: #<?php echo $data[$i]['id'] ?></h6>
                                                 <h6 class="text-center">Tên khách hàng: <?php echo $data[$i]['user']->name ?></h6>
-                                                <h6 class="text-center">Địa chỉ giao hàng: <?php echo $data[$i]['user']->address ?></h6>
-                                                <h6 class="text-center">Số điện thoại: <?php echo $data[$i]['user']->phone ?></h6>
-                                                <h6 class="text-center" style="margin-bottom:20px">Email: <?php echo $data[$i]['user']->email ?></h6>
+                                                <h6 class="text-center">Địa chỉ giao hàng: <?php echo $data[$i]['address'] ?></h6>
+                                                <h6 class="text-center">Số điện thoại: <?php echo $data[$i]['phone'] ?></h6>
+                                                <h6 class="text-center">Email: <?php echo $data[$i]['user']->email ?></h6>
+                                                <h6 class="text-center" style="margin-bottom:20px">Ngày đặt hàng: <?php echo $data[$i]['created_at'] ?></h6>
                                                 <thead class="text-muted">
                                                     <tr>
                                                         <th scope="col">Sản phẩm</th>
@@ -286,30 +249,18 @@
                                 <div class="tab-pane fade" id="4" role="tabpanel">
                                     <?php
                                     for ($i = 0; $i < count($data); $i++) :
-                                        if ($data[$i]['status'] == 1) {
+                                        if ($data[$i]['status'] != 4) {
                                             continue;
-                                            $status = 'Chờ xác nhận';
-                                            $color = 'gray';
-                                        } else if ($data[$i]['status'] == 2) {
-                                            continue;
-                                            $status = 'Đã xác nhận';
-                                            $color = 'black';
-                                        } else if ($data[$i]['status'] == 3) {
-                                            continue;
-                                            $status = 'Đang giao hàng';
-                                            $color = 'blue';
-                                        } else if ($data[$i]['status'] == 4) {
-                                            $status = 'Đã giao hàng';
-                                            $color = 'green';
                                         }
                                     ?>
                                         <div class='card' style="margin-top:25px; padding:15px 10px;">
                                             <table class="table table-hover shopping-cart-wrap">
                                                 <h6 class="text-center">Mã đơn hàng: #<?php echo $data[$i]['id'] ?></h6>
                                                 <h6 class="text-center">Tên khách hàng: <?php echo $data[$i]['user']->name ?></h6>
-                                                <h6 class="text-center">Địa chỉ giao hàng: <?php echo $data[$i]['user']->address ?></h6>
-                                                <h6 class="text-center">Số điện thoại: <?php echo $data[$i]['user']->phone ?></h6>
-                                                <h6 class="text-center" style="margin-bottom:20px">Email: <?php echo $data[$i]['user']->email ?></h6>
+                                                <h6 class="text-center">Địa chỉ giao hàng: <?php echo $data[$i]['address'] ?></h6>
+                                                <h6 class="text-center">Số điện thoại: <?php echo $data[$i]['phone'] ?></h6>
+                                                <h6 class="text-center">Email: <?php echo $data[$i]['user']->email ?></h6>
+                                                <h6 class="text-center" style="margin-bottom:20px">Ngày đặt hàng: <?php echo $data[$i]['created_at'] ?></h6>
 
                                                 <thead class="text-muted">
                                                     <tr>
@@ -358,7 +309,6 @@
                         </div>
                     </div>
             </div>
-            <!-- </div> -->
             </section>
 
         </div>
