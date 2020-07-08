@@ -1,15 +1,11 @@
 <?php
   class Pages extends Controller {
     public function __construct(){
-     
+      $this->InfoWebModel = $this->model('InfoWeb');
     }
     
     public function index(){
-      $data = [
-        'title' => 'SharePosts',
-        'description' => 'Simple social network built on the TraversyMVC PHP framework'
-      ];
-     
+      $data = [];
       $this->view('pages/index', $data);
     }
 

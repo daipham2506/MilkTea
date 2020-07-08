@@ -31,7 +31,7 @@
                     </div>
                     <div class="form-group">
                         <label for="phone">Số điện thoại:</label>
-                        <input type="tel" id="phone" name="phone"  class="form-control form-control-lg" placeholder="Định dạng: 0[1-9][0-9]{8}" pattern="0[1-9][0-9]{8}" aria-describedby="phoneHelp">
+                        <input type="tel" id="phone" name="phone"  class="form-control form-control-lg" pattern="0[1-9][0-9]{8}" aria-describedby="phoneHelp">
                         <small id="phoneHelp" class="form-text text-muted">Chúng tôi không bao giờ chia sẻ số điện thoại của bạn</small>
                     </div>
                     <div class="form-group">

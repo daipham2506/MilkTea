@@ -5,6 +5,7 @@ class Admin extends Controller
 	{
 		$this->userModel = $this->model('User');
 		$this->orderModel = $this->model('Shopping');
+		$this->InfoWebModel = $this->model('InfoWeb');
 	}
 
 	public function index()
@@ -114,5 +115,29 @@ class Admin extends Controller
 			}
 			redirect("admin/manageOrders");
 		} 
+	}
+	public function editcontact(){
+		if($_SERVER['REQUEST_METHOD'] != 'POST'){
+			$data = [];
+			if($this->InfoWebModel->getContact()){
+				$data = $this->InfoWebModel->getContact();
+			}
+			$this->view('admin/editcontact', $data);
+		}else{
+			$data = [
+				"address"=>$_POST["address"], 
+				"phone"=> $_POST["phone"], 
+				"email"=> $_POST["email"], 
+				"facebook" =>  $_POST["facebook"],
+				"instagram" => $_POST["instagram"]
+			];
+			if($this->InfoWebModel->updateContact($data)){
+				flash("update_contact","Cập nhật thông tin liên hệ thành công");
+				redirect("admin");
+			}else{
+				flash("update_contact","Cập nhật thông tin liên hệ thất bại", 'alert-danger');
+				redirect("admin");
+			}
+		}
 	}
 }

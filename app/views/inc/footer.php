@@ -1,13 +1,27 @@
   </div>
   <!-- footer here -->
+<?php 
+	// Require model file
+	require_once '../app/models/InfoWeb.php';
+	$InfoWeb = new InfoWeb();
+	$data = ["InfoWeb" => $InfoWeb->getContact()];
+?>
   <div class="pt-5 pb-5 footer">
   	<div class="container">
   		<div class="row">
+			<?php
+			//  print_r($data["InfoWeb"]);
+			 $address = $data["InfoWeb"]["address"];
+			 $phone = $data["InfoWeb"]["phone"];
+			 $email = $data["InfoWeb"]["email"];
+			 $facebook = $data["InfoWeb"]["facebook"];
+			 $instagram =$data["InfoWeb"]["instagram"];
+			 ?>
   			<div class="col-lg-5 col-xs-12 about-company">
   				<h2>MilkTeaX</h2>
   				<p class="pr-5 text-white-50">Truy cập các liên kết bên dưới để có thêm thông tin</p>
-  				<p><a href="https://www.facebook.com/Hieu17041999" target="_blank"><i class="fab fa-facebook mr-2"></i>
-  					</a><a href="https://www.instagram.com/nlhhieu.99" target="_blank"><i class="fab fa-instagram"></i></a></p>
+  				<p><a href="<?php echo $facebook?>" target="_blank"><i class="fab fa-facebook mr-2"></i>
+  					</a><a href="<?php echo $instagram?>" target="_blank"><i class="fab fa-instagram"></i></a></p>
   			</div>
   			<div class="col-lg-3 col-xs-12 links">
   				<?php
@@ -24,11 +38,18 @@
   			</div>
   			<div class="col-lg-4 col-xs-12 location">
   				<h4 class="mt-lg-0 mt-sm-4">Văn phòng đại diện</h4>
-  				<p><i class="fas fa-map-marker-alt mr-3"></i>125/2 Hòa Hưng, phường 12, quận 10, Tp. Hồ Chí Minh</p>
-  				<p class="mb-0"><i class="fa fa-phone mr-3"></i>0967.740.723</p>
-  				<p><i class="far fa-envelope mr-3"></i>milkteax@gmail.com</p>
+  				<p><i class="fas fa-map-marker-alt mr-3"></i><?php echo $address?></p>
+  				<p class="mb-0"><i class="fa fa-phone mr-3"></i><?php echo $phone?></p>
+  				<p><i class="far fa-envelope mr-3"></i><?php echo $email?></p>
   			</div>
   		</div>
+
+  		<?php if (isset($_SESSION['isAdmin'])) : ?>
+  			<div class="row justify-content-center">
+  				<a href="<?php echo URLROOT;?>admin/editcontact" class="btn btn-light">Sửa thông tin &nbsp;&nbsp;<i class="fas fa-pen"></i></a>
+  			</div>
+  		<?php endif; ?>
+
   		<div class="row mt-5">
   			<div class="col copyright">
   				<p class=""><small class="text-white-50">© 2020. All Rights Reserved.</small></p>
@@ -55,7 +76,6 @@
   </body>
 
   <script src="<?php echo URLROOT; ?>js/displaySizeContainer.js"></script>
-</body>
-</html>
+  </body>
 
-
+  </html>
