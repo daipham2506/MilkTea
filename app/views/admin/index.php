@@ -17,6 +17,7 @@
         <div class="col-lg-10 col-12">
             <div class="card card-body bg-light mb-5 mr-lg-4 ml-lg-4">
                 <h2>Danh sách người dùng</h2>
+                <?php flash("update_contact")?>
                 <?php flash('del_user'); ?>
                 <div style="overflow-x: auto;">
                     <table class="table table-striped">

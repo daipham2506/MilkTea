@@ -1,5 +1,4 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-
 <div id="slideshow" class="carousel slide" data-ride="carousel" style="z-index: 1;">
   <ol class="carousel-indicators">
     <li data-target="#slideshow" data-slide-to="0" class="active"></li>

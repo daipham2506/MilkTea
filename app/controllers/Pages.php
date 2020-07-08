@@ -1,6 +1,10 @@
 <?php
   class Pages extends Controller {
     public function __construct(){
+    }
+    
+    public function index(){
+      $data = [];
       $this->postModel = $this->model('Post');
     }
     
@@ -12,7 +16,6 @@
         'description' => 'Simple social network built on the TraversyMVC PHP framework',
         'listNewPost' => $listNewPost
       ];
-     
       $this->view('pages/index', $data);
     }
 
