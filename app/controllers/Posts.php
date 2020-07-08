@@ -32,9 +32,10 @@ class Posts extends Controller
   }
 
   public function postdetail($id){
+      $numPost = 6;
       $postDetail = $this->postModel->getPostDetail($id);
       $listComment = $this->postModel->getListComment($id);
-      $listPostRecently = $this->postModel->getRecentlyPost();
+      $listPostRecently = $this->postModel->getRecentlyPost($numPost);
       $data = [
         "postDetail" => $postDetail,
         "listComment" => $listComment,
