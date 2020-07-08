@@ -76,12 +76,23 @@
                     <nav aria-label="Page navigation example" style="height: 40px;">
                         <ul class="pagination" id="pagination">
                             <?php
+                            $page = 1;
+                            if(isset($_GET["page"])){
+                                $page = $_GET["page"];
+                            }
                             $urlGetListProduct = URLROOT . "admin?page=";
                             for ($i = 1; $i <= $data["totalPage"]; $i++) {
                                 $url = $urlGetListProduct . $i;
-                                echo <<< _END
-                            <a href="$url" class="page-item cursor-pointer"><p class="page-link btn_page">$i</p></a>
-                        _END;
+                                if($page == $i){
+                                    echo <<< _END
+                                        <a href="$url" class="page-item cursor-pointer"><p class="page-link btn_page active_page">$i</p></a>
+                                    _END;
+                                }
+                                else{
+                                    echo <<< _END
+                                        <a href="$url" class="page-item cursor-pointer"><p class="page-link btn_page">$i</p></a>
+                                    _END;
+                                }
                             }
                             ?>
                         </ul>

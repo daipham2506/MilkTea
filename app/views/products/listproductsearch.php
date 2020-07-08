@@ -57,13 +57,24 @@
         <nav aria-label="Page navigation example">
             <ul class="pagination" id="pagination">
                 <?php 
+                    $page_no = 1;
+                    if(isset($_GET["pageno"])){
+                        $page_no = $_GET["pageno"];
+                    }
                     $name_key = $data["name_key"];
                     $urlGetListPost = URLROOT . "products/listproductsearch?" . "name_key=$name_key&" . "pageno=";
                     for ($i = 1; $i <= $data['totalPage']; $i++){
                         $url = $urlGetListPost . $i;
-                        echo <<< _END
-                            <a href="$url" class="page-item cursor-pointer"><p class="page-link btn_page">$i</p></a>
-                        _END;
+                        if($page_no == $i){
+                            echo <<< _END
+                                <a href="$url" class="page-item cursor-pointer"><p class="page-link btn_page active_page">$i</p></a>
+                            _END;
+                        }
+                        else{
+                            echo <<< _END
+                                <a href="$url" class="page-item cursor-pointer"><p class="page-link btn_page">$i</p></a>
+                            _END;
+                        }
                     }
                 ?>
             </ul>

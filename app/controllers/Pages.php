@@ -5,7 +5,7 @@
     }
     
     public function index(){
-      $numPost = 4;
+      $numPost = 3;
       $listNewPost = $this->postModel->getRecentlyPost($numPost);
       $data = [
         'title' => 'SharePosts',

@@ -80,7 +80,7 @@
         }
         $url = URLROOT . "posts/postdetail/" . $id;
         echo <<< _END
-        <div class="col-lg-3 col-md-6 col-12 mt-2" data-aos="flip-up" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
+        <div class="col-lg-4 col-md-6 col-12 mt-2" data-aos="flip-up" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
           <div class="card" style="width: 100%;">
               <div class="wrap-img-card-list-post">
                   <img src="$image" class="img-card-list-post" alt="...">
