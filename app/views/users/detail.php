@@ -24,6 +24,11 @@
                     <?php echo $data['address'] ?  $data['address'] : "..."?>
                     </p>
                     <div class="line"></div>
+                    <h2 class="text-primary">Số diện thoại</h2>
+                    <p>
+                    <i class="fas fa-phone"></i>&nbsp;&nbsp;<?php echo $data['phone'] ?  $data['phone'] : "..."?>
+                    </p>
+                    <div class="line"></div>
                     <h2 class="text-primary">Thông tin thêm</h2>
                     <div class="skills">
                         <div class="p-4"><i class="fas fa-birthday-cake"></i>&nbsp;&nbsp;<?php echo ($data["birthday"]) ? $data['birthday'] : "..."?></div>

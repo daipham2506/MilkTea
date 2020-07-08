@@ -43,12 +43,12 @@
         </div>
         <div class="list-response">
             <div id="$idListResponse"></div>
-            <form id="$idFormResponse" class="d-none" action="<?php echo URLROOT; ?>posts/addcomment" method="POST">
+            <div id="$idFormResponse" class="d-none">
                 <div class="form-group d-flex">
                     <input type="text" class="form-control mr-2" id="$idValueResponse" name="comment" aria-describedby="emailHelp" placeholder="Trả lời bình luận">
                     <button type="button" id="$idBtnResponse" class="btn btn-info btn-add-comment">Add</button>
                 </div>
-            </form>
+            </div>
         </div>
         _END;
     }

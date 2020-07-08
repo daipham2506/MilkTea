@@ -8,10 +8,26 @@ class ManageProducts extends Controller
   public function index(){
     $data = [];
     $product_arr = $this->productModel->getAllProduct();
+    if($this->productModel->getAllCategory()){
+      $categories = $this->productModel->getAllCategory();
+    }
     $data = [
-      "products"=> $product_arr
+      "products"=> $product_arr,
+      "categories" => $categories  // need to fetch
     ];
     $this->view("manageproducts/index", $data);
+  }
+  public function category($categoryId){
+    $data = [];
+    $product_arr = $this->productModel->getProductByCategoryAdmin($categoryId);
+    if($this->productModel->getAllCategory()){
+      $categories = $this->productModel->getAllCategory();
+    }
+    $data = [
+      "products"=> $product_arr,
+      "categories" => $categories  // need to fetch
+    ];
+    $this->view("manageproducts/category", $data);
   }
   public function addproduct(){
     $data = [

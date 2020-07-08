@@ -3,7 +3,7 @@
 ?>
 
     <div class="row mt-3">
-        <div class="col-md-2 col-12" style="margin-left:40px">
+        <div class="col-lg-2 col-12">
             <div class="list-group" id="list-tab">
                 <a class="list-group-item list-group-item-action " id="list-info-list" href="<?php echo URLROOT; ?>admin/index" aria-controls="info"><i class="far fa-user"></i>&nbsp;&nbsp; Quản lý người dùng</a>
 
@@ -14,7 +14,7 @@
                 <a class="list-group-item list-group-item-action" id="list-changePass-list" href="<?php echo URLROOT; ?>admin/changepass/<?php echo $_SESSION['user_id'] ?>" role="tab" aria-controls="pass"><i class="fas fa-key"></i> &nbsp;&nbsp;Thay đổi mật khẩu</a>
             </div>
         </div>
-        <div class="col-md-9 col-12">
+        <div class="col-lg-10 col-12">
             <div class="card card-body bg-light mb-5 mr-lg-4 ml-lg-4">
                 <h4 class="text-center">Danh sách các đơn hàng</h4>
                 <?php flash('update-status'); ?>
@@ -51,7 +51,7 @@
                                             $color = 'green';
                                         }
                                     ?>
-                                        <div class='card' style="margin-top:25px; padding:15px 10px;">
+                                        <div class='card' style="margin-top:25px; padding:15px 10px;overflow-x:auto;">
                                             <table class="table table-hover shopping-cart-wrap">
                                                 <h6 class="text-center">Mã đơn hàng: #<?php echo $data[$i]['id'] ?></h6>
                                                 <h6 class="text-center">Tên khách hàng: <?php echo $data[$i]['user']->name ?></h6>
