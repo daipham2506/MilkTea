@@ -9,10 +9,18 @@ class Admin extends Controller
 
 	public function index()
 	{
-		$allUsers = $this->userModel->getAllUsers();
+		$num_of_user_per_page = 5;
+		$pageNumber = 1;
+		if(isset($_GET['page'])){
+			$pageNumber = $_GET['page'];
+		}
+		$allUsers = $this->userModel->getAllUsers($pageNumber,$num_of_user_per_page);
+		$numOfUser = $this->userModel->getNumOfUser();
+		$totalPage = ceil($numOfUser / $num_of_user_per_page);
 
 		$data = [
-			'users' => $allUsers
+			'users' => $allUsers,
+			"totalPage"=>$totalPage
 		];
 		$this->view("admin/index", $data);
 	}

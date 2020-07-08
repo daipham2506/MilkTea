@@ -33,10 +33,10 @@
                         <tbody>
                             <?php
                             foreach ($data['users'] as $user) {
-                                $url = URLROOT . 'admin/deleteUser/' . $user['id'] ;
+                                $url = URLROOT . 'admin/deleteUser/' . $user['id'];
                                 echo
                                     '
-                            <div id="ModalConfirm'.$user['id'].'" class="modal fade">
+                            <div id="ModalConfirm' . $user['id'] . '" class="modal fade">
                                 <div class="modal-dialog modal-confirm">
                                     <div class="modal-content">
                                         <div class="modal-header flex-column">
@@ -47,7 +47,7 @@
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                         </div>
                                         <div class="modal-body">
-                                            <p>Bạn có chắc chắn muốn xóa user '.$user['name'].'?</p>
+                                            <p>Bạn có chắc chắn muốn xóa user ' . $user['name'] . '?</p>
                                         </div>
                                         <div class="modal-footer justify-content-center">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -62,14 +62,29 @@
                                 <td>' . $user['email'] . '</td>
                                 <td><img style="width:40px;height:40px;border-radius:50%" src=' . $user['avatar'] . ' alt="user-avatar"></td>
                                 <td>' . $user['address'] . '</td>
-                                <td> <a href="#ModalConfirm'.$user['id'].'" data-toggle="modal"><button type="button" class="btn btn-outline-danger">Xóa</button></a></td>
+                                <td> <a href="#ModalConfirm' . $user['id'] . '" data-toggle="modal"><button type="button" class="btn btn-outline-danger">Xóa</button></a></td>
                             </tr>';
                             }
                             ?>
                         </tbody>
                     </table>
                 </div>
-
+                <div class="d-flex justify-content-end align-items-center">
+                    <p class="mr-3 mb-0">Trang: </p>
+                    <nav aria-label="Page navigation example" style="height: 40px;">
+                        <ul class="pagination" id="pagination">
+                            <?php
+                            $urlGetListProduct = URLROOT . "admin?page=";
+                            for ($i = 1; $i <= $data["totalPage"]; $i++) {
+                                $url = $urlGetListProduct . $i;
+                                echo <<< _END
+                            <a href="$url" class="page-item cursor-pointer"><p class="page-link btn_page">$i</p></a>
+                        _END;
+                            }
+                            ?>
+                        </ul>
+                    </nav>
+                </div>
             </div>
         </div>
     </div>

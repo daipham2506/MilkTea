@@ -219,9 +219,10 @@ class Product
       return false;
     }
   }
-  public function getAllProduct(){
+  public function getAllProduct($pageNumber, $num_of_product_per_page){
+    $offset = ($pageNumber - 1) * $num_of_product_per_page;
     $sql = "SELECT product.name AS 'product_name',product.id, product.image, product.description , category.name AS 'category_name' 
-    FROM `product` INNER JOIN `category` ON product.idcategory = category.id ORDER BY product.id";
+    FROM `product` INNER JOIN `category` ON product.idcategory = category.id ORDER BY product.id DESC LIMIT $offset,$num_of_product_per_page";
     $result = $this->db->connection->query($sql);
     $product_arr = [];
     if($result){
@@ -471,6 +472,17 @@ class Product
     $sql = "SELECT price FROM sizeofproduct WHERE idsize=".$sizeId." AND idproduct=".$productId;
     $result = mysqli_query($this->db->conn, $sql);
     return mysqli_fetch_assoc($result)['price'];
+  }
+  public function getNumOfProduct(){
+    $sql = "SELECT COUNT(*) AS `num_product` FROM `product`";
+    $result = $this->db->connection->query($sql);
+    if($result){
+      $row = $result->fetch_assoc();
+      return $row["num_product"];
+    }else{
+      echo ("Error description: " . $this->db->connection->error);
+      return false;
+    }
   }
 
 }

@@ -139,9 +139,10 @@ class User
     }
   }
 
-  public function getAllUsers()
+  public function getAllUsers($pageNumber,$num_of_user_per_page)
   {
-    $sql = "SELECT id, name, email, avatar, address FROM `users` WHERE isAdmin IS NULL";
+    $offset = ($pageNumber - 1) * $num_of_user_per_page;
+    $sql = "SELECT id, name, email, avatar, address FROM `users` WHERE isAdmin IS NULL ORDER BY id DESC LIMIT $offset,$num_of_user_per_page";
     $result = $this->db->connection->query($sql);
     $res = [];
     while ($row = $result->fetch_assoc()) {
@@ -222,5 +223,16 @@ class User
       return "";
     }
     else return mysqli_fetch_assoc($result)['address'];
+  }
+  public function getNumOfUser(){
+    $sql = "SELECT COUNT(*) AS `num_user` FROM `users`";
+    $result = $this->db->connection->query($sql);
+    if($result){
+      $row = $result->fetch_assoc();
+      return $row["num_user"];
+    }else{
+      echo ("Error description: " . $this->db->connection->error);
+      return false;
+    }
   }
 }
