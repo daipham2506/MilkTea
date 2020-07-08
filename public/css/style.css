@@ -832,3 +832,7 @@ body{
 .list-price-product{
   height: 40px;
 }
+
+.active_page{
+  background-color: rgb(145, 226, 163);
+}
