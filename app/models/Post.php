@@ -68,7 +68,7 @@ class Post{
     public function getListPost($pageNumber,$num_of_post_per_page){
         $offset = ($pageNumber - 1) * $num_of_post_per_page;
 
-        $query = "SELECT * FROM POST LIMIT $offset,$num_of_post_per_page";
+        $query = "SELECT * FROM POST order by createdAt desc LIMIT $offset,$num_of_post_per_page";
         $rs = $this->db->connection->query($query);
         $listPost = [];
         if($rs){
@@ -83,9 +83,9 @@ class Post{
         }
     }
 
-    public function getRecentlyPost()
+    public function getRecentlyPost($numPost)
     {
-        $query = "SELECT * FROM POST order by createdAt desc LIMIT 6";
+        $query = "SELECT * FROM POST order by createdAt desc LIMIT $numPost";
         $rs = $this->db->connection->query($query);
         $listPost = [];
         if($rs){
