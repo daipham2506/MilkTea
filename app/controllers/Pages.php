@@ -1,13 +1,9 @@
 <?php
   class Pages extends Controller {
     public function __construct(){
-    }
-    
-    public function index(){
-      $data = [];
       $this->postModel = $this->model('Post');
     }
-    
+
     public function index(){
       $numPost = 4;
       $listNewPost = $this->postModel->getRecentlyPost($numPost);
