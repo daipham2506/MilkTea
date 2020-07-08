@@ -61,11 +61,10 @@
                     </div>
                     <div class="form-group">
                         <label for="image" class="bold-text">Chọn ảnh</label>
-                        <input type="file" class="form-control-file" name="image" id="image" onchange="readImageProductURL(this);" ><!-- need to add required -->
+                        <input type="file" class="form-control-file" name="image" id="image" onchange="readImageProductURL(this);" required><!-- need to add required -->
                         <p class="text-danger"><?php if (array_key_exists('image_err', $data)) echo $data['image_err']; ?></p>
                         <div class="row d-flex justify-content-center">
-                            <img id="image-preview" src="<?php if ($data['image']) echo $data['image'];
-                                                            else echo "#" ?>" alt="your image" class="border border-secondary rounded">
+                            <img id="image-preview" src="#" alt="your image" class="border border-secondary rounded">
                         </div>
                     </div>
                     <div class="d-flex justify-content-center">

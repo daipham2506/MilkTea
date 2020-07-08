@@ -7,13 +7,22 @@ class ManageProducts extends Controller
   }
   public function index(){
     $data = [];
-    $product_arr = $this->productModel->getAllProduct();
+    $num_of_product_per_page = 5;
+    $pageNumber = 1;
+    if(isset($_GET['page'])){
+      $pageNumber = $_GET['page'];
+    }
+    $numOfProduct = $this->productModel->getNumOfProduct();
+    $totalPage = ceil($numOfProduct / $num_of_product_per_page);
+
+    $product_arr = $this->productModel->getAllProduct($pageNumber, $num_of_product_per_page);
     if($this->productModel->getAllCategory()){
       $categories = $this->productModel->getAllCategory();
     }
     $data = [
       "products"=> $product_arr,
-      "categories" => $categories  // need to fetch
+      "categories" => $categories,  // need to fetch
+      "totalPage"=>$totalPage
     ];
     $this->view("manageproducts/index", $data);
   }
