@@ -100,7 +100,7 @@ class User
     }
     if($address == ""){
       $sql = "UPDATE `users` SET `name` = '$name', `email` = '$email', `birthday` = '$birthday', 
-      `gender` = '$gender', `avatar` = '$avatar' WHERE `id` = $userId";
+      `gender` = '$gender', `avatar` = '$avatar', `phone` = '$phone' WHERE `id` = $userId";
     }
     if($address == "" && $phone == ""){
       $sql = "UPDATE `users` SET `name` = '$name', `email` = '$email',
