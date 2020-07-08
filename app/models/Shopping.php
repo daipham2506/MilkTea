@@ -1,65 +1,65 @@
 <?php
-    class Shopping{
-        private $db;
+class Shopping{
+    private $db;
 
-        public function __construct(){
-            $this->db = new Database;
-        }
+    public function __construct(){
+        $this->db = new Database;
+    }
 
-        public function getProductInCart($userId){
-            $data = array();
-            $getList_sql = "SELECT product.name, product.image, productincart.quantity, size.size, sizeofproduct.price, productincart.idproduct, productincart.idcart
-                            FROM productincart 
-                            INNER JOIN product 
-                            ON productincart.idproduct = product.id
-                            INNER JOIN sizeofproduct
-                            ON productincart.idsize = sizeofproduct.idsize AND sizeofproduct.idproduct = productincart.idproduct
-                            INNER JOIN size
-                            ON sizeofproduct.idsize = size.id
-                            INNER JOIN cart
-                            ON productincart.idcart = cart.id
-                            WHERE cart.iduser =".$userId;
+    public function getProductInCart($userId){
+        $data = array();
+        $getList_sql = "SELECT product.name, product.image, productincart.quantity, size.size, sizeofproduct.price, productincart.idproduct, productincart.idcart
+                        FROM productincart 
+                        INNER JOIN product 
+                        ON productincart.idproduct = product.id
+                        INNER JOIN sizeofproduct
+                        ON productincart.idsize = sizeofproduct.idsize AND sizeofproduct.idproduct = productincart.idproduct
+                        INNER JOIN size
+                        ON sizeofproduct.idsize = size.id
+                        INNER JOIN cart
+                        ON productincart.idcart = cart.id
+                        WHERE cart.iduser =".$userId;
 
-                          
-            $result = mysqli_query($this->db->conn, $getList_sql);
-            
-            if (mysqli_num_rows($result) > 0) {
-                // output data of each row
-                $i = 0;
-                while($row = mysqli_fetch_assoc($result)) {
-                  $data[$i]['name'] = $row['name'];
-                  $data[$i]['image'] = $row['image'];
-                  $data[$i]['quantity'] = $row['quantity'];
-                  $data[$i]['size'] = $row['size'];
-                  $data[$i]['price'] = $row['price'];
-                  $data[$i]['idproduct'] = $row['idproduct'];
-                  $data[$i]['idcart'] = $row['idcart'];
-                  $i++;
-                }
-                
-            } 
-            
-            return $data;
-
-        } 
-        public function changeQuantityAndSize($userId, $productId, $newQuantity, $newSize) {
-            $sql_update = "UPDATE productincart, cart
-                           SET productincart.quantity=".$newQuantity.",productincart.idsize=".$newSize." WHERE productincart.idproduct=".$productId." AND productincart.idcart=cart.id AND cart.iduser=".$userId;
-            mysqli_query($this->db->conn, $sql_update);
-                    
-        }
-
-        public function cancelProduct($userId, $productId){
-            $sql_delete = "DELETE productincart
-                            FROM productincart,cart
-                            WHERE productincart.idcart = cart.id AND cart.iduser = ".$userId." AND productincart.idproduct = ".$productId;
-            if (mysqli_query($this->db->conn, $sql_delete)){
-                flash('cancelProduct','Hủy thành công');
+                      
+        $result = mysqli_query($this->db->conn, $getList_sql);
+        if (mysqli_num_rows($result) > 0) {
+            // output data of each row
+            $i = 0;
+            while($row = mysqli_fetch_assoc($result)) {
+              $data[$i]['name'] = $row['name'];
+              $data[$i]['image'] = $row['image'];
+              $data[$i]['quantity'] = $row['quantity'];
+              $data[$i]['size'] = $row['size'];
+              $data[$i]['price'] = $row['price'];
+              $data[$i]['idproduct'] = $row['idproduct'];
+              $data[$i]['idcart'] = $row['idcart'];
+              $i++;
             }
-            else{
-                flash('cancelProduct','Hủy không thành công','alert-danger');
-            }
+
         }
+        return $data;
+     } 
+  
+      public function changeQuantityAndSize($userId, $productId, $newQuantity, $newSize) {
+          $sql_update = "UPDATE productincart, cart
+                         SET productincart.quantity=".$newQuantity.",productincart.idsize=".$newSize." WHERE productincart.idproduct=".$productId." AND productincart.idcart=cart.id AND cart.iduser=".$userId;
+          mysqli_query($this->db->conn, $sql_update);
+
+      }
+
+      public function cancelProduct($userId, $productId){
+          $sql_delete = "DELETE productincart
+                          FROM productincart,cart
+                          WHERE productincart.idcart = cart.id AND cart.iduser = ".$userId." AND productincart.idproduct = ".$productId;
+          if (mysqli_query($this->db->conn, $sql_delete)){
+              flash('cancelProduct','Hủy thành công');
+          }
+          else{
+              flash('cancelProduct','Hủy không thành công','alert-danger');
+          }
+      }
+ 
+
 
         public function orderCart($userId){
             // Check user have Address or not?
@@ -100,47 +100,71 @@
             if ($result){
                 flash('ordercart','Đặt hàng thành công');
             }
-           
-        }
-
-        public function getOrder($userId){
-            $sql = "SELECT * from orders WHERE iduser=".$userId;
-            $result = mysqli_query($this->db->conn, $sql);
-            $list_order = array();
-            $i = 0;
-            if (mysqli_num_rows($result) >0 ){
-                while ($row = mysqli_fetch_assoc($result)){
-                    $list_order[$i]['id'] = $row['id'];
-                    $list_order[$i]['address'] = $row['address'];
-                    $list_order[$i]['status'] = $row['status'];
-                    $i++;
-                }
-            }
-            return $list_order;
-        }
-
-        public function getProductsByOrderid($orderId){
-            $sql = "SELECT product.name, product.image, productinorders.quantity, size.size, sizeofproduct.price, productinorders.idproduct 
-            FROM productinorders 
-            INNER JOIN product ON productinorders.idproduct = product.id 
-            INNER JOIN sizeofproduct ON productinorders.idsize = sizeofproduct.idsize AND sizeofproduct.idproduct = productinorders.idproduct 
-            INNER JOIN size ON sizeofproduct.idsize = size.id 
-            WHERE productinorders.idorder = ".$orderId;
-            $result = mysqli_query($this->db->conn, $sql);
-            $list_product = array();
-            $i = 0;
-            if (mysqli_num_rows($result) > 0){
-                while($row = mysqli_fetch_assoc($result)){
-                    $list_product[$i]['name'] = $row['name'];
-                    $list_product[$i]['image'] = $row['image'];
-                    $list_product[$i]['quantity'] = $row['quantity'];
-                    $list_product[$i]['size'] = $row['size'];
-                    $list_product[$i]['price'] = $row['price'];
-                    $list_product[$i]['idproduct'] = $row['idproduct'];    
-                    $i++;
-                }
-            }
-            return $list_product;
-        }
+       
     }
-?>
+
+    public function getOrder($userId){
+        $sql = "SELECT * from orders WHERE iduser=".$userId;
+        $result = mysqli_query($this->db->conn, $sql);
+        $list_order = array();
+        $i = 0;
+        if (mysqli_num_rows($result) >0 ){
+            while ($row = mysqli_fetch_assoc($result)){
+                $list_order[$i]['id'] = $row['id'];
+                $list_order[$i]['address'] = $row['address'];
+                $list_order[$i]['status'] = $row['status'];
+                $i++;
+            }
+        }
+        return $list_order;
+    }
+
+    public function getProductsByOrderid($orderId){
+        $sql = "SELECT product.name, product.image, productinorders.quantity, size.size, sizeofproduct.price, productinorders.idproduct 
+        FROM productinorders 
+        INNER JOIN product ON productinorders.idproduct = product.id 
+        INNER JOIN sizeofproduct ON productinorders.idsize = sizeofproduct.idsize AND sizeofproduct.idproduct = productinorders.idproduct 
+        INNER JOIN size ON sizeofproduct.idsize = size.id 
+        WHERE productinorders.idorder = ".$orderId;
+        $result = mysqli_query($this->db->conn, $sql);
+        $list_product = array();
+        $i = 0;
+        if (mysqli_num_rows($result) > 0){
+            while($row = mysqli_fetch_assoc($result)){
+                $list_product[$i]['name'] = $row['name'];
+                $list_product[$i]['image'] = $row['image'];
+                $list_product[$i]['quantity'] = $row['quantity'];
+                $list_product[$i]['size'] = $row['size'];
+                $list_product[$i]['price'] = $row['price'];
+                $list_product[$i]['idproduct'] = $row['idproduct'];    
+                $i++;
+            }
+        }
+        return $list_product;
+    }
+
+    public function getAllOrders(){
+        $sql = "SELECT orders.id, orders.address, orders.status, users.name, users.email
+        FROM orders
+        INNER JOIN users ON orders.iduser = users.id;
+        ";
+        $result = mysqli_query($this->db->conn, $sql);
+        $orders = [];
+        if (mysqli_num_rows($result) >0 ){
+            while ($row = mysqli_fetch_assoc($result)){
+                $order['id'] = $row['id'];
+                $order['address'] = $row['address'];
+                $order['status'] = $row['status'];
+                $order['nameUser'] = $row['name'];
+                $order['email'] = $row['email'];
+                array_push($orders, $order);
+            }
+        }
+        return $orders;
+    }
+
+    public function updateStatus($id, $status) {
+        $sql = "UPDATE orders SET status = $status WHERE id =$id";
+        return mysqli_query($this->db->conn, $sql);
+    }
+}

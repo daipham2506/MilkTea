@@ -10,25 +10,35 @@ class Products extends Controller
     if($this->productModel->getAllCategory()){
         $category = $this->productModel->getAllCategory();
     }
-    if($this->productModel->getProductByCategory(3)){
-      $product = $this->productModel->getProductByCategory(3);
-    }
-    if($this->productModel->getCategoryById(3)){
-      $categoryWithId = $this->productModel->getCategoryById(3);
-      $row = $categoryWithId->fetch_assoc(); // array
+    //old
+    // if($this->productModel->getProductByCategory(3)){
+    //   $product = $this->productModel->getProductByCategory(3);
+    // }
+    // if($this->productModel->getCategoryById(3)){
+    //   $categoryWithId = $this->productModel->getCategoryById(3);
+    //   $row = $categoryWithId->fetch_assoc(); // array
+    // }
+    // $data = [
+    //     "category" => $category,
+    //     "categoryWithId"=> $row,
+    //     "product" => $product
+    // ];
+    //old
+    if($this->productModel->getAllProductWithCategory()){
+        $product_list = $this->productModel->getAllProductWithCategory();
     }
     $data = [
         "category" => $category,
-        "categoryWithId"=> $row,
-        "product" => $product
+        "productWithCategory" => $product_list
     ];
-    $this->view("products/category", $data);
+    $this->view("products/index", $data);
   }
   public function category($categoryId){
     $category = [];
     if($this->productModel->getAllCategory()){
       $category = $this->productModel->getAllCategory();
     }
+    $product = [];
     if($this->productModel->getProductByCategory($categoryId)){
       $product = $this->productModel->getProductByCategory($categoryId);
     }
@@ -103,7 +113,7 @@ class Products extends Controller
     $listProduct = [];
 
     foreach($listProductSearch as $item){
-      $rs_price = $this->productModel->getPriceByProductId($item["id"]);
+      $rs_price = $this->productModel->getPriceByProductIdMinh($item["id"]);
       $list_price = [];
       while($row = $rs_price->fetch_assoc()){
         array_push($list_price,$row);

@@ -50,7 +50,12 @@
   <script src="<?php echo URLROOT; ?>js/header.js"></script>
   <script src="<?php echo URLROOT; ?>js/postDetail.js"></script>
   <script src="<?php echo URLROOT; ?>js/editPost.js"></script>
+
   <script src="<?php echo URLROOT; ?>js/shoppingcart.js"></script>
   </body>
 
-  </html>
+  <script src="<?php echo URLROOT; ?>js/displaySizeContainer.js"></script>
+</body>
+</html>
+
+
