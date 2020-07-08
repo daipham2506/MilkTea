@@ -53,11 +53,11 @@
                                     ?>
                                         <div class='card' style="margin-top:25px; padding:15px 10px;overflow-x:auto;">
                                             <table class="table table-hover shopping-cart-wrap">
-                                                <h6 class="text-center">Mã đơn hàng: <?php echo $data[$i]['id'] ?></h6>
-                                                <h6 class="text-center">Tên khách hàng: <?php echo $data[$i]['nameUser'] ?></h6>
-                                                <h6 class="text-center">Địa chỉ giao hàng: <?php echo $data[$i]['address'] ?></h6>
-                                                <h6 class="text-center">Trạng thái: <p style="display:inline-block; color: <?php echo $color ?>"> <?php echo $status ?></p>
-                                                </h6>
+                                                <h6 class="text-center">Mã đơn hàng: #<?php echo $data[$i]['id'] ?></h6>
+                                                <h6 class="text-center">Tên khách hàng: <?php echo $data[$i]['user']->name ?></h6>
+                                                <h6 class="text-center">Địa chỉ giao hàng: <?php echo $data[$i]['user']->address ?></h6>
+                                                <h6 class="text-center">Số điện thoại: <?php echo $data[$i]['user']->phone ?></h6>
+                                                <h6 class="text-center" style="margin-bottom:20px">Email: <?php echo $data[$i]['user']->email ?></h6>
                                                 <thead class="text-muted">
                                                     <tr>
                                                         <th scope="col">Sản phẩm</th>
@@ -98,7 +98,7 @@
                                             </table>
                                             <p class='price text-right' style='padding-right:25px'>Tổng giá tiền: <?php echo $total_price; ?>đ</p>
 
-                                            <form action="<?php echo URLROOT; ?>admin/changeStatus/<?php echo $data[$i]['id'] ?>" method="post">
+                                            <form action="<?php echo URLROOT; ?>admin/changeStatus/<?php echo $data[$i]['id'] . "/" . $data[$i]['userId'] ?>" method="post">
                                                 <div class="form-group" style="margin:15px 30px;">
                                                     <label>Chọn trạng thái đơn hàng</label>
                                                     <select class="form-control" name="status" style="font-size: 14px">
@@ -138,11 +138,11 @@
                                     ?>
                                         <div class='card' style="margin-top:25px; padding:15px 10px;">
                                             <table class="table table-hover shopping-cart-wrap">
-                                                <h6 class="text-center">Mã đơn hàng: <?php echo $data[$i]['id'] ?></h6>
-                                                <h6 class="text-center">Tên khách hàng: <?php echo $data[$i]['nameUser'] ?></h6>
-                                                <h6 class="text-center">Địa chỉ giao hàng: <?php echo $data[$i]['address'] ?></h6>
-                                                <h6 class="text-center">Trạng thái: <p style="display:inline-block; color: <?php echo $color ?>"> <?php echo $status ?></p>
-                                                </h6>
+                                                <h6 class="text-center">Mã đơn hàng: #<?php echo $data[$i]['id'] ?></h6>
+                                                <h6 class="text-center">Tên khách hàng: <?php echo $data[$i]['user']->name ?></h6>
+                                                <h6 class="text-center">Địa chỉ giao hàng: <?php echo $data[$i]['user']->address ?></h6>
+                                                <h6 class="text-center">Số điện thoại: <?php echo $data[$i]['user']->phone ?></h6>
+                                                <h6 class="text-center" style="margin-bottom:20px">Email: <?php echo $data[$i]['user']->email ?></h6>
                                                 <thead class="text-muted">
                                                     <tr>
                                                         <th scope="col">Sản phẩm</th>
@@ -183,7 +183,7 @@
                                             </table>
                                             <p class='price text-right' style='padding-right:25px'>Tổng giá tiền: <?php echo $total_price; ?>đ</p>
 
-                                            <form action="<?php echo URLROOT; ?>admin/changeStatus/<?php echo $data[$i]['id'] ?>" method="post">
+                                            <form action="<?php echo URLROOT; ?>admin/changeStatus/<?php echo $data[$i]['id'] . "/" . $data[$i]['userId'] ?>" method="post">
                                                 <div class="form-group" style="margin:15px 30px;">
                                                     <label>Chọn trạng thái đơn hàng</label>
                                                     <select class="form-control" name="status" style="font-size: 14px">
@@ -222,11 +222,11 @@
                                     ?>
                                         <div class='card' style="margin-top:25px; padding:15px 10px;">
                                             <table class="table table-hover shopping-cart-wrap">
-                                                <h6 class="text-center">Mã đơn hàng: <?php echo $data[$i]['id'] ?></h6>
-                                                <h6 class="text-center">Tên khách hàng: <?php echo $data[$i]['nameUser'] ?></h6>
-                                                <h6 class="text-center">Địa chỉ giao hàng: <?php echo $data[$i]['address'] ?></h6>
-                                                <h6 class="text-center">Trạng thái: <p style="display:inline-block; color: <?php echo $color ?>"> <?php echo $status ?></p>
-                                                </h6>
+                                                <h6 class="text-center">Mã đơn hàng: #<?php echo $data[$i]['id'] ?></h6>
+                                                <h6 class="text-center">Tên khách hàng: <?php echo $data[$i]['user']->name ?></h6>
+                                                <h6 class="text-center">Địa chỉ giao hàng: <?php echo $data[$i]['user']->address ?></h6>
+                                                <h6 class="text-center">Số điện thoại: <?php echo $data[$i]['user']->phone ?></h6>
+                                                <h6 class="text-center" style="margin-bottom:20px">Email: <?php echo $data[$i]['user']->email ?></h6>
                                                 <thead class="text-muted">
                                                     <tr>
                                                         <th scope="col">Sản phẩm</th>
@@ -267,7 +267,7 @@
                                             </table>
                                             <p class='price text-right' style='padding-right:25px'>Tổng giá tiền: <?php echo $total_price; ?>đ</p>
 
-                                            <form action="<?php echo URLROOT; ?>admin/changeStatus/<?php echo $data[$i]['id'] ?>" method="post">
+                                            <form action="<?php echo URLROOT; ?>admin/changeStatus/<?php echo $data[$i]['id'] . "/" . $data[$i]['userId'] ?>" method="post">
                                                 <div class="form-group" style="margin:15px 30px;">
                                                     <label>Chọn trạng thái đơn hàng</label>
                                                     <select class="form-control" name="status" style="font-size: 14px">
@@ -305,11 +305,12 @@
                                     ?>
                                         <div class='card' style="margin-top:25px; padding:15px 10px;">
                                             <table class="table table-hover shopping-cart-wrap">
-                                                <h6 class="text-center">Mã đơn hàng: <?php echo $data[$i]['id'] ?></h6>
-                                                <h6 class="text-center">Tên khách hàng: <?php echo $data[$i]['nameUser'] ?></h6>
-                                                <h6 class="text-center">Địa chỉ giao hàng: <?php echo $data[$i]['address'] ?></h6>
-                                                <h6 class="text-center">Trạng thái: <p style="display:inline-block; color: <?php echo $color ?>"> <?php echo $status ?></p>
-                                                </h6>
+                                                <h6 class="text-center">Mã đơn hàng: #<?php echo $data[$i]['id'] ?></h6>
+                                                <h6 class="text-center">Tên khách hàng: <?php echo $data[$i]['user']->name ?></h6>
+                                                <h6 class="text-center">Địa chỉ giao hàng: <?php echo $data[$i]['user']->address ?></h6>
+                                                <h6 class="text-center">Số điện thoại: <?php echo $data[$i]['user']->phone ?></h6>
+                                                <h6 class="text-center" style="margin-bottom:20px">Email: <?php echo $data[$i]['user']->email ?></h6>
+
                                                 <thead class="text-muted">
                                                     <tr>
                                                         <th scope="col">Sản phẩm</th>

@@ -83,28 +83,44 @@ class Admin extends Controller
 	{
 		$data = [];
 		$orders = $this->orderModel->getAllOrders();
-		foreach($orders as $order) {
+		foreach ($orders as $order) {
 			$d['id'] = $order['id'];
 			$d['address'] = $order['address'];
 			$d['status'] = $order['status'];
-			$d['nameUser'] = $order['nameUser'];
-			$d['email'] = $order['email'];
+			$d['userId'] = $order['userId'];
+			$d['user'] = $this->userModel->findUserById($order['userId']);
 			$d['product'] = $this->orderModel->getProductsByOrderid($order['id']);
 			array_push($data, $d);
 		}
-		$this->view('admin/manage-orders', $data);		
+		$this->view('admin/manage-orders', $data);
 	}
 
-	public function changeStatus($id) {
+	public function changeStatus($id, $userId)
+	{
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$status = $_POST['status'];
+			$des_status = 'Chờ xác nhận';
+			if ($status == 2) {
+				$des_status = 'Đã xác nhận';
+			} else if ($status == 3) {
+				$des_status = 'Đang giao hàng';
+			} else if ($status == 4) {
+				$des_status = 'Đã giao hàng';
+			}
 			$success = $this->orderModel->updateStatus($id, $status);
-			if($success){
-				flash('update-status', "Mã đơn hàng $id đã được thay đổi trạng thái");
+			if ($success) {
+				flash('update-status', "Mã đơn hàng #$id đã được thay đổi trạng thái thành '$des_status'");
+				// send email to user
+				$products = $this->orderModel->getProductsByOrderid($id);
+				$user = $this->userModel->findUserById($userId);
+				$this->orderModel->sendEmail($user, $status, $products, $id);
+				$page = URLROOT . 'admin/manageOrders';
+				echo "<script>window.location.assign('$page')</script>";
 			} else {
 				flash('update-status', "Mã đơn hàng $id thay đổi trạng thái không thành công", "alert-danger");
 			}
+			
 			redirect("admin/manageOrders");
-		} 
+		}
 	}
 }
