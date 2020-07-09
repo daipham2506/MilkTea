@@ -1,8 +1,5 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php if (isset($_SESSION['user_id'])){ 
-    require_once APPROOT."/models/User.php";
-    $userModel = new User;
-    $user_address = $userModel->findAddressUser($_SESSION['user_id']);
 ?>
     
 <div class="container" style='padding:70px 0'>
@@ -85,12 +82,24 @@
                 </tbody>
             </table>
             <var class='price text-right' style='padding-right:10px' id='total-price'>Tổng giá tiền: <?php echo $total_price; ?>đ</var>
+            <?php 
+                require_once APPROOT."/models/User.php";
+                $userModel = new User;
+                $user_address_and_phone = $userModel->findAddressAndPhoneById($_SESSION['user_id']);
+            ?>
             <div class="form-group row" style='padding:10px'>
                 <label for="inputAddress" class="col-sm-3 col-form-label">Địa chỉ nhận hàng</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name='address' value="<?php echo $user_address ?>">
+                    <input type="text" class="form-control" name='address' value="<?php echo $user_address_and_phone['address'] ?>">
                 </div>
             </div>
+            <div class="form-group row" style='padding:10px'>
+                <label for="phone" class="col-sm-3 col-form-label">Số điện thoại</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name='phone' value="<?php echo $user_address_and_phone['phone'] ?>">
+                </div>
+            </div>
+            
             
         </div> <!-- card.// -->
         

@@ -236,4 +236,12 @@ class User
       return false;
     }
   }
+  public function findAddressAndPhoneById($id){
+    $sql = "SELECT address, phone from Users WHERE id=".$id;
+    $result = mysqli_query($this->db->conn, $sql);
+    if (mysqli_num_rows($result) == 0){
+      return "";
+    }
+    else return mysqli_fetch_assoc($result);
+  }
 }

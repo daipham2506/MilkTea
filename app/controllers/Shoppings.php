@@ -40,18 +40,18 @@ class Shoppings extends Controller{
         //     redirect("shoppings/shoppingcart/".$userId);
         // }
 
-        public function ordercart($userId){
-            $list_product = $this->shoppingcartModel->getProductInCart($userId);
+    public function ordercart($userId){
+        $list_product = $this->shoppingcartModel->getProductInCart($userId);
             
-            for ($i = 0; $i < count($list_product); $i++){
-                $quantity = $_POST["quantity-".$list_product[$i]['idproduct']];
-                $size = $_POST["size-".$list_product[$i]['idproduct']];
-                $this->shoppingcartModel->changeQuantityAndSize($userId, $list_product[$i]['idproduct'], $quantity,$size);
-            }
-            if (isset($_POST['ordercart'])){
-                $this->shoppingcartModel->orderCart($userId);
-            }
-            redirect("shoppings/shoppingcart/".$userId);
+        for ($i = 0; $i < count($list_product); $i++){
+            $quantity = $_POST["quantity-".$list_product[$i]['idproduct']];
+            $size = $_POST["size-".$list_product[$i]['idproduct']];
+            $this->shoppingcartModel->changeQuantityAndSize($userId, $list_product[$i]['idproduct'], $quantity,$size);
+        }
+        if (isset($_POST['ordercart'])){
+            $this->shoppingcartModel->orderCart($userId);
+        }
+        redirect("shoppings/shoppingcart/".$userId);
     }
 
     public function orderpage($userId){
@@ -60,6 +60,7 @@ class Shoppings extends Controller{
         for ($i = 0; $i < count($list_order); $i++){
             $data[$i]['id'] = $list_order[$i]['id'];
             $data[$i]['status'] = $list_order[$i]['status'];
+            $data[$i]['address'] = $list_order[$i]['address'];
             $data[$i]['product'] = $this->shoppingcartModel->getProductsByOrderid($data[$i]['id']);
         }
        
