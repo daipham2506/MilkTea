@@ -67,7 +67,7 @@
                     </tbody>
                 </table>
                 <var class='price text-right' style='padding-right:10px'>Tổng giá tiền: <?php echo $total_price; ?>đ</var>
-                <var class='text-right' style='padding-right:10px'>Địa chỉ nhận hàng: <?php echo $data[$i]['address']; ?><var>
+                <var class='text-right pb-3' style='padding-right:10px'>Địa chỉ nhận hàng: <?php echo $data[$i]['address']; ?><var>
             </div>    
         <?php  } ?>
 </div>

@@ -123,7 +123,7 @@ $count_review = $review->num_rows;
             $content = $review_row["content"];
             $star_html = printStar($review_row["numberstar"]);
             $delete_link = URLROOT . "products/deleteReview/" . $review_id . "/" . $user_id . "/" . $product["id"];
-            $delete_button_display = ($_SESSION["user_id"] == $user_id) ?
+            $delete_button_display = ( isset($_SESSION["user_id"] ) && $_SESSION["user_id"] == $user_id) ?
                 "
             <div class='col-md-1 col-2 d-flex align-items-center'>
                 <a href='$delete_link' class='btn btn-danger'><i class='fas fa-trash'></i></a>
