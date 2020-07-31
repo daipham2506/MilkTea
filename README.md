@@ -1,4 +1,4 @@
-��# Milk Tea
+<h1>Cửa hàng trà sữa</h1>
 
 ![image](Images/hcmut.png)
 
@@ -43,13 +43,11 @@ Thiết kế cơ sở dữ liệu
 
 ### Mô hình ERD
 
-![Mô hình ERD](Images/database/DatabaseWebProgramming.png "fig:")
-[fig:my~l~abel]
+![Mô hình ERD](Images/database/DatabaseWebProgramming.png)
 
 ### Mô hình relation
 
-![Mô hình Relation](Images/database/RelationWebProgramming.png "fig:")
-[fig:my~l~abel]
+![Mô hình Relation](Images/database/RelationWebProgramming.png)
 
 Cấu trúc mã nguồn
 -----------------
@@ -88,8 +86,7 @@ Người dùng là khách
 -   Các thông tin còn lại như địa chỉ, ngày sinh , số điện thoại, giới
     tính, ảnh đại diện... có thể được cập nhật sau khi đăng ký.
 
-    ![Trang đăng ký người dùng mới](Images/visitor/register.PNG "fig:")
-    [fig:my~l~abel]
+    ![Trang đăng ký người dùng mới](Images/visitor/register.PNG)
 
 Người dùng là thành viên
 ------------------------
@@ -99,55 +96,48 @@ Người dùng là thành viên
 -   Người dùng sử dụng tài khoản đã đăng ký để đăng nhập vào hệ thống.
 
     ![Trang đăng đăng nhập vào hệ
-    thống](Images/members/login.PNG "fig:") [fig:my~l~abel]
+    thống](Images/members/login.PNG)
 
 ### Xem và cập nhật thông tin cá nhân
 
 Chức năng này quản trị viên cũng có thể sử dụng Ấn vào avatar để xem
 thông tin cá nhân
 
-![Vào trang xem thông tin người dùng](Images/user/user-info.png "fig:")
-[fig:my~l~abel]
+![Vào trang xem thông tin người dùng](Images/user/user-info.png)
 
 ![Trang thông tin chi tiết của người
-dùng](Images/user/user-detail.PNG "fig:") [fig:my~l~abel]
+dùng](Images/user/user-detail.PNG) 
 
 Ấn vào button Cập nhật thông tin để tiến hành cập nhật thông tin
 
-![Trang cập nhật thông tin người dùng](Images/user/user-edit.PNG "fig:")
-[fig:my~l~abel]
+![Trang cập nhật thông tin người dùng](Images/user/user-edit.PNG )
 
-![Cập nhật thông tin thành công](Images/user/user-update.PNG "fig:")
-[fig:my~l~abel]
+![Cập nhật thông tin thành công](Images/user/user-update.PNG)
 
 ### Thay đổi mật khẩu
 
-![Màn hình thay đổi mật khẩu](Images/user/user-changepass.PNG "fig:")
-[fig:my~l~abel]
+![Màn hình thay đổi mật khẩu](Images/user/user-changepass.PNG)
 
 Đổi mật khẩu thành công sẽ chuyển đến trang đăng nhập và người dùng đăng
 nhập lại
 
-![Màn hình thay đổi mật khẩu](Images/user/chanpass_success.PNG "fig:")
-[fig:my~l~abel]
+![Màn hình thay đổi mật khẩu](Images/user/chanpass_success.PNG)
 
 ### Quên mật khẩu
 
 Người dùng có thể lấy lại mật khẩu đã quên qua email đã đăng ký trước
 đó.
 
-![Màn hình lấy lại mật khẩu](Images/user/forgotpass.PNG "fig:")
-[fig:my~l~abel]
+![Màn hình lấy lại mật khẩu](Images/user/forgotpass.PNG)
 
 Yêu cầu lấy lại mật khẩu thành công
 
 ![Màn hình lấy lại mật khẩu thành
-công](Images/user/forgotpass1.PNG "fig:") [fig:my~l~abel]
+công](Images/user/forgotpass1.PNG)
 
 Tin nhắn cấp lại mật khẩu mới đã được gửi đến email của người dùng.
 
-![Tin nhắn gửi đến email](Images/user/forgotpass2.PNG "fig:")
-[fig:my~l~abel]
+![Tin nhắn gửi đến email](Images/user/forgotpass2.PNG)
 
 ### Thêm sản phẩm vào giỏ hàng
 
@@ -162,16 +152,14 @@ Tin nhắn cấp lại mật khẩu mới đã được gửi đến email của
     phẩm bằng cách click vào nút chọn mua.
 
     ![Thêm sản phẩm vào giỏ
-    hàng](Images/members/cart/addProductToCart1.png "fig:")
-    [fig:my~l~abel]
+    hàng](Images/members/cart/addProductToCart1.png)
 
 ### Xem giỏ hàng
 
 -   Click vào button giỏ hàng trên header để xem chi tiết giỏ hàng và
     thực hiện các thay đổi nếu cần.
 
-    ![Xem thông tin giỏ hàng](Images/members/cart/cartInfo.PNG "fig:")
-    [fig:my~l~abel]
+    ![Xem thông tin giỏ hàng](Images/members/cart/cartInfo.PNG)
 
 -   Có thể cập nhật lại địa chỉ, số lượng, size của sản phẩm, hoặc cũng
     có thể xóa sản phẩm ra khỏi giỏ hàng.
@@ -190,15 +178,13 @@ Tin nhắn cấp lại mật khẩu mới đã được gửi đến email của
 -   Hiển thị các thông tin của đơn đặt hàng bao gồm sản phẩm, tổng tiền,
     trạng thái đơn hàng,...
 
-    ![Xem danh sách đơn hàng](Images/members/cart/orders.PNG "fig:")
-    [fig:my~l~abel]
+    ![Xem danh sách đơn hàng](Images/members/cart/orders.PNG)
 
 ### Thêm đánh giá cho sản phẩm
 
 -   Thực hiện việc đánh giá và xem đánh giá tại trang chi tiết sản phẩm
 
-    ![Trang chi tiết đơn hàng](Images/admin/display-star.png "fig:")
-    [fig:my~l~abel]
+    ![Trang chi tiết đơn hàng](Images/admin/display-star.png)
 
     1.  Số sao đánh giá trung bình và tổng số đánh giá
 
@@ -206,20 +192,18 @@ Tin nhắn cấp lại mật khẩu mới đã được gửi đến email của
 
 -   Thêm đánh giá mới
 
-    ![Thêm đánh giá](Images/admin/add_review.PNG "fig:") [fig:my~l~abel]
+    ![Thêm đánh giá](Images/admin/add_review.PNG)
 
 -   Các đánh giá của khách hàng
 
-    ![Các đánh giá của khách hàng](Images/admin/reviews.PNG "fig:")
-    [fig:my~l~abel]
-
+    ![Các đánh giá của khách hàng](Images/admin/reviews.PNG)
     \
     Khách hàng có thể xóa đi đánh giá của chính mình với nút xóa.
 
 -   Xóa đánh giá thành công
 
     ![Xóa đánh giá thành
-    công](Images/admin/delete_review_success.PNG "fig:") [fig:my~l~abel]
+    công](Images/admin/delete_review_success.PNG)
 
 ### Tạo, xóa, chỉnh sửa bài đăng
 
@@ -227,24 +211,19 @@ Tin nhắn cấp lại mật khẩu mới đã được gửi đến email của
 
 -   Tạo bài đăng mới
 
-    ![Tạo bài đăng mới](Images/members/post/addPost.PNG "fig:")
-    [fig:my~l~abel]
+    ![Tạo bài đăng mới](Images/members/post/addPost.PNG )
 
 -   Sau khi thêm bài đăng mới thành công, thì bài đăng sẽ được hiển thị
     lên danh sách các bài đăng, có hiện thực phân trang cho việc hiển
     thị danh sách các bài đăng.
 
-    ![Danh sách bài đăng](Images/members/post/listPost.PNG "fig:")
-    [fig:my~l~abel]
+    ![Danh sách bài đăng](Images/members/post/listPost.PNG)
 
 -   Chỉ có người tạo ra bài đăng mới có quyền chỉnh sửa và xóa bài đăng
     đó.
 
-    ![Chỉnh sửa bài đăng](Images/members/post/editPost.PNG "fig:")
-    [fig:my~l~abel]
-
-    ![Xóa bài đăng](Images/members/post/deletePost.PNG "fig:")
-    [fig:my~l~abel]
+    ![Chỉnh sửa bài đăng](Images/members/post/editPost.PNG)
+    ![Xóa bài đăng](Images/members/post/deletePost.PNG)
 
 ### Viết bình luận
 
@@ -259,7 +238,7 @@ Tin nhắn cấp lại mật khẩu mới đã được gửi đến email của
 
 -   Người dùng chỉ có thể xóa bình luận của chính mình.
 
-    ![Bình luận](Images/members/post/comment.PNG "fig:") [fig:my~l~abel]
+    ![Bình luận](Images/members/post/comment.PNG)
 
 Người dùng là quản trị viên
 ---------------------------
@@ -268,57 +247,50 @@ Người dùng là quản trị viên
 
 -   Trang quản lí sản phẩm
 
-    ![Danh sách các sản phẩm](Images/admin/manageproduct.PNG "fig:")
-    [fig:my~l~abel]
+    ![Danh sách các sản phẩm](Images/admin/manageproduct.PNG)
 
 -   Trang thêm sản phẩm mới
 
-    ![Điền form để thêm sản phẩm](Images/admin/add_product.PNG "fig:")
-    [fig:my~l~abel]
+    ![Điền form để thêm sản phẩm](Images/admin/add_product.PNG)
 
 -   Thêm sản phẩm thành công
 
     ![Trà sữa khoai môn được
-    thêm](Images/admin/add_product_success.png "fig:") [fig:my~l~abel]
+    thêm](Images/admin/add_product_success.png)
 
 -   Trang cập nhật sản phẩm
 
-    ![Cập nhật sản phẩm](Images/admin/update_product.PNG "fig:")
-    [fig:my~l~abel]
-
+    ![Cập nhật sản phẩm](Images/admin/update_product.PNG)
 -   Cập nhật sản phẩm thành công
 
     ![Yakult đá xay được cập
-    nhật](Images/admin/update_product_success.png "fig:")
-    [fig:my~l~abel]
+    nhật](Images/admin/update_product_success.png)
 
 -   Xóa sản phẩm
 
-    ![Xóa trà sữa khoai môn](Images/admin/delete_product.PNG "fig:")
-    [fig:my~l~abel]
+    ![Xóa trà sữa khoai môn](Images/admin/delete_product.PNG)
 
 -   Xóa sản phẩm thành công
 
     ![Xóa trà sữa khoai môn thành
-    công](Images/admin/delete_product_success.PNG "fig:")
-    [fig:my~l~abel]
+    công](Images/admin/delete_product_success.PNG)
 
 ### Cập nhật thông tin cửa hàng
 
 -   Ấn vào button Sửa thông tin ở phẩn footer
 
     ![Button sửa thông tin cửa
-    hàng](Images/admin/editcontactbutton.png "fig:") [fig:my~l~abel]
+    hàng](Images/admin/editcontactbutton.png)
 
 -   Trang cập nhật thông tin liên hệ
 
     ![Cập nhật thông tin liên
-    hệ](Images/admin/editcontactpage.PNG "fig:") [fig:my~l~abel]
+    hệ](Images/admin/editcontactpage.PNG)
 
 -   Cập nhật thành công
 
     ![Cập nhật thông tin liên hệ thành
-    công](Images/admin/updatecontact_success.PNG "fig:") [fig:my~l~abel]
+    công](Images/admin/updatecontact_success.PNG)
 
 ### Xem thông tin người dùng, xóa người dùng
 
@@ -377,61 +349,6 @@ Cài đặt
 
 -   Phiên bản PHP hỗ trợ: PHP 7.4.7
 
--   Link source code:
-
--   <https://github.com/daipham2506/MilkTea>
-
-Phụ lục
-=======
-
-Sự đóng góp vào dự án của các thành viên
-
-[H]
-
-<span>|l|p<span>7cm</span>|l|</span> Thành viên & Nhiệm vụ & Phần trăm
-hoàn thành\
-Hiệu &
-
--   Cập nhật thông tin người dùng, thêm, xóa, sửa sản phẩm; chỉnh sửa
-    thông tin liên hệ.
-
--   Tạo trang chi tiết sản phẩm; thêm mới, sửa, xóa review của người
-    dùng về sản phẩm đó.
-
-& 100%\
-Đại &
-
--   Đăng nhập, đăng xuất, đăng ký; hiển thị danh sách user, xóa user
-
--   Hiển thị danh sách đơn hàng của các user và cho phép admin check khi
-    đơn hàng đã được thanh toán.
-
--   Quên mật khẩu
-
--   Gửi mail thông báo cho user về tình trạng đơn đặt hàng.
-
-& 100%\
-
-Minh &
-
--   Tạo bài post, sửa, xóa bài post
-
--   Tạo, sửa, xóa bình luận cho bài post
-
--   Tìm kiếm sản phẩm theo tên,phân trang.
-
-& 100%\
-
-Nhân &
-
--   Thêm sản phẩm vào giỏ hàng
-
--   Sau khi khách hàng click đặt hàng thì tạo đơn đặt hàng mới và chuyển
-    tất cả sản phẩm vào đơn đặt hàng.
-
--   Xóa sản phẩm khỏi giỏ hàng, chỉnh sửa giỏ hàng.
-
-& 100%\
 
 Tài liệu tham khảo
 ==================
