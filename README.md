@@ -316,7 +316,7 @@ Trang quản lý đơn hàng
 
 Chọn vào vùng màu xanh lam để thay đổi trạng thái đơn hàng
 
-![Thay đổi trạng thái đơn hàng](Images/admin/manage-order2.PNG)
+![Thay đổi trạng thái đơn hàng](Images/admin/manage-order2.png)
 
 Thay đổi trạng thái đơn hàng thành công
 
