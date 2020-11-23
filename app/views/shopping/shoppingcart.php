@@ -90,13 +90,13 @@
             <div class="form-group row" style='padding:10px'>
                 <label for="inputAddress" class="col-sm-3 col-form-label">Địa chỉ nhận hàng</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name='address' value="<?php echo $user_address_and_phone['address'] ?>">
+                    <input type="text" class="form-control" name='address' value="<?php if(!empty($user_address_and_phone)) echo $user_address_and_phone['address'] ?>">
                 </div>
             </div>
             <div class="form-group row" style='padding:10px'>
                 <label for="phone" class="col-sm-3 col-form-label">Số điện thoại</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name='phone' value="<?php echo $user_address_and_phone['phone'] ?>">
+                    <input type="text" class="form-control" name='phone' value="<?php if(!empty($user_address_and_phone)) echo $user_address_and_phone['phone'] ?>">
                 </div>
             </div>
             
