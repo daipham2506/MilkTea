@@ -1,5 +1,5 @@
 <?php
-class ManageProducts extends Controller
+class Manageproducts extends Controller
 {
   public function __construct()
   {
