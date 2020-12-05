@@ -13,7 +13,7 @@ class Shopping{
 
     public function getProductInCart($userId){
         $data = array();
-        $getList_sql = "SELECT product.name, product.image, productincart.quantity, size.size, sizeofproduct.price, productincart.idproduct, productincart.idcart
+        $getList_sql = "SELECT product.name, product.image, productincart.quantity, size.size, sizeofproduct.price, productincart.idproduct, productincart.idcart , sizeofproduct.quantity AS total_quantity
                         FROM productincart 
                         INNER JOIN product 
                         ON productincart.idproduct = product.id
@@ -38,6 +38,7 @@ class Shopping{
               $data[$i]['price'] = $row['price'];
               $data[$i]['idproduct'] = $row['idproduct'];
               $data[$i]['idcart'] = $row['idcart'];
+              $data[$i]['total_quantity'] = $row['total_quantity'];
               $i++;
             }
 

@@ -63,7 +63,7 @@
                                 <td>' . $user['name'] . '</td>
                                 <td>' . $user['email'] . '</td>
                                 <td>' . $user['phone'] . '</td>
-                                <td><img style="width:40px;height:40px;border-radius:50%" src=' . $user['avatar'] . ' alt="user-avatar"></td>
+                                <td><img style="width:40px;height:40px;border-radius:50%" src=' . $user['avatar'] . ' alt="avatar"></td>
                                 <td>' . $user['address'] . '</td>
                                 <td> <a href="#ModalConfirm' . $user['id'] . '" data-toggle="modal"><button type="button" class="btn btn-outline-danger">Xóa</button></a></td>
                             </tr>';

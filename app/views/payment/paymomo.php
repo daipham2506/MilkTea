@@ -14,6 +14,7 @@
                         <th scope="col">Sản phẩm</th>
                         <th scope="col" width="100">Size</th>
                         <th scope="col" width="120">Số lượng</th>
+                        <th scope="col" width="120">Còn lại(sp)</th>
                         <th scope="col" width="120">Giá</th>
                     </tr>
                 </thead>
@@ -42,6 +43,9 @@
                         <td>
                             <?php echo $data["productInCart"][$i]['quantity']?>
                         <input value="<?php echo $data["productInCart"][$i]['quantity']?>" style="display: none;" type="number" name="quantity-<?php echo $data["productInCart"][$i]['idproduct']?>"/>
+                        </td>
+                        <td>
+                            <?php echo $data["productInCart"][$i]["total_quantity"];?>
                         </td>
                         <td> 
                             <div class="price-wrap"> 
