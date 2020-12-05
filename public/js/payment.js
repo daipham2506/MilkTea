@@ -1,5 +1,4 @@
 $(document).ready(function() {
-    console.log("Run here");
 
     const payWithMomoBtn = $('#pay-with-momo');
 
@@ -9,6 +8,7 @@ $(document).ready(function() {
     const userId = payWithMomoBtn.attr("userId");
     const address = payWithMomoBtn.attr("address");
     const phone = payWithMomoBtn.attr("phone");
+    const totalPrice = payWithMomoBtn.attr("totalPrice");
 
     payWithMomoBtn.on('click', function(){     
 
@@ -17,8 +17,8 @@ $(document).ready(function() {
 
         const dataPayment = {
             orderId: orderId,
-            orderInfo: "Order payment",
-            amount: "160000",
+            orderInfo: "Order payment in milk-tea",
+            amount: totalPrice,
             extraData: ""
         }
 
