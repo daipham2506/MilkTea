@@ -65,7 +65,7 @@
                 <div class="form-group d-flex">
                     <input type="text" class="form-control mr-2" name="comment" id="input-add-comment" aria-describedby="emailHelp" placeholder="Thêm bình luận mới">
                     <input type="text" value="<?php echo $data["postDetail"]["idpost"]; ?>" class="d-none form-control mr-2" name="idpost" aria-describedby="emailHelp">
-                    <button type="button" idpost="<?php echo $data["postDetail"]["idpost"]; ?>" id="my-btn-add-comment" class="btn btn-info btn-add-comment">Add</button>
+                    <button urlRoot="<?php echo URLROOT; ?>" type="button" idpost="<?php echo $data["postDetail"]["idpost"]; ?>" id="my-btn-add-comment" class="btn btn-info btn-add-comment">Add</button>
                 </div>
             </form>
             <a href="<?php echo URLROOT; ?>posts/listposts" class="btn btn-primary col-6 col-xl-3 col-lg-3 col-md-3 mr-2">Quay lại danh sách</a>

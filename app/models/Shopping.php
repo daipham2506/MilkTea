@@ -77,7 +77,7 @@ class Shopping{
                 $name = mysqli_query($this->db->conn, $sql);
                 $name = mysqli_fetch_assoc($name)['name'];
                 flash('ordercart','Sản phẩm '.$name.' còn lại không đủ, vui lòng đặt lại số lượng','alert-danger');
-                return;
+                return false;
             }
         }
         // order
@@ -92,7 +92,7 @@ class Shopping{
         if ($result){
             flash('ordercart','Đặt hàng thành công');
         }
-       
+        return true;
     }
 
     public function getOrder($userId){
