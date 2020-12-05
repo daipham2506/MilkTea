@@ -8,7 +8,8 @@
     <hr>
 
 
-    <form action="<?php echo URLROOT; ?>shoppings/ordercart/<?php echo $_SESSION['user_id']?>" method="POST">
+    <!-- <form action="<?php echo URLROOT; ?>shoppings/ordercart/<?php echo $_SESSION['user_id']?>" method="POST"> -->
+    <form action="<?php echo URLROOT; ?>payment/paymomo" method="POST">
         <div class="card">
         <?php
             flash('changeQuantity');

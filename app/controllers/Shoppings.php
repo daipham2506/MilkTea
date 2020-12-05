@@ -63,7 +63,7 @@ class Shoppings extends Controller{
             $data[$i]['address'] = $list_order[$i]['address'];
             $data[$i]['product'] = $this->shoppingcartModel->getProductsByOrderid($data[$i]['id']);
         }
-       
+        
         $this->view('shopping/order',$data);
    }
   
