@@ -73,6 +73,7 @@
                 orderId="<?php echo uniqid(); ?>"
                 address="<?php echo $data["address"]; ?>"
                 phone="<?php echo $data["phone"]; ?>"
+                totalPrice="<?php echo $total_price; ?>"
                 >Thanh toán</button>
             </div>
         </div>
