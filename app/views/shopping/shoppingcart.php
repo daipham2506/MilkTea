@@ -8,7 +8,8 @@
     <hr>
 
 
-    <form action="<?php echo URLROOT; ?>shoppings/ordercart/<?php echo $_SESSION['user_id']?>" method="POST">
+    <!-- <form action="<?php echo URLROOT; ?>shoppings/ordercart/<?php echo $_SESSION['user_id']?>" method="POST"> -->
+    <form action="<?php echo URLROOT; ?>payment/paymomo" method="POST">
         <div class="card">
         <?php
             flash('changeQuantity');
@@ -26,6 +27,7 @@
                         <th scope="col">Sản phẩm</th>
                         <th scope="col" width="100">Size</th>
                         <th scope="col" width="120">Số lượng</th>
+                        <th scope="col" width="120">Còn lại(sp)</th>
                         <th scope="col" width="120">Giá</th>
                         <th scope="col" width="200" class="text-right"></th>
                     </tr>
@@ -66,6 +68,9 @@
                                             </td>
                                             <td>
                                                 <input class="form-control quantity" name="quantity-<?php echo $data[$i]['idproduct']?>" type="number" min="1" max="10" value="<?php echo $data[$i]['quantity']; ?>" onchange='changeTotalPrice()'> 
+                                            </td>
+                                            <td>
+                                                <input class="form-control quantity" type="number" value="<?php echo $data[$i]['total_quantity']; ?>" disabled> 
                                             </td>
                                             <td> 
                                                 <div class="price-wrap"> 

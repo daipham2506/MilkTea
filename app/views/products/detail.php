@@ -25,23 +25,29 @@ $count_review = $review->num_rows;
                     <a href="#review-container" class="link-in-detail">( Xem <?php echo $count_review ?> đánh giá )</a>
                 </div>
             </div>
+
             <div id="product-price" class="bd-bottom mt-3">
-                <h5 class="bold-text">Giá sản phẩm <i class="fas fa-tags color-blue"></i></h5>
-                <ul class="color-red bold-text">
+                <h5 class="bold-text">Thông tin sản phẩm <i class="fas fa-tags color-blue"></i></h5>
                     <?php
                     $i = 0;
                     $size = array();
                     while ($price_row = $product["price_list"]->fetch_assoc()) {
                         $price = $price_row["price"];
                         $size_name = $price_row["size"];
+                        $quantity = $price_row["quantity"];
                         $size[$i]['name'] = $size_name;
                         $size[$i]['id'] = $price_row["id"];
                         $i++;
-                        echo "<li>Size $size_name : $price đ</li>";
+                        echo "
+                        <ul class='bold-text'>Size $size_name :
+                            <li class='normal-text'>Giá : $price đ</li>
+                            <li class='normal-text'>Số lượng : $quantity</li>
+                        </ul>
+                        ";
                     }
                     ?>
-                </ul>
             </div>
+
             <div id="description-content" class="bd-bottom mt-3">
                 <h5 class="bold-text">Mô tả</h5>
                 <ul class="list-description">

@@ -33,7 +33,10 @@
 
 <body>
   <div id="root" style="overflow-x: hidden;">
-    <?php require APPROOT . '/views/inc/navbar.php'; ?>
+    <?php require APPROOT . '/views/inc/navbar.php'; 
+     header('Access-Control-Allow-Origin: *');
+    ?>
+    
     <div class="container-fluid main">
       <!-- <li class="link-item d-flex justify-content-end">
         <i class="fa fa-search icon-search-product" id="id-icon-search-product"></i>

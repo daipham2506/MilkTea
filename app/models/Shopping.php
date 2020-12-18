@@ -13,7 +13,7 @@ class Shopping{
 
     public function getProductInCart($userId){
         $data = array();
-        $getList_sql = "SELECT product.name, product.image, productincart.quantity, size.size, sizeofproduct.price, productincart.idproduct, productincart.idcart
+        $getList_sql = "SELECT product.name, product.image, productincart.quantity, size.size, sizeofproduct.price, productincart.idproduct, productincart.idcart , sizeofproduct.quantity AS total_quantity
                         FROM productincart 
                         INNER JOIN product 
                         ON productincart.idproduct = product.id
@@ -38,6 +38,7 @@ class Shopping{
               $data[$i]['price'] = $row['price'];
               $data[$i]['idproduct'] = $row['idproduct'];
               $data[$i]['idcart'] = $row['idcart'];
+              $data[$i]['total_quantity'] = $row['total_quantity'];
               $i++;
             }
 
@@ -77,7 +78,7 @@ class Shopping{
                 $name = mysqli_query($this->db->conn, $sql);
                 $name = mysqli_fetch_assoc($name)['name'];
                 flash('ordercart','Sản phẩm '.$name.' còn lại không đủ, vui lòng đặt lại số lượng','alert-danger');
-                return;
+                return false;
             }
         }
         // order
@@ -92,7 +93,7 @@ class Shopping{
         if ($result){
             flash('ordercart','Đặt hàng thành công');
         }
-       
+        return true;
     }
 
     public function getOrder($userId){

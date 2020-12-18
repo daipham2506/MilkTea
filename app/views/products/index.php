@@ -41,7 +41,14 @@
                         $j++;
                         $price = $price_row["price"];
                         $size_name = $price_row["size"];
-                        $price_display .= "<li class='price'>Size $size_name : $price</li>";
+                        $quantity = $price_row["quantity"];
+                        $price_display .=                         
+                        "
+                        <ul class='size'>Size $size_name : 
+                            <li class='price'>Giá: $price đ</li>
+                            <li class='price'>Số lượng: $quantity </li>
+                        </ul>
+                        ";
                         $button_add_card  = "";
                         if (isset($_SESSION['user_id'])){
                             $button_add_card = "<a href='".URLROOT."products/addOneToCart/".$product_id."?size=".$id_size[0]."' class='btn btn-success add-cart'><i class='fas fa-cart-plus'></i></a>";
@@ -55,11 +62,9 @@
                             "<a  class='d-flex justify-content-center' href='$link_product'><img src='$product_image' class='card-img-top img-product' alt='$product_name'></a>
                             <div class='card-body'>
                                 <h5 class='card-title'>$product_name</h5>
-                                <ul class='cart-text'>
                                 "
                                 .$price_display.
                                 "
-                                </ul>
                             </div>
                         </div>
                     </div>
