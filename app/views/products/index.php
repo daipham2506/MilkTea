@@ -1,4 +1,5 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
+<?php flash('addtocart'); ?>
 <div class="row mb-4">
     <div class="col-xl-2 col-md-3 col-12">
         <div class="list-group" id="menu-nar">
