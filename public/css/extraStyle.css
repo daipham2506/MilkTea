@@ -1,0 +1,36 @@
+#menu .card-title.title-product {
+    color: #000000;
+    text-align: start;
+}
+
+#menu .price-product{
+    color:  #e74c3c;
+    text-align: start;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.card-body.product-body{
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+#menu .sold-product-num{
+    flex: 1;
+    text-align: end;
+    padding-right: 15px;
+    color: #857E7E;
+}
+
+#menu .num-of-review{
+    color: #857E7E;
+}
+
+#menu .wrap-add-cart{
+    display: flex;
+    justify-content: space-between;
+}
+
+#menu .star-review{
+    margin-left: 15px;
+}

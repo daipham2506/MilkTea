@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/product.css">
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/postdetail.css">
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/confirm-del.css">
-
+  <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/extraStyle.css">
 
   <title><?php echo SITENAME; ?></title>
   <style> 

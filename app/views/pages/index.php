@@ -26,6 +26,78 @@
   </a>
 </div>
 <div class="container mt-4">
+  <div class="row">
+    <h2 class="text-center mt-4 w-100">Các sản phẩm gần đây</h2>
+    <div class="col-12" id="menu">
+      <div class="row">
+        <?php
+          $recentProduct = array(
+            array(
+              'productId' => 3,
+              'productImage' => "https://gongcha.com.vn/wp-content/uploads/2018/02/Tr%C3%A0-B%C3%AD-%C4%90ao-Milkfoam-2.png",
+              'productName' => 'Trà Bí Đao Kem Sữa',
+              'productPrice' => 'đ 45,000',
+              'productStar' => 5,
+              'productReview' => 34,
+              'productSold' => 98 
+            ),
+            array(
+              'productId' => 6,
+              'productImage' => "https://gongcha.com.vn/wp-content/uploads/2018/02/Tr%C3%A0-s%E1%BB%AFa-Oolong-3J-2.png",
+              'productName' => 'Trà Sữa Oolong 3J',
+              'productPrice' => 'đ 57,000',
+              'productStar' => 4,
+              'productReview' => 57,
+              'productSold' => 112 
+            ),
+            array(
+              'productId' => 11,
+              'productImage' => "https://gongcha.com.vn/wp-content/uploads/2018/01/Tr%C3%A0-s%E1%BB%AFa-Khoai-m%C3%B4n-2.png",
+              'productName' => 'Trà Sữa Khoai Môn',
+              'productPrice' => 'đ 55,000',
+              'productStar' => 5,
+              'productReview' => 39,
+              'productSold' => 150 
+            )
+          );
+          for($i = 0; $i < count($recentProduct); $i++){
+            $star = printStar($recentProduct[$i]["productStar"]);
+            $button_add_card = "";
+            if (isset($_SESSION['user_id'])){
+              $button_add_card = "<a href='".URLROOT."products/addOneToCart/".$recentProduct[$i]['productId']."?size=1' class=''><img class='' src='".URLROOT."/img/product/add_to_cart.png' alt='new-item'/></a>";
+            }
+            echo "
+            <div class='col-xl-4 col-lg-6 col-md-6 col-12 product-item ml-md-0 ml-2'>
+              <div class='card' data-aos='fade-down' data-aos-duration='1500'>
+                  <div class='d-flex justify-content-between'>
+                      <img class='' src='".URLROOT."/img/product/new.png"."' alt='new-item'/>
+                      <img class='' src='".URLROOT."/img/product/gift.png"."' alt='new-item'/>
+                  </div>
+                  <a  class='d-flex justify-content-center' href='".URLROOT."products/detail/".$recentProduct[$i]['productId']."'><img src='".$recentProduct[$i]['productImage']."' class='card-img-top img-product' alt='".$recentProduct[$i]['productName']."'></a>
+                  <div class='card-body product-body'>
+                      <div class='wrap-add-cart'>
+                          <h5 class='card-title title-product'>".$recentProduct[$i]['productName']."</h5>
+                          $button_add_card
+                          </div>
+                      <div class='price-product'>".$recentProduct[$i]['productPrice']."</div>
+                  </div>
+                  <div class='row'>
+                      <div class='star-review'>".$star." <span class='num-of-review'>(".$recentProduct[$i]['productReview'].")</span></div>
+                      <div class='sold-product-num'>Đã bán ".$recentProduct[$i]['productSold']."</div>
+                  </div>
+              </div>
+            </div>
+            ";
+          }
+        ?>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center pt-3 pb-5">
+    <a href="<?php echo URLROOT."products" ?>" class="btn btn-info">Xem thêm</a>
+  </div>
+</div>
+<div class="container mt-4">
   <h2 class="text-center mt-4">Chào mừng các bạn đến với MilkTeaX</h2>
   <div class="row mt-4">
     <div id="video-intro1" class="col-md-6 col-12" data-aos="fade-down" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
