@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/product.css">
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/shoppingcart.css">
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/tab.css">
+  <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/extraStyle.css">
   
   <title><?php echo SITENAME; ?></title>
   <style> 
