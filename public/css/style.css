@@ -577,9 +577,15 @@ body{
     padding:10px;
     width: 100%;
 }
-#menu .card-title,.price{
+#menu .card-title{
     color: #e74c3c;
     font-weight: 600;
+}
+#menu .size{
+  font-weight: 600;
+}
+#menu .price{
+  font-weight: 500;
 }
 #menu .product-item{
     margin-top: 20px;
@@ -591,6 +597,7 @@ body{
 }
 
 #menu .card{
+  height: 100%;
   padding: 10px;
   width: 95%;
   margin: 0 auto;

@@ -8,7 +8,8 @@
     <hr>
 
 
-    <form action="<?php echo URLROOT; ?>shoppings/ordercart/<?php echo $_SESSION['user_id']?>" method="POST">
+    <!-- <form action="<?php echo URLROOT; ?>shoppings/ordercart/<?php echo $_SESSION['user_id']?>" method="POST"> -->
+    <form action="<?php echo URLROOT; ?>payment/paymomo" method="POST">
         <div class="card">
         <?php
             flash('changeQuantity');
@@ -26,6 +27,7 @@
                         <th scope="col">Sản phẩm</th>
                         <th scope="col" width="100">Size</th>
                         <th scope="col" width="120">Số lượng</th>
+                        <th scope="col" width="120">Còn lại(sp)</th>
                         <th scope="col" width="120">Giá</th>
                         <th scope="col" width="200" class="text-right"></th>
                     </tr>
@@ -67,6 +69,9 @@
                                             <td>
                                                 <input class="form-control quantity" name="quantity-<?php echo $data[$i]['idproduct']?>" type="number" min="1" max="10" value="<?php echo $data[$i]['quantity']; ?>" onchange='changeTotalPrice()'> 
                                             </td>
+                                            <td>
+                                                <input class="form-control quantity" type="number" value="<?php echo $data[$i]['total_quantity']; ?>" disabled> 
+                                            </td>
                                             <td> 
                                                 <div class="price-wrap"> 
                                                     <var class="price price-detail" id="price-<?php echo $data[$i]['idproduct'] ?>"><?php echo $data[$i]['price']; ?>đ</var> 
@@ -90,13 +95,13 @@
             <div class="form-group row" style='padding:10px'>
                 <label for="inputAddress" class="col-sm-3 col-form-label">Địa chỉ nhận hàng</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name='address' value="<?php echo $user_address_and_phone['address'] ?>">
+                    <input type="text" class="form-control" name='address' value="<?php if(!empty($user_address_and_phone)) echo $user_address_and_phone['address'] ?>">
                 </div>
             </div>
             <div class="form-group row" style='padding:10px'>
                 <label for="phone" class="col-sm-3 col-form-label">Số điện thoại</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name='phone' value="<?php echo $user_address_and_phone['phone'] ?>">
+                    <input type="text" class="form-control" name='phone' value="<?php if(!empty($user_address_and_phone)) echo $user_address_and_phone['phone'] ?>">
                 </div>
             </div>
             

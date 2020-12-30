@@ -1,7 +1,8 @@
 $(document).ready(function(){
     // console.log("Run here");
     let idpost = $("#my-btn-add-comment").attr("idpost");
-    let URL_ROOT = "http://localhost/milktea/";
+    // let URL_ROOT = "http://localhost/milktea/";
+    const URL_ROOT = $("#my-btn-add-comment").attr("urlRoot");
     let url = URL_ROOT + "posts/getlistcomments/" + idpost;
     $.get(url,function(data){
         // console.log(data);
